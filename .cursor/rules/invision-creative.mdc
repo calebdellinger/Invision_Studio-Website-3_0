@@ -1,0 +1,38 @@
+---
+description: Invision Creative Next.js app structure, brand, and cinematic UI conventions
+alwaysApply: true
+---
+
+# Invision Creative — project rules
+
+## Location
+
+- **App root:** `web/` (Next.js App Router, TypeScript, Tailwind v4).
+- **Docs:** `docs/WEBSITE_LAYOUT.md` is the source of truth for routes and content strategy.
+
+## Brand
+
+- **Partner:** [Invision Marketing](https://invisionmarketing.io/) — purple-led, SEO/ads/funnels. Cross-link in footer and optional copy; use `--brand-partner` for purple accents.
+- **This property:** Invision Creative — **green** monogram (`--brand-creative`), dark cinematic UI, **visual-first** (minimal copy on gallery routes).
+- **Monogram:** Same mark as Marketing; tint via CSS. Replace paths in `InvisionMonogram` when final SVG is supplied.
+
+## Typography
+
+- **Serif (display only):** Fraunces — headlines, logo wordmark emphasis.
+- **Sans (UI):** Plus Jakarta Sans — nav, body, forms.
+
+## Components
+
+- Put shared UI in `web/src/components/site/`.
+- Put brand-only pieces (monogram, Marketing/Creative switch) in `web/src/components/brand/`.
+- Prefer **server components**; add `"use client"` only for interactivity (e.g. `BrandSwitch`).
+
+## Styling
+
+- Dark theme is **default and only** — do not add a light theme unless explicitly requested.
+- Use CSS variables from `globals.css` for brand colors and surfaces.
+- **Responsive split (single app):** The “phone” revamp band is **`max-mobile:`** (viewports &lt; 431px, i.e. up through ~430px / largest phones). **Tablet + desktop** use **`mobile:`** (min-width 431px). The threshold is defined as `--breakpoint-mobile` in `globals.css` (431px = 26.9375rem).
+
+## New pages
+
+- Add routes under `web/src/app/`. Keep marketing copy short; long SEO text belongs on `/about` or `/faq` per layout doc.
