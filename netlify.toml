@@ -1,6 +1,17 @@
-[build]
-  base = "web"
-  command = "npm run build"
+# Netlify configuration for Invision Creative.
+# The Next.js app lives in web/, so Netlify must build from that subdirectory.
 
+[build]
+  base    = "web"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Ensure devDependencies (including @netlify/plugin-nextjs) install on Netlify.
+  NPM_FLAGS = "--include=dev"
+
+# Netlify's official Next.js runtime — handles SSR, ISR, image optimization,
+# and middleware/proxy compilation into Edge Functions.
 [[plugins]]
   package = "@netlify/plugin-nextjs"
