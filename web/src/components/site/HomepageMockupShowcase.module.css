@@ -1,0 +1,32 @@
+.scrollViewport {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(0, 0, 0, 1) 88%,
+    transparent 100%
+  );
+}
+
+.scrollTrack {
+  animation-name: homepageAutoScroll;
+  animation-duration: var(--scroll-duration, 20s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@keyframes homepageAutoScroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollTrack {
+    animation: none;
+  }
+}

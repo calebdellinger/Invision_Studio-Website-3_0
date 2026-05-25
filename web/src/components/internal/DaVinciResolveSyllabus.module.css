@@ -1,0 +1,78 @@
+.root {
+  --resolve-blue: #007bff;
+  --resolve-glow: rgba(0, 123, 255, 0.4);
+}
+
+.scrollMain::-webkit-scrollbar {
+  width: 10px;
+}
+.scrollMain::-webkit-scrollbar-track {
+  background: #0a0a0b;
+}
+.scrollMain::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 5px;
+  border: 2px solid #0a0a0b;
+}
+
+.checkbox {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-right: 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.checkbox:checked {
+  background: var(--resolve-blue);
+  box-shadow: 0 0 10px var(--resolve-blue);
+}
+
+.checkbox:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  left: 3px;
+  top: -1px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #555;
+  opacity: 0.7;
+}
+
+.badge {
+  background: linear-gradient(180deg, #333 0%, #222 100%);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  color: #ddd;
+  border: 1px solid #444;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.floatAnim {
+  animation: float 4s ease-in-out infinite;
+}

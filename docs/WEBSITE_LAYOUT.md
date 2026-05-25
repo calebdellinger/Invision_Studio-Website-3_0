@@ -1,6 +1,6 @@
 # Invision Creative — site layout
 
-Partner brand: [Invision Marketing](https://invisionmarketing.io/) (SEO, ads, web funnels). This site is the **visual** arm: photography, video, social, branding.
+Partner brand: [Invision Marketing](https://invisionmarketing.io/) (SEO, ads, web funnels). This site is the **visual** arm: photography, video, social, and AI-assisted workflows.
 
 ## Visual & UX principles
 
@@ -15,7 +15,7 @@ Partner brand: [Invision Marketing](https://invisionmarketing.io/) (SEO, ads, we
 |--------|---------|
 | `/` | Home: full-viewport hero (image or video), one serif headline, optional sublabel, scroll to work preview. |
 | `/work` | Case studies / portfolio: masonry or horizontal scroll; captions ≤ 1 line. |
-| `/services` | Four pillars: Photography, Video, Social & content, Branding — each tile is visual + title. |
+| `/services` | Service pillars (photo, video, social, AI, showroom) — visual-first flow. |
 | `/about` | Short story + team or process; still lighter on copy than Marketing site. |
 | `/contact` | Contact form + email/phone; optional calendar embed later. |
 

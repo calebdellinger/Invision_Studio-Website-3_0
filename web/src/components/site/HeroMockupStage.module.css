@@ -1,0 +1,125 @@
+.stage {
+  perspective: 1500px;
+  width: 100%;
+  --deck-width: min(92vw, 68rem);
+  max-width: var(--deck-width);
+  margin-inline: auto;
+}
+
+.deck {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  height: 100dvh;
+  transform-style: preserve-3d;
+  background: transparent;
+}
+
+.pane {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+  background: #000;
+  box-shadow:
+    0 38px 54px -22px rgba(0, 0, 0, 0.68),
+    0 16px 28px -16px rgba(0, 0, 0, 0.46);
+}
+
+.pane iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.carousel {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(2deg);
+  animation: heroCarouselSpin 40s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.paneA {
+  transform: rotateY(0deg) translateZ(calc(var(--deck-width) * 0.7));
+}
+
+.paneB {
+  transform: rotateY(72deg) translateZ(calc(var(--deck-width) * 0.7));
+}
+
+.paneC {
+  transform: rotateY(144deg) translateZ(calc(var(--deck-width) * 0.7));
+}
+
+.paneD {
+  transform: rotateY(216deg) translateZ(calc(var(--deck-width) * 0.7));
+}
+
+.paneE {
+  transform: rotateY(288deg) translateZ(calc(var(--deck-width) * 0.7));
+}
+
+@keyframes heroCarouselSpin {
+  0% {
+    transform: rotateX(2deg) rotateY(0deg);
+  }
+  15% {
+    transform: rotateX(2deg) rotateY(0deg);
+  }
+  20% {
+    transform: rotateX(2deg) rotateY(-72deg);
+  }
+  35% {
+    transform: rotateX(2deg) rotateY(-72deg);
+  }
+  40% {
+    transform: rotateX(2deg) rotateY(-144deg);
+  }
+  55% {
+    transform: rotateX(2deg) rotateY(-144deg);
+  }
+  60% {
+    transform: rotateX(2deg) rotateY(-216deg);
+  }
+  75% {
+    transform: rotateX(2deg) rotateY(-216deg);
+  }
+  80% {
+    transform: rotateX(2deg) rotateY(-288deg);
+  }
+  95% {
+    transform: rotateX(2deg) rotateY(-288deg);
+  }
+  100% {
+    transform: rotateX(2deg) rotateY(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel {
+    animation: none;
+  }
+  .paneA {
+    transform: rotateY(0deg) translateZ(calc(var(--deck-width) * 0.7));
+  }
+  .paneB {
+    transform: rotateY(72deg) translateZ(calc(var(--deck-width) * 0.7));
+  }
+  .paneC {
+    transform: rotateY(144deg) translateZ(calc(var(--deck-width) * 0.7));
+  }
+  .paneD {
+    transform: rotateY(216deg) translateZ(calc(var(--deck-width) * 0.7));
+  }
+  .paneE {
+    transform: rotateY(288deg) translateZ(calc(var(--deck-width) * 0.7));
+  }
+}

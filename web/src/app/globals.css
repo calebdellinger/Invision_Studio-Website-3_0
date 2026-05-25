@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #050505;
+  --foreground: #e8e8e8;
+  --brand-creative: #50a12a;
+  --brand-creative-muted: #2d5a1a;
+  --brand-partner: #8b5cf6;
+  --surface: #0c0c0c;
+  /* Header: logo scale + py-3 (0.75rem × 2) — keep in sync with SiteHeader */
+  --header-logo-height: clamp(39px, 13.6vw, 91px);
+  --header-padding-y: 0.75rem;
+  --header-height: calc(
+    var(--header-logo-height) + 2 * var(--header-padding-y)
+  );
+  /* Widest common phone ≈ 430px (e.g. iPhone 15 Pro Max). Tailwind `max-mobile:` = viewports < 431px. */
+  --layout-mobile-max-px: 430;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+  /* 431px: `max-mobile:` = phone-only (0–430px). `mobile:` = tablet + desktop. Use rem to match Tailwind. */
+  --breakpoint-mobile: 26.9375rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Cinematic vignette on main content areas (optional utility) */
+.vignette {
+  box-shadow: inset 0 0 120px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes film-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.film-marquee-track {
+  animation: film-marquee var(--film-marquee-duration, 48s) linear infinite;
+  will-change: transform;
+}
+
+@keyframes airplane-flight {
+  from {
+    transform: translateX(-12%);
+  }
+  to {
+    transform: translateX(112%);
+  }
+}
+
+@keyframes airplane-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+.airplane-flight {
+  animation: airplane-flight 14s linear infinite;
+  will-change: transform;
+}
+
+.airplane-bob {
+  animation: airplane-bob 2.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.bar-grow-anim {
+  transform-origin: left center;
+  animation: bar-grow 1s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-marquee-track {
+    animation: none;
+  }
+
+  .airplane-flight,
+  .airplane-bob {
+    animation: none;
+  }
+
+  .bar-grow-anim {
+    animation: none;
+  }
+}

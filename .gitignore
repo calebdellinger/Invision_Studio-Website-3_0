@@ -1,0 +1,21 @@
+# Local agent state / backups
+.claude/
+.git-web-backup/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Node / Next.js (defense-in-depth on top of web/.gitignore)
+node_modules/
+.next/
+out/
+build/
+.vercel/
+*.tsbuildinfo
+.env*
+
+# Files too large to push to GitHub (>100MB hard limit)
+web/public/timelapse.mov
+web/public/TimelapseCompound Clip_WReverse.mov

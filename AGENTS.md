@@ -4,7 +4,7 @@ Use this file so automated agents (Cursor, CI bots, etc.) align with repo intent
 
 ## Product
 
-- **Repo:** Invision Creative — photography, video, social/content, branding.
+- **Repo:** Invision Creative — photography, video, social/content, AI integrations.
 - **Sibling brand:** Invision Marketing (`https://invisionmarketing.io/`) — SEO, paid media, lead-focused web. Same monogram family; Creative uses **green**, Marketing uses **purple** on their site.
 
 ## Repository layout
