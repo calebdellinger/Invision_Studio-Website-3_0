@@ -7,12 +7,15 @@ type ServicePageShellProps = {
   eyebrow?: string;
   title: string;
   subtitle: string;
+  headerMediaSlot?: ReactNode;
+  headerEdgeSlot?: ReactNode;
   introSlot?: ReactNode;
+  powerSectionSpacingClassName?: string;
   powerTitle: string;
   powerBody: ReactNode;
   assetTitle?: string;
   assetBody: ReactNode;
-  /** Photo / video: “compound effect” block (optional). */
+  /** Photo / video: "compound effect" block (optional). */
   compoundTitle?: string;
   compoundBody?: ReactNode;
   footerSlot?: ReactNode;
@@ -22,7 +25,10 @@ export function ServicePageShell({
   eyebrow = "Services",
   title,
   subtitle,
+  headerMediaSlot,
+  headerEdgeSlot,
   introSlot,
+  powerSectionSpacingClassName = "pt-14",
   powerTitle,
   powerBody,
   assetTitle = "Asset Library",
@@ -34,19 +40,32 @@ export function ServicePageShell({
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <header className="border-b border-white/[0.06] pb-12">
-        <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--brand-creative)]">
-          {eyebrow}
-        </p>
-        <h1 className={`mt-4 text-4xl leading-[1.1] sm:text-5xl ${heading}`}>
-          {title}
-        </h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-500">
-          {subtitle}
-        </p>
-        {introSlot ? <div className="mt-8">{introSlot}</div> : null}
+        {headerMediaSlot ? (
+          <div className="relative">
+            {headerMediaSlot}
+            {headerEdgeSlot ? (
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex translate-y-1/2 justify-center">
+                {headerEdgeSlot}
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <>
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--brand-creative)]">
+              {eyebrow}
+            </p>
+            <h1 className={`mt-4 text-4xl leading-[1.1] sm:text-5xl ${heading}`}>
+              {title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-500">
+              {subtitle}
+            </p>
+            {introSlot ? <div className="mt-8">{introSlot}</div> : null}
+          </>
+        )}
       </header>
 
-      <section className="pt-14">
+      <section className={powerSectionSpacingClassName}>
         <h2 className={`text-2xl sm:text-3xl ${heading}`}>{powerTitle}</h2>
         <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-zinc-400">
           {powerBody}

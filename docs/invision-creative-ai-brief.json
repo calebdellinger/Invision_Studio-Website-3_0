@@ -1,0 +1,117 @@
+{
+  "brief_version": "1.0",
+  "purpose": "Lightweight handoff for external AIs (Gemini, Claude, etc.) — attach with INVISION_CREATIVE_AI_BRIEF.md or alone for structured parsing.",
+  "product": "Invision Creative",
+  "tagline_domain": "Photography, video, social content, and AI integrations for brands that want to be seen.",
+  "sibling_brand": {
+    "name": "Invision Marketing",
+    "url": "https://invisionmarketing.io/",
+    "role": "SEO, paid media, lead-focused web",
+    "accent_color": "#8b5cf6",
+    "on_creative_site": "purple only for partner links and brand switch; never primary UI accent"
+  },
+  "brand": {
+    "primary_accent": "#50a12a",
+    "primary_accent_muted": "#2d5a1a",
+    "background": "#050505",
+    "foreground": "#e8e8e8",
+    "surface": "#0c0c0c",
+    "theme": "dark cinematic default"
+  },
+  "typography": {
+    "display_serif": "Fraunces",
+    "ui_sans": "Plus Jakarta Sans",
+    "service_headings": "Montserrat semibold on some service/showroom pages"
+  },
+  "ux_principles": [
+    "visual-first",
+    "minimal copy on gallery and home scroll sections",
+    "large imagery and video",
+    "subtle motion with prefers-reduced-motion fallback",
+    "cinematic vignette optional; avoid stock clichés"
+  ],
+  "hard_guardrails": {
+    "do": [
+      "dark backgrounds and soft white hairline borders",
+      "green #50a12a for accents and primary CTAs",
+      "short eyebrows and punchy taglines",
+      "cross-link Invision Marketing for SEO/ads needs"
+    ],
+    "dont": [
+      "sitewide light theme or purple/blue as primary accent",
+      "long SEO walls on visual routes",
+      "generic agency hype or clipart",
+      "position Creative as an SEO/ads shop"
+    ]
+  },
+  "creative_latitude": [
+    "hero video, mockup stages, film marquees, scroll chapters",
+    "showroom album layouts and trade vertical storytelling",
+    "alternating service flows with glow and capability chips",
+    "platform-specific social grids",
+    "intentional light contrast bands on select home sections"
+  ],
+  "responsive": {
+    "phone_only_max_px": 430,
+    "phone_tailwind": "max-mobile:",
+    "tablet_desktop_tailwind": "mobile:"
+  },
+  "nav_primary": [
+    { "label": "Services", "path": "/services" },
+    { "label": "Showroom", "path": "/showroom" },
+    { "label": "Pricing", "path": "/pricing" },
+    { "label": "My Story", "path": "/about" },
+    { "label": "Contact", "path": "/contact" }
+  ],
+  "services": [
+    {
+      "title": "Photography",
+      "path": "/services/photography",
+      "tagline": "Stills that campaign."
+    },
+    {
+      "title": "Videography",
+      "path": "/services/videography",
+      "tagline": "Every frame earns the next."
+    },
+    {
+      "title": "Social & Content",
+      "path": "/services/social-media",
+      "tagline": "Feeds that still feel human.",
+      "subroutes": ["instagram", "facebook", "tiktok", "youtube"]
+    },
+    {
+      "title": "AI Integrations",
+      "path": "/services/ai-integrations",
+      "tagline": "Automation without compromise."
+    }
+  ],
+  "showroom": {
+    "path": "/showroom",
+    "albums": ["dirt-work", "concrete", "demo", "roofing"],
+    "vertical": "construction / trades"
+  },
+  "home_sections_order": [
+    "hero mockup stage (white, scaled client mockups)",
+    "operation pillars (Innovation, Passion, Curiosity)",
+    "film projector / device timelapse hero",
+    "mirrored mountain image band",
+    "instagram phone showcase",
+    "homepage mockup showcase",
+    "category tiles (light band, four services)"
+  ],
+  "chrome": {
+    "header": "fixed frosted glass pill, green nav links",
+    "footer": "dark, Marketing cross-link, green contact CTA, brand switch"
+  },
+  "voice": {
+    "tone": "confident craft, campaign-ready, human not corporate",
+    "avoid": ["SEO fluff on visual pages", "startup bro hype", "purple-as-primary"]
+  },
+  "prompt_templates": [
+    "Propose three homepage hero alternatives (visual-first): one video, one stills, one mockup stage. Section order + one-line labels only.",
+    "Design a showroom album page for [trade]: layout, grid, captions max 12 words. Dark cinematic, green accents.",
+    "Write six capability chips + 40-word description for a new service line matching Photography/Videography voice.",
+    "List 5 guardrails and 3 acceptable tweaks for adding a client logo marquee."
+  ]
+}

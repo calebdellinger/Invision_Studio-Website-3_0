@@ -104,6 +104,59 @@ body {
   animation: bar-grow 1s ease-out forwards;
 }
 
+@keyframes hud-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.hud-float-a {
+  animation: hud-float 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hud-float-b {
+  animation: hud-float 8.2s ease-in-out infinite 1.8s;
+  will-change: transform;
+}
+
+@keyframes orbit-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+  }
+  35% {
+    transform: translate3d(0, -10px, 0) rotateX(5deg);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0) rotateX(-3deg);
+  }
+}
+
+.orbit-float {
+  animation: orbit-float 4.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.orbit-float-a {
+  animation-duration: 4.2s;
+  animation-delay: 0s;
+}
+
+.orbit-float-b {
+  animation-duration: 4.9s;
+  animation-delay: -1.6s;
+}
+
+.orbit-float-c {
+  animation-duration: 5.2s;
+  animation-delay: -2.9s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .film-marquee-track {
     animation: none;
@@ -115,6 +168,15 @@ body {
   }
 
   .bar-grow-anim {
+    animation: none;
+  }
+
+  .hud-float-a,
+  .hud-float-b {
+    animation: none;
+  }
+
+  .orbit-float {
     animation: none;
   }
 }

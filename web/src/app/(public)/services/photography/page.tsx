@@ -528,26 +528,39 @@ export default function PhotographyServicePage() {
         eyebrow="Photography"
         title="Commercial photography that performs"
         subtitle="Your visuals are the first thing a prospect evaluates — before they read a word of your copy. Professional photography is a trust signal, a memory cue, and a conversion asset that works across every channel you touch."
-        introSlot={
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] ring-1 ring-inset ring-white/[0.03]">
+        headerMediaSlot={
+          <div className="relative left-1/2 -mt-[calc(var(--header-height)+4rem)] w-dvw max-w-none -translate-x-1/2 overflow-hidden sm:-mt-[calc(var(--header-height)+5rem)] lg:-mt-[calc(var(--header-height)+6rem)]">
             <div className="relative aspect-[16/9]">
               <Image
-                src="/brand/logo_white.svg"
-                alt="Cinematic commercial photography for brand and marketing campaigns."
+                src="https://photos.smugmug.com/Patriot-Concrete/i-GLdrtGg/0/Nh4RNWFLMFgQ5ZtVP5hL3P4m7GWFpM6k7stVTmNnJ/5K/6F4A8239-5K.jpg"
+                alt="Commercial photography hero image."
                 fill
                 priority
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 896px"
+                className="object-cover"
+                sizes="100vw"
               />
               <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-black sm:h-36 lg:h-44"
                 aria-hidden
               />
             </div>
-            <p className="border-t border-white/[0.06] px-4 py-3 text-xs tracking-wide text-zinc-500">
-              Visual quality is your brand before the first conversation.
+          </div>
+        }
+        headerEdgeSlot={
+          <div className="px-4 text-center">
+            <p className="text-6xl font-semibold tracking-tight text-white [font-family:var(--font-plus-jakarta)] sm:text-7xl lg:text-8xl">
+              Photography
+            </p>
+            <p className="mt-8 inline-block rounded-lg border border-white/15 bg-black/35 px-5 py-2 text-sm font-medium tracking-wide text-zinc-100 [font-family:var(--font-plus-jakarta)] sm:mt-10 sm:text-base">
+              In 1839, when photography was first announced, French painter Paul Delaroche reportedly said it was &ldquo;the greatest invention since the printing press&rdquo;
             </p>
           </div>
+        }
+        powerSectionSpacingClassName="pt-32 sm:pt-36 lg:pt-40"
+        introSlot={
+          <p className="rounded-full border border-white/10 bg-black/30 px-4 py-2 text-xs tracking-wide text-zinc-300 backdrop-blur-sm">
+            Visual quality is your brand before the first conversation.
+          </p>
         }
         powerTitle="Four disciplines that build a complete visual identity"
         powerBody={<PhotoTypeGrid />}
