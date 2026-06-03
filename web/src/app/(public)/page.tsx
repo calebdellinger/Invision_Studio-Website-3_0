@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { CategoryTiles } from "@/components/site/CategoryTiles";
-import { FilmProjectorHero } from "@/components/site/FilmProjectorHero";
 import { HeroMockupStage } from "@/components/site/HeroMockupStage";
 import { HomepageMockupShowcase } from "@/components/site/HomepageMockupShowcase";
 import { InstagramPhoneShowcase } from "@/components/site/InstagramPhoneShowcase";
@@ -15,8 +14,6 @@ export default function Home() {
       <CreativeShowcaseHero />
 
       <OperationPillars />
-
-      <FilmProjectorHero />
 
       <section className="-mb-px w-full overflow-hidden bg-black" aria-label="Mirrored mountain scene">
         <Image

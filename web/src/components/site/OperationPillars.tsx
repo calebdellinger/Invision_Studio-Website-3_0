@@ -91,7 +91,7 @@ export function OperationPillars() {
 
   return (
     <section
-      className="relative overflow-hidden bg-black px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
+      className="relative overflow-hidden bg-black px-4 pt-96 pb-20 sm:px-6 sm:pt-[36rem] sm:pb-28 lg:px-8"
       aria-labelledby="pillars-heading"
     >
       <div
@@ -113,11 +113,11 @@ export function OperationPillars() {
           </p>
           <h2
             id="pillars-heading"
-            className="mt-3 font-serif text-3xl tracking-tight text-white sm:text-zinc-900 sm:text-4xl"
+            className="mt-3 font-serif text-3xl tracking-tight text-white sm:text-4xl"
           >
             Connected Services
           </h2>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-300 sm:text-zinc-600">
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-300 sm:text-zinc-400">
             How photo, video, and social media support each other
           </p>
         </div>
