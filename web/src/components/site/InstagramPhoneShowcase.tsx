@@ -684,9 +684,9 @@ export function InstagramPhoneShowcase() {
           className="mx-auto [perspective:1400px]"
           style={{
             WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, black 33.333%, black 66.667%, transparent 100%)",
+              "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
             maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 33.333%, black 66.667%, transparent 100%)",
+              "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
           }}
         >
           <div className="relative h-[512px] w-[608px] max-w-[95vw]">

@@ -8,27 +8,27 @@ const CENTROID_Y_PCT = (302 / 3 / 200) * 100;
 
 const PILLARS = [
   {
-    title: "Innovation",
+    title: "Photo",
     paragraphs: [
-      "New angles, new formats, and ideas that haven’t been seen before — so you don’t blend in. We chase what’s next without chasing trends for their own sake.",
-      "That means testing compositions, motion, and pacing until the work feels unmistakably yours: campaign-ready stills, social-native cuts, and hero moments that earn a second look.",
-      "When the landscape shifts, we adapt the craft — same standards, braver choices — so your library stays fresh instead of frozen in one era.",
+      "Premium photography is the visual foundation. Stills freeze craftsmanship, capture honest lighting, and establish the aesthetic benchmark of your brand campaign.",
+      "Still imagery establishes the creative direction for everything else. It defines the color grading palette, art direction, and staging setups that keep your visuals cohesive.",
+      "By shooting high-resolution assets, you build a permanent library for digital listings, print lookbooks, catalog covers, and high-impact website banners.",
     ],
   },
   {
-    title: "Passion",
+    title: "Video",
     paragraphs: [
-      "The energy shows up on set and in the edit. Craft matters, and we treat every frame like it counts — from the first scout frame to the last grade pass.",
-      "We sweat the small stuff: light, lens choice, sound where it matters, and edit rhythm that matches the story you’re trying to tell. Nothing ships until it feels intentional.",
-      "That intensity is what turns a shoot day into assets you’ll actually use — not files that sit in a folder because “good enough” never felt good enough.",
+      "Videography brings the static framework to life. We add motion, pacing, and detailed sound design to hold the viewer's attention and tell a deeper narrative.",
+      "Every frame of our motion cuts maintains visual continuity with our photography set designs. Light, colors, and styling align so your brand voice remains unified.",
+      "Motion assets translate static concepts into active brand experiences — ideal for high-impact homepage heroes, YouTube embeds, and platform ads.",
     ],
   },
   {
-    title: "Curiosity",
+    title: "Social Media",
     paragraphs: [
-      "Better questions lead to stronger visuals. We dig in until the work says something real — about your people, your process, and why someone should care.",
-      "Before cameras roll, we want context: who you’re for, what you’ve tried, and where this piece needs to land. The answers shape lighting, tone, and how bold we can be.",
-      "Curiosity also means revisiting the edit with fresh eyes: does this still land? Is the message clear in three seconds? We keep pushing until the answer is yes.",
+      "Social media is the engine that deploys your library. We package raw photos and video cuts into native, platform-optimized vertical feeds and rhythms.",
+      "The three services operate as a loop: premium photo and video assets feed your channels with high-grade content, while automated publishing ensures they reach your audience.",
+      "We synchronize the pipeline: shooting stills and motion on the same production day, then formatting, captioning, and scheduling deliverables natively for Instagram, TikTok, and YouTube.",
     ],
   },
 ] as const;
@@ -111,16 +111,16 @@ export function OperationPillars() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="-translate-y-5">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-[var(--brand-creative)]">
-            Operation
+            Connected Workflow
           </p>
           <h2
             id="pillars-heading"
             className="mt-3 font-serif text-3xl tracking-tight text-black sm:text-4xl"
           >
-            Three pillars
+            Integrated Services
           </h2>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-black">
-            How we show up on every project
+            How photo, video, and social media support each other
           </p>
         </div>
 
@@ -194,29 +194,29 @@ export function OperationPillars() {
                 <button
                   type="button"
                   onClick={() => goTo(0)}
-                  aria-label="Innovation pillar"
+                  aria-label="Photo pillar"
                   aria-pressed={index === 0}
                   className={pillarBtnClass(index === 0, "top")}
                 >
-                  Innovation
+                  Photo
                 </button>
                 <button
                   type="button"
                   onClick={() => goTo(2)}
-                  aria-label="Curiosity pillar"
+                  aria-label="Social media pillar"
                   aria-pressed={index === 2}
                   className={pillarBtnClass(index === 2, "bl")}
                 >
-                  Curiosity
+                  Social Media
                 </button>
                 <button
                   type="button"
                   onClick={() => goTo(1)}
-                  aria-label="Passion pillar"
+                  aria-label="Video pillar"
                   aria-pressed={index === 1}
                   className={pillarBtnClass(index === 1, "br")}
                 >
-                  Passion
+                  Video
                 </button>
               </div>
             </div>
