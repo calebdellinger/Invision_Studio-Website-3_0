@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-export type ServiceTypeIconId = "photo" | "video" | "social" | "ai";
+export type ServiceTypeIconId = "photo" | "video" | "social" | "ai" | "gaussian";
 
 type IconProps = SVGProps<SVGSVGElement> & { id: ServiceTypeIconId };
 
@@ -84,6 +84,31 @@ export function ServiceTypeIcon({ id, className, ...rest }: IconProps) {
           <circle cx="8" cy="9.5" r="1.2" fill="currentColor" stroke="none" />
           <circle cx="16" cy="12" r="1.2" fill="currentColor" stroke="none" />
           <circle cx="8" cy="14.5" r="1.2" fill="currentColor" stroke="none" />
+        </svg>
+      );
+    case "gaussian":
+      return (
+        <svg
+          className={cn}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.35}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden
+          {...rest}
+        >
+          {/* A 3D-ish ellipsoidal representation of Gaussian Splatting */}
+          <ellipse cx="12" cy="12" rx="9" ry="5" transform="rotate(-30 12 12)" strokeDasharray="2 2" opacity={0.3} />
+          <ellipse cx="12" cy="12" rx="7" ry="3.5" transform="rotate(-30 12 12)" opacity={0.6} />
+          <ellipse cx="12" cy="12" rx="4" ry="2" transform="rotate(-30 12 12)" fill="currentColor" fillOpacity={0.15} />
+          {/* Splatted point cloud particles around the center */}
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="8" cy="9.5" r="1.1" fill="currentColor" stroke="none" />
+          <circle cx="16" cy="14.5" r="1.1" fill="currentColor" stroke="none" />
+          <circle cx="14" cy="8.5" r="0.9" fill="currentColor" stroke="none" />
+          <circle cx="10" cy="15.5" r="0.9" fill="currentColor" stroke="none" />
         </svg>
       );
   }

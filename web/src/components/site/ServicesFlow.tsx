@@ -87,6 +87,23 @@ const FLOW: FlowItem[] = [
       to: "#030303",
     },
   },
+  /*
+  {
+    key: "gaussian",
+    title: "Gaussian Splatting",
+    tagline: "Volumetric 3D scanning.",
+    icon: "gaussian",
+    href: "/services/gaussian-splatting",
+    description:
+      "Photorealistic 3D scans and digital twins of physical spaces — capture real-world environments with complete volumetric accuracy, natural lighting, and zero polygon limitations.",
+    caps: ["WebGPU-native", "Real estate tours", "Industrial twins", "Blender/UE5 export"],
+    surface: {
+      from: "#030303",
+      via: "color-mix(in srgb, var(--brand-creative) 9%, #050608)",
+      to: "#050609",
+    },
+  },
+  */
 ];
 
 // ---------------------------------------------------------------------------

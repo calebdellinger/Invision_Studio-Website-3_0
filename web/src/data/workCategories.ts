@@ -28,4 +28,11 @@ export const WORK_CATEGORIES: WorkCategory[] = [
     title: "AI integrations",
     tagline: "Workflow helpers that speed delivery without diluting your voice",
   },
+  /*
+  {
+    href: "/services/gaussian-splatting",
+    title: "Gaussian splatting",
+    tagline: "Volumetric 3D scans and digital twins of physical spaces",
+  },
+  */
 ];
