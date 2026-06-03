@@ -43,7 +43,7 @@ export function CreativeShowcaseHero() {
 
 
   return (
-    <section className="relative -mt-[var(--header-height)] flex min-h-dvh w-full flex-col justify-center overflow-hidden bg-white px-4 pb-20 pt-[calc(var(--header-height)+4rem)] sm:px-6 lg:px-8">
+    <section className="relative -mt-[var(--header-height)] flex min-h-dvh w-full flex-col justify-center overflow-hidden bg-white px-4 pb-36 sm:pb-52 pt-[calc(var(--header-height)+4rem)] sm:px-6 lg:px-8">
       {/* ── Premium Geometric Background ── */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
         {/* Soft dot grid background */}
@@ -145,9 +145,6 @@ export function CreativeShowcaseHero() {
         </div>
         <div className="absolute left-10 bottom-8 z-10 hidden font-mono text-[9px] uppercase tracking-widest text-zinc-700 sm:block">
           <span className="text-[var(--brand-creative)]">●</span> FOCAL [35mm | F1.8 | ISO 250]
-        </div>
-        <div className="absolute right-10 bottom-8 z-10 hidden font-mono text-[9px] uppercase tracking-widest text-zinc-700 sm:block">
-          <span className="text-[var(--brand-creative)]">●</span> SYS [INVISION.STUDIO_CR]
         </div>
       </div>
 

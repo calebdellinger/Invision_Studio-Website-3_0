@@ -502,7 +502,7 @@ export function ServicesFlow() {
               </div>
 
               {/* ── Icon column ── */}
-              <div className="relative mx-auto shrink-0 sm:mx-0">
+              <div className="relative mx-auto shrink-0 hidden sm:block sm:mx-0">
                 <FloatingRingIcon icon={item.icon} reduceMotion={reduceMotion} />
               </div>
             </motion.div>

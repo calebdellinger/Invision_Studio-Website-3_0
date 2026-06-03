@@ -8,9 +8,7 @@ export function PublicMain({ children }: Readonly<{ children: React.ReactNode }>
 
   return (
     <main
-      className={`relative z-10 flex flex-1 flex-col pt-[var(--header-height)] ${
-        isHome ? "bg-white" : "bg-black"
-      }`}
+      className="relative flex flex-1 flex-col pt-[var(--header-height)] bg-transparent"
     >
       {children}
     </main>

@@ -95,37 +95,36 @@ export function OperationPillars() {
       aria-labelledby="pillars-heading"
     >
       <div
-        className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen max-w-[100vw] -translate-x-1/2 bg-top bg-no-repeat"
+        className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen max-w-[100vw] -translate-x-1/2 bg-center bg-no-repeat bg-cover sm:bg-top sm:bg-[length:100%_auto]"
         style={{
           backgroundImage:
             "url(/rebuild-gallery/3pillarsHero.jpg)",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
         }}
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 top-[360px] z-[1] w-screen max-w-[100vw] -translate-x-1/2 bg-gradient-to-t from-black to-transparent"
+        className="pointer-events-none absolute bottom-0 left-1/2 top-[220px] sm:top-[360px] z-[1] w-screen max-w-[100vw] -translate-x-1/2 bg-gradient-to-t from-black via-black/85 to-transparent"
         aria-hidden
       />
       <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="-translate-y-5">
+        <div className="sm:-translate-y-5">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-[var(--brand-creative)]">
             Connected Workflow
           </p>
           <h2
             id="pillars-heading"
-            className="mt-3 font-serif text-3xl tracking-tight text-black sm:text-4xl"
+            className="mt-3 font-serif text-3xl tracking-tight text-white sm:text-zinc-900 sm:text-4xl"
           >
             Connected Services
           </h2>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-black">
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-300 sm:text-zinc-600">
             How photo, video, and social media support each other
           </p>
         </div>
 
-        <div className="mt-14 flex flex-col items-center gap-12">
-          <div className="relative mx-auto flex w-full max-w-[min(100%,380px)] flex-col items-center overflow-visible">
+        <div className="mt-6 sm:mt-14 flex flex-col items-center gap-6 sm:gap-12">
+          {/* Desktop/Tablet Triangle Controls (Hidden on very small screens, visible sm and up) */}
+          <div className="relative mx-auto hidden sm:flex w-full max-w-[min(100%,380px)] flex-col items-center overflow-visible">
             <div className="relative aspect-square w-full max-w-[340px] overflow-visible">
               {/* Triangle behind — does not capture clicks */}
               <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center pt-8 sm:pt-10">
@@ -220,6 +219,38 @@ export function OperationPillars() {
                 </button>
               </div>
             </div>
+          </div>
+
+          {/* Mobile Vertical Controls (Visible only on very small screens) */}
+          <div className="sm:hidden flex flex-col w-full gap-3 px-2">
+            {[
+              { idx: 0, label: "Photo" },
+              { idx: 1, label: "Video" },
+              { idx: 2, label: "Social Media" },
+            ].map((btn) => {
+              const active = index === btn.idx;
+              return (
+                <button
+                  key={btn.idx}
+                  type="button"
+                  onClick={() => goTo(btn.idx)}
+                  aria-pressed={active}
+                  className={`relative flex items-center justify-between overflow-hidden rounded-lg px-5 py-3.5 text-left text-sm font-semibold uppercase tracking-[0.15em] transition-[color,box-shadow,transform] ${
+                    active
+                      ? `text-[var(--brand-creative)] shadow-[0_0_24px_-8px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)] border border-[var(--brand-creative)]/40 ${pillarActiveGradient}`
+                      : "bg-[#111111] text-zinc-400 border border-transparent hover:bg-[#151515] hover:text-zinc-200"
+                  }`}
+                >
+                  <span className="relative z-10">{btn.label}</span>
+                  {active && (
+                    <span className="relative z-10 h-1.5 w-1.5 rounded-full bg-[var(--brand-creative)] shadow-[0_0_8px_var(--brand-creative)]" />
+                  )}
+                  {active && (
+                    <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-[var(--brand-creative)]/10 to-transparent" />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           <div className="relative w-full max-w-xl overflow-hidden rounded-xl border border-white/5 bg-[#0a0a0a] ring-1 ring-inset ring-white/[0.04]">

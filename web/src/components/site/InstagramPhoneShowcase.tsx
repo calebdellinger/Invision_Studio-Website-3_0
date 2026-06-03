@@ -705,7 +705,9 @@ export function InstagramPhoneShowcase() {
               return (
                 <div
                   key={id}
-                  className="absolute left-1/2 top-1/2 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className={`absolute left-1/2 top-1/2 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    rel !== 0 ? "hidden sm:block" : ""
+                  }`}
                   style={{
                     transform,
                     opacity: !isVisible ? 0 : rel === 0 ? 1 : 0.78,

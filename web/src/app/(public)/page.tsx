@@ -6,10 +6,12 @@ import { HomepageMockupShowcase } from "@/components/site/HomepageMockupShowcase
 import { InstagramPhoneShowcase } from "@/components/site/InstagramPhoneShowcase";
 import { OperationPillars } from "@/components/site/OperationPillars";
 import { CreativeShowcaseHero } from "@/components/site/CreativeShowcaseHero";
+import { PageLoader } from "@/components/site/PageLoader";
 
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
+      <PageLoader />
       <CreativeShowcaseHero />
 
       <OperationPillars />
