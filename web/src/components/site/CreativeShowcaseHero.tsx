@@ -7,25 +7,25 @@ export function CreativeShowcaseHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative -mt-[var(--header-height)] flex min-h-dvh w-full flex-col justify-center overflow-hidden bg-black px-4 pb-20 pt-[calc(var(--header-height)+4rem)] sm:px-6 lg:px-8">
-      {/* ── Cinematic Video Background ── */}
+    <section className="relative -mt-[var(--header-height)] flex min-h-dvh w-full flex-col justify-center overflow-hidden bg-white px-4 pb-20 pt-[calc(var(--header-height)+4rem)] sm:px-6 lg:px-8">
+      {/* ── Subtle Video Background for White theme ── */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.22] mix-blend-lighten"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.06] mix-blend-multiply"
         >
           <source src="/wraparound%20shot%20of%20devices.mp4" type="video/mp4" />
         </video>
-        {/* Edge vignette & bottom fade */}
+        {/* Edge vignette & bottom fade to white */}
         <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_120%_120%_at_50%_40%,transparent_20%,#000_82%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_120%_120%_at_50%_40%,transparent_20%,#fff_82%)]"
           aria-hidden
         />
         <div
-          className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent"
+          className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent"
           aria-hidden
         />
       </div>
@@ -40,13 +40,13 @@ export function CreativeShowcaseHero() {
             className="flex items-center gap-3"
           >
             <div className="h-px w-6 bg-[var(--brand-creative)] opacity-85" />
-            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-[color-mix(in_srgb,var(--brand-creative)_90%,white_10%)]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-[color-mix(in_srgb,var(--brand-creative)_90%,#000_10%)]">
               Invision Creative
             </p>
           </motion.div>
 
           <motion.h1
-            className="mt-6 font-serif text-[clamp(2.75rem,7vw,5.5rem)] font-medium leading-[1.0] tracking-tight text-white"
+            className="mt-6 font-serif text-[clamp(2.75rem,7vw,5.5rem)] font-medium leading-[1.0] tracking-tight text-zinc-900"
             initial={reduceMotion ? false : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -57,7 +57,7 @@ export function CreativeShowcaseHero() {
           </motion.h1>
 
           <motion.p
-            className="mt-6 max-w-lg text-[15px] leading-relaxed text-zinc-500 sm:text-base"
+            className="mt-6 max-w-lg text-[15px] leading-relaxed text-zinc-600 sm:text-base"
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
@@ -73,20 +73,20 @@ export function CreativeShowcaseHero() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-[0_4px_20px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_28px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
+              className="inline-flex items-center justify-center rounded-full bg-zinc-950 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_-4px_rgba(0,0,0,0.15)] transition-[transform,box-shadow,background-color] hover:-translate-y-0.5 hover:bg-black hover:shadow-[0_8px_28px_-6px_rgba(0,0,0,0.25)]"
             >
               Start a project
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.02] px-8 py-3.5 text-sm font-medium text-zinc-400 backdrop-blur-sm transition-colors hover:border-white/20 hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-zinc-50/50 px-8 py-3.5 text-sm font-medium text-zinc-600 backdrop-blur-sm transition-colors hover:border-zinc-300 hover:text-zinc-900"
             >
               Explore Services
             </Link>
           </motion.div>
         </div>
 
-        {/* ── Right Column: Interconnected Feature Cards ── */}
+        {/* ── Right Column: Light-themed Feature Cards ── */}
         <div className="lg:col-span-5 flex flex-col gap-4 w-full">
           {[
             {
@@ -122,31 +122,31 @@ export function CreativeShowcaseHero() {
             >
               <Link
                 href={item.href}
-                className="group relative flex items-center justify-between overflow-hidden rounded-xl border border-white/[0.08] bg-[#0c0c0d] p-5 ring-1 ring-inset ring-white/[0.03] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_42%,transparent)] hover:shadow-[0_0_32px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
+                className="group relative flex items-center justify-between overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50/70 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.015)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_42%,transparent)] hover:shadow-[0_12px_36px_-12px_rgba(0,0,0,0.06)]"
               >
                 {/* Subtle visual card thumbnail */}
                 <div
-                  className="absolute inset-0 z-0 opacity-[0.04] transition-opacity duration-300 group-hover:opacity-[0.14] bg-cover bg-center bg-no-repeat"
+                  className="absolute inset-0 z-0 opacity-[0.02] transition-opacity duration-300 group-hover:opacity-[0.08] bg-cover bg-center bg-no-repeat"
                   style={{ backgroundImage: `url(${item.image})` }}
                   aria-hidden
                 />
                 
                 <div className="relative z-10 flex items-center gap-4">
-                  <span className="flex h-7 w-7 items-center justify-center rounded border border-white/10 bg-white/[0.02] font-mono text-[10px] text-zinc-500 group-hover:border-[color-mix(in_srgb,var(--brand-creative)_30%,transparent)] group-hover:text-[var(--brand-creative)]">
+                  <span className="flex h-7 w-7 items-center justify-center rounded border border-zinc-200 bg-zinc-100 font-mono text-[10px] text-zinc-400 transition-colors group-hover:bg-zinc-200/50 group-hover:text-zinc-800">
                     {String(item.index).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="text-sm font-semibold tracking-tight text-white">
+                    <h3 className="text-sm font-semibold tracking-tight text-zinc-900">
                       {item.title}
                     </h3>
-                    <p className="text-[11px] font-medium text-zinc-500 group-hover:text-zinc-400">
+                    <p className="text-[11px] font-medium text-zinc-500 group-hover:text-zinc-700">
                       {item.cap}
                     </p>
                   </div>
                 </div>
 
                 <span
-                  className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full border border-white/5 bg-white/[0.01] text-[var(--brand-creative)] opacity-0 transition-[transform,opacity,border-color] duration-300 -translate-x-3 group-hover:translate-x-0 group-hover:opacity-100 group-hover:border-[color-mix(in_srgb,var(--brand-creative)_20%,transparent)]"
+                  className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 text-[var(--brand-creative)] opacity-0 transition-[transform,opacity,border-color] duration-300 -translate-x-3 group-hover:translate-x-0 group-hover:opacity-100 group-hover:border-[color-mix(in_srgb,var(--brand-creative)_20%,transparent)]"
                   aria-hidden
                 >
                   →

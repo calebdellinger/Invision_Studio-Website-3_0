@@ -280,21 +280,16 @@ function FeatureRow({ label }: { label: string }) {
 
 export function HomepageMockupShowcase() {
   return (
-    <section className="w-full bg-white px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+    <section className="w-full bg-white px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
       <div className="mx-auto w-full max-w-6xl">
         <p className="text-xs font-medium uppercase tracking-[0.25em] text-[var(--brand-creative)]">
           Social Feed Extension
         </p>
         <h2 className="mt-3 font-serif text-3xl tracking-tight text-zinc-900 sm:text-4xl">
-          Photo-led homepage mockups
+          Website Mockups
         </h2>
-        <p className="mt-3 max-w-3xl text-sm text-zinc-600">
-          Each one now reads like a real homepage UI. Different structure,
-          different hierarchy, same principle: better photography instantly makes
-          the website feel premium and credible.
-        </p>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {MOCKUPS.map((mockup) => (
             <WebsiteMockup key={mockup.title} {...mockup} />
           ))}
