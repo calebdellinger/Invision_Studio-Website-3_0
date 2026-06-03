@@ -23,10 +23,91 @@ const currency = (n: number) =>
     maximumFractionDigits: 0,
   }).format(n);
 
-function extraLocationFieldCount(locationCount: number, shootDays: number): number {
-  if (locationCount > 1) return locationCount - 1;
-  if (shootDays > 1) return shootDays - 1;
-  return 0;
+type PricingState = {
+  includePhoto: boolean;
+  photoIx: number;
+  includeVideo: boolean;
+  videoIx: number;
+  includeSocial: boolean;
+  socialIx: number;
+  socialMonths: number;
+  droneIx: number;
+  photoRecurringMonths: number;
+  videoRecurringMonths: number;
+  committedShoots: (typeof VOLUME_SHOOT_OPTIONS)[number];
+  currentStep: number;
+};
+
+type PricingAction =
+  | { type: "SET_STEP"; value: number }
+  | { type: "TOGGLE_PHOTO" }
+  | { type: "TOGGLE_VIDEO" }
+  | { type: "TOGGLE_SOCIAL" }
+  | { type: "SELECT_PHOTO_TIER"; index: number }
+  | { type: "SELECT_VIDEO_TIER"; index: number }
+  | { type: "SET_SOCIAL_IX"; index: number }
+  | { type: "SET_DRONE_IX"; index: number }
+  | { type: "SET_SOCIAL_MONTHS"; value: number }
+  | { type: "SET_PHOTO_RECURRING_MONTHS"; value: number }
+  | { type: "SET_VIDEO_RECURRING_MONTHS"; value: number }
+  | { type: "SET_COMMITTED_SHOOTS"; value: (typeof VOLUME_SHOOT_OPTIONS)[number] };
+
+const initialState: PricingState = {
+  includePhoto: true,
+  photoIx: 0,
+  includeVideo: true,
+  videoIx: 0,
+  includeSocial: true,
+  socialIx: 0,
+  socialMonths: 1,
+  droneIx: 0,
+  photoRecurringMonths: 1,
+  videoRecurringMonths: 1,
+  committedShoots: 1,
+  currentStep: 1,
+};
+
+function pricingReducer(state: PricingState, action: PricingAction): PricingState {
+  switch (action.type) {
+    case "SET_STEP":
+      return { ...state, currentStep: action.value };
+
+    case "TOGGLE_PHOTO":
+      return { ...state, includePhoto: !state.includePhoto };
+
+    case "TOGGLE_VIDEO":
+      return { ...state, includeVideo: !state.includeVideo };
+
+    case "TOGGLE_SOCIAL":
+      return { ...state, includeSocial: !state.includeSocial };
+
+    case "SELECT_PHOTO_TIER":
+      return { ...state, photoIx: action.index };
+
+    case "SELECT_VIDEO_TIER":
+      return { ...state, videoIx: action.index };
+
+    case "SET_SOCIAL_IX":
+      return { ...state, socialIx: action.index };
+
+    case "SET_DRONE_IX":
+      return { ...state, droneIx: action.index };
+
+    case "SET_SOCIAL_MONTHS":
+      return { ...state, socialMonths: Math.min(12, Math.max(1, action.value)) };
+
+    case "SET_PHOTO_RECURRING_MONTHS":
+      return { ...state, photoRecurringMonths: Math.min(12, Math.max(1, action.value)) };
+
+    case "SET_VIDEO_RECURRING_MONTHS":
+      return { ...state, videoRecurringMonths: Math.min(12, Math.max(1, action.value)) };
+
+    case "SET_COMMITTED_SHOOTS":
+      return { ...state, committedShoots: action.value };
+
+    default:
+      return state;
+  }
 }
 
 function PackageCard<T extends { name: string; price: number; summary: string }>({
@@ -261,172 +342,6 @@ function RecurringCommitmentCard({
 }
 
 // ---------------------------------------------------------------------------
-// State management
-// ---------------------------------------------------------------------------
-
-function useDebounce<T>(value: T, delayMs: number): T {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const id = setTimeout(() => setDebounced(value), delayMs);
-    return () => clearTimeout(id);
-  }, [value, delayMs]);
-  return debounced;
-}
-
-type PricingState = {
-  includePhoto: boolean;
-  photoIx: number;
-  includeVideo: boolean;
-  videoIx: number;
-  includeSocial: boolean;
-  socialIx: number;
-  socialMonths: number;
-  droneIx: number;
-  photoRecurringMonths: number;
-  videoRecurringMonths: number;
-  committedShoots: (typeof VOLUME_SHOOT_OPTIONS)[number];
-  streetLine: string;
-  extraLocationLines: string[];
-  shootDays: number;
-  locationCount: number;
-  milesFromMukilteo: number;
-  currentStep: number;
-};
-
-type PricingAction =
-  | { type: "SET_STEP"; value: number }
-  | { type: "SET_STREET_LINE"; value: string }
-  | { type: "SET_SHOOT_DAYS"; value: number }
-  | { type: "SET_LOCATION_COUNT"; value: number }
-  | { type: "SET_EXTRA_LOCATION_LINE"; index: number; value: string }
-  | { type: "SET_MILES"; value: number }
-  | { type: "TOGGLE_PHOTO" }
-  | { type: "TOGGLE_VIDEO" }
-  | { type: "TOGGLE_SOCIAL" }
-  | { type: "SELECT_PHOTO_TIER"; index: number; needsGrowthTier: boolean }
-  | { type: "SELECT_VIDEO_TIER"; index: number; needsGrowthTier: boolean }
-  | { type: "SET_SOCIAL_IX"; index: number }
-  | { type: "SET_DRONE_IX"; index: number }
-  | { type: "SET_SOCIAL_MONTHS"; value: number }
-  | { type: "SET_PHOTO_RECURRING_MONTHS"; value: number }
-  | { type: "SET_VIDEO_RECURRING_MONTHS"; value: number }
-  | { type: "SET_COMMITTED_SHOOTS"; value: (typeof VOLUME_SHOOT_OPTIONS)[number] }
-  | { type: "UPGRADE_TIERS_FOR_DRIVE" };
-
-const initialState: PricingState = {
-  includePhoto: true,
-  photoIx: 0,
-  includeVideo: true,
-  videoIx: 0,
-  includeSocial: true,
-  socialIx: 0,
-  socialMonths: 1,
-  droneIx: 0,
-  photoRecurringMonths: 1,
-  videoRecurringMonths: 1,
-  committedShoots: 1,
-  streetLine: "",
-  extraLocationLines: [],
-  shootDays: 1,
-  locationCount: 1,
-  milesFromMukilteo: 15,
-  currentStep: 1,
-};
-
-function pricingReducer(state: PricingState, action: PricingAction): PricingState {
-  switch (action.type) {
-    case "SET_STEP":
-      return { ...state, currentStep: action.value };
-
-    case "SET_STREET_LINE":
-      return { ...state, streetLine: action.value };
-
-    case "SET_MILES":
-      return { ...state, milesFromMukilteo: action.value };
-
-    case "SET_SHOOT_DAYS": {
-      const shootDays = action.value;
-      const extraCount = extraLocationFieldCount(state.locationCount, shootDays);
-      const extraLocationLines = state.extraLocationLines.slice(0, extraCount);
-      while (extraLocationLines.length < extraCount) extraLocationLines.push("");
-      return { ...state, shootDays, extraLocationLines };
-    }
-
-    case "SET_LOCATION_COUNT": {
-      const locationCount = action.value;
-      const extraCount = extraLocationFieldCount(locationCount, state.shootDays);
-      const extraLocationLines = state.extraLocationLines.slice(0, extraCount);
-      while (extraLocationLines.length < extraCount) extraLocationLines.push("");
-      return { ...state, locationCount, extraLocationLines };
-    }
-
-    case "SET_EXTRA_LOCATION_LINE": {
-      const lines = [...state.extraLocationLines];
-      lines[action.index] = action.value;
-      return { ...state, extraLocationLines: lines };
-    }
-
-    case "TOGGLE_PHOTO":
-      return { ...state, includePhoto: !state.includePhoto };
-
-    case "TOGGLE_VIDEO":
-      return { ...state, includeVideo: !state.includeVideo };
-
-    case "TOGGLE_SOCIAL":
-      return { ...state, includeSocial: !state.includeSocial };
-
-    case "SELECT_PHOTO_TIER": {
-      const photoIx = action.index;
-      let videoIx = state.videoIx;
-      if (action.needsGrowthTier && photoIx === 0 && state.includeVideo) {
-        videoIx = videoIx === 0 ? 1 : videoIx;
-      }
-      return { ...state, photoIx, videoIx };
-    }
-
-    case "SELECT_VIDEO_TIER": {
-      const videoIx = action.index;
-      let photoIx = state.photoIx;
-      if (action.needsGrowthTier && videoIx === 0 && state.includePhoto) {
-        photoIx = photoIx === 0 ? 1 : photoIx;
-      }
-      return { ...state, videoIx, photoIx };
-    }
-
-    case "SET_SOCIAL_IX":
-      return { ...state, socialIx: action.index };
-
-    case "SET_DRONE_IX":
-      return { ...state, droneIx: action.index };
-
-    case "SET_SOCIAL_MONTHS":
-      return { ...state, socialMonths: Math.min(12, Math.max(1, action.value)) };
-
-    case "SET_PHOTO_RECURRING_MONTHS":
-      return { ...state, photoRecurringMonths: Math.min(12, Math.max(1, action.value)) };
-
-    case "SET_VIDEO_RECURRING_MONTHS":
-      return { ...state, videoRecurringMonths: Math.min(12, Math.max(1, action.value)) };
-
-    case "SET_COMMITTED_SHOOTS":
-      return { ...state, committedShoots: action.value };
-
-    case "UPGRADE_TIERS_FOR_DRIVE": {
-      let { photoIx, videoIx } = state;
-      if (state.includePhoto && !state.includeVideo && photoIx === 0) photoIx = 1;
-      if (state.includeVideo && !state.includePhoto && videoIx === 0) videoIx = 1;
-      if (state.includePhoto && state.includeVideo && photoIx === 0 && videoIx === 0) videoIx = 1;
-      // Return same reference when nothing changed so React bails on re-render
-      if (photoIx === state.photoIx && videoIx === state.videoIx) return state;
-      return { ...state, photoIx, videoIx };
-    }
-
-    default:
-      return state;
-  }
-}
-
-// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
@@ -436,31 +351,8 @@ export function BundlePricingBuilder() {
     includePhoto, photoIx, includeVideo, videoIx,
     includeSocial, socialIx, socialMonths, droneIx,
     photoRecurringMonths, videoRecurringMonths, committedShoots,
-    streetLine, extraLocationLines, shootDays, locationCount,
-    milesFromMukilteo, currentStep,
+    currentStep,
   } = state;
-
-  // Debounced travel distance lookup — fires after user stops typing for 800ms.
-  // Falls back gracefully to the default 15 miles if the API is unavailable.
-  const debouncedStreet = useDebounce(streetLine, 800);
-  useEffect(() => {
-    const address = debouncedStreet.trim();
-    if (address.length < 4) return;
-    let cancelled = false;
-    fetch("/api/pricing-travel", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ destination: address }),
-    })
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data: { milesOneWay?: number } | null) => {
-        if (!cancelled && typeof data?.milesOneWay === "number") {
-          dispatch({ type: "SET_MILES", value: data.milesOneWay });
-        }
-      })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, [debouncedStreet]);
 
   const photoRecurring = photoRecurringMonths > 1;
   const videoRecurring = videoRecurringMonths > 1;
@@ -480,10 +372,10 @@ export function BundlePricingBuilder() {
         videoRecurring,
         committedShoots,
         location: {
-          milesFromMukilteo,
+          milesFromMukilteo: 0,
           oneWayDriveMinutes: null,
-          shootDays: Math.max(1, shootDays),
-          locationCount: Math.max(1, locationCount),
+          shootDays: 1,
+          locationCount: 1,
         },
       }),
     [
@@ -498,26 +390,23 @@ export function BundlePricingBuilder() {
       photoRecurring,
       videoRecurring,
       committedShoots,
-      milesFromMukilteo,
-      shootDays,
-      locationCount,
     ],
   );
 
-  const needsLongDriveGrowthTier = result.location.requiresMinGrowthTier;
+  const hasDroneStep = includePhoto || includeVideo;
 
-  // Auto-upgrade tiers when drive distance requires it. Dispatching a single
-  // action keeps this atomic — one state update, one re-render.
+  // Redirect from Drone step (Step 2) to Services step (Step 1) if Photo/Video are toggled off
   useEffect(() => {
-    if (!needsLongDriveGrowthTier) return;
-    dispatch({ type: "UPGRADE_TIERS_FOR_DRIVE" });
-  }, [needsLongDriveGrowthTier, includePhoto, includeVideo, photoIx, videoIx]);
+    if (currentStep === 2 && !hasDroneStep) {
+      dispatch({ type: "SET_STEP", value: 1 });
+    }
+  }, [currentStep, hasDroneStep]);
 
   // Thin wrappers so JSX call sites don't need inline dispatch objects
   const selectPhotoTier = (i: number) =>
-    dispatch({ type: "SELECT_PHOTO_TIER", index: i, needsGrowthTier: needsLongDriveGrowthTier });
+    dispatch({ type: "SELECT_PHOTO_TIER", index: i });
   const selectVideoTier = (j: number) =>
-    dispatch({ type: "SELECT_VIDEO_TIER", index: j, needsGrowthTier: needsLongDriveGrowthTier });
+    dispatch({ type: "SELECT_VIDEO_TIER", index: j });
   const updateSocialMonths = (next: number) => dispatch({ type: "SET_SOCIAL_MONTHS", value: next });
   const updatePhotoRecurringMonths = (next: number) => dispatch({ type: "SET_PHOTO_RECURRING_MONTHS", value: next });
   const updateVideoRecurringMonths = (next: number) => dispatch({ type: "SET_VIDEO_RECURRING_MONTHS", value: next });
@@ -544,14 +433,6 @@ export function BundlePricingBuilder() {
 
   const stepStates = [
     {
-      label: "Location",
-      complete:
-        shootDays >= 1 &&
-        locationCount >= 1 &&
-        streetLine.trim().length > 0,
-      required: true,
-    },
-    {
       label: "Services",
       complete: includePhoto || includeVideo || includeSocial,
       required: true,
@@ -562,34 +443,30 @@ export function BundlePricingBuilder() {
       required: includePhoto || includeVideo,
     },
     {
-      label: "Commitment",
+      label: "Savings",
       complete: committedShoots >= 1,
       required: true,
     },
   ] as const;
 
-  const requiredStepCount = stepStates.filter((step) => step.required).length;
-  const completedRequiredStepCount = stepStates.filter(
-    (step) => step.required && step.complete,
-  ).length;
-  const activeStepIndex = stepStates.findIndex((step) => step.required && !step.complete);
-  const currentStepLabel =
-    activeStepIndex === -1 ? "Ready to review estimate" : stepStates[activeStepIndex].label;
-  const showStep2 = stepStates[0].complete;
-  const showStep3 = showStep2 && stepStates[1].complete && (includePhoto || includeVideo);
-  const showStep4 = showStep2 && stepStates[1].complete && (!showStep3 || stepStates[2].complete);
-  const maxNavigableStep = showStep4 ? 4 : showStep3 ? 3 : showStep2 ? 2 : 1;
+  const isServicesComplete = includePhoto || includeVideo || includeSocial;
+  const isStep2Navigable = isServicesComplete && hasDroneStep;
+  const isStep3Navigable = isServicesComplete;
+
+  const maxNavigableStep = isStep3Navigable ? 3 : (isStep2Navigable ? 2 : 1);
   const effectiveStep =
     currentStep > maxNavigableStep ? maxNavigableStep : currentStep < 1 ? 1 : currentStep;
-  const progressPct = Math.max(8, Math.round((effectiveStep / 4) * 100));
+
+  const progressPct = Math.max(8, Math.round((effectiveStep / 3) * 100));
+
   const canGoBack = effectiveStep > 1;
   const canGoNext = effectiveStep < maxNavigableStep;
-  const nextStep = effectiveStep === 2 && !showStep3 ? 4 : Math.min(effectiveStep + 1, 4);
-  const prevStep = effectiveStep === 4 && !showStep3 ? 2 : Math.max(effectiveStep - 1, 1);
+  
+  const nextStep = effectiveStep === 1 && !hasDroneStep ? 3 : Math.min(effectiveStep + 1, 3);
+  const prevStep = effectiveStep === 3 && !hasDroneStep ? 1 : Math.max(effectiveStep - 1, 1);
 
-  // Suppress unused-variable warnings for derived counts used only implicitly
-  void requiredStepCount;
-  void completedRequiredStepCount;
+  const currentStepLabel =
+    !isServicesComplete ? "Services" : (effectiveStep === 1 ? "Services" : (effectiveStep === 2 ? "Drone" : "Savings"));
 
   return (
     <div className="space-y-14 bg-[#0b0b0b]">
@@ -637,161 +514,10 @@ export function BundlePricingBuilder() {
       </section>
 
       {effectiveStep === 1 ? (
-        <section className="rounded-[22px] border border-white/[0.08] bg-[#1a1a1a] p-5 shadow-[14px_14px_34px_rgba(0,0,0,0.64),-8px_-8px_18px_rgba(255,255,255,0.04)]">
-        <h2 className="font-serif text-xl text-white sm:text-2xl">
-          Step 1 · Location
-        </h2>
-        <div className="mt-4 space-y-4">
-          <label className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Enter location
-            <input
-              type="text"
-              value={streetLine}
-              onChange={(e) => dispatch({ type: "SET_STREET_LINE", value: e.target.value })}
-              placeholder="City, state or full address"
-              autoComplete="street-address"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-zinc-950 px-3.5 py-2.5 text-[13px] text-white outline-none placeholder:text-zinc-600 focus:border-[var(--brand-creative)]"
-            />
-          </label>
-        </div>
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <label className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Shoot days: {shootDays}
-            <input
-              type="range"
-              min={1}
-              max={5}
-              step={1}
-              value={shootDays}
-              onChange={(e) => dispatch({ type: "SET_SHOOT_DAYS", value: Number(e.target.value) })}
-              className="mt-2 w-full accent-[var(--brand-creative)]"
-            />
-          </label>
-          <label className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Locations: {locationCount}
-            <input
-              type="range"
-              min={1}
-              max={5}
-              step={1}
-              value={locationCount}
-              onChange={(e) => dispatch({ type: "SET_LOCATION_COUNT", value: Number(e.target.value) })}
-              className="mt-2 w-full accent-[var(--brand-creative)]"
-            />
-          </label>
-        </div>
-        {extraLocationLines.length > 0 ? (
-          <div className="mt-4 space-y-3 rounded-xl border border-white/[0.06] bg-[#141414]/80 p-4">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                {locationCount > 1 ? "Additional locations" : "Additional shoot-day locations"}
-              </p>
-              <p className="mt-1 text-xs leading-relaxed text-zinc-600">
-                {locationCount > 1
-                  ? `Enter an address or area for each extra venue (${locationCount} locations total).`
-                  : `If later shoot days are at different places than your primary, list each (${shootDays} shoot days).`}
-              </p>
-            </div>
-            <div className="space-y-3">
-              {Array.from({ length: extraLocationLines.length }, (_, i) => (
-                <label key={i} className="block">
-                  <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-zinc-600">
-                    {locationCount > 1 ? `Location ${i + 2}` : `Day ${i + 2} location`}
-                  </span>
-                  <input
-                    type="text"
-                    value={extraLocationLines[i] ?? ""}
-                    onChange={(e) =>
-                      dispatch({ type: "SET_EXTRA_LOCATION_LINE", index: i, value: e.target.value })
-                    }
-                    placeholder="City, state or address"
-                    autoComplete="street-address"
-                    className="mt-1.5 w-full rounded-xl border border-white/10 bg-zinc-950 px-3.5 py-2.5 text-[13px] text-white outline-none placeholder:text-zinc-600 focus:border-[var(--brand-creative)]"
-                  />
-                </label>
-              ))}
-            </div>
-          </div>
-        ) : null}
-        <p className="mt-3 text-xs text-zinc-600">
-          {result.location.isLocalZone ? (
-            <>
-              In local zone (~{Math.round(result.location.oneWayDriveMinutesUsed)} min
-              one-way estimated from miles).{" "}
-              {(shootDays > 1 || locationCount > 1) &&
-              (includePhoto || includeVideo || droneIx > 0)
-                ? `Multi-day or multi-location: +${LOCAL_MULTI_DAY_OR_LOCATION_SURCHARGE_PERCENT}% on photo + video + drone.`
-                : "Single day & single location: no travel add-on."}
-            </>
-          ) : (
-            <>
-              Outside local zone · one-way ~{result.location.oneWayDriveHoursRounded}{" "}
-              hr rounded ({Math.round(result.location.oneWayDriveMinutesUsed)} min
-              basis) · billable {result.location.billableOneWayDriveHours} hr
-              {result.location.driveFeeCappedAtDailyMax
-                ? ` (capped at ${MAX_BILLABLE_DRIVE_HOURS_ONE_WAY_PER_DAY} hr/day)`
-                : ""}
-              .
-            </>
-          )}
-        </p>
-        {(result.autoBumpedPhotoToGrowth || result.autoBumpedVideoToGrowth) && (
-          <p className="mt-3 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-100/95">
-            Long drive: estimate uses{" "}
-            {result.autoBumpedPhotoToGrowth ? "photo" : ""}
-            {result.autoBumpedPhotoToGrowth && result.autoBumpedVideoToGrowth
-              ? " and "
-              : ""}
-            {result.autoBumpedVideoToGrowth ? "video" : ""} at Growth tier minimum.
-            Change tiers below if needed.
-          </p>
-        )}
-        <div className="mt-5 flex items-center justify-between gap-2">
-          <button
-            type="button"
-            onClick={() => dispatch({ type: "SET_STEP", value: prevStep })}
-            disabled={!canGoBack}
-            className={navButtonClass}
-            aria-label="Previous step"
-          >
-            <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" aria-hidden="true">
-              <path
-                d="M11.75 4.5 6.25 10l5.5 5.5"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={() => dispatch({ type: "SET_STEP", value: nextStep })}
-            disabled={!canGoNext}
-            className={navButtonClass}
-            aria-label="Next step"
-          >
-            <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" aria-hidden="true">
-              <path
-                d="M8.25 4.5 13.75 10l-5.5 5.5"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
-        </section>
-      ) : null}
-
-
-
-      {showStep2 && effectiveStep === 2 ? (
         <>
           <section className="rounded-[22px] border border-white/[0.08] bg-[#1a1a1a] p-5 shadow-[14px_14px_34px_rgba(0,0,0,0.64),-8px_-8px_18px_rgba(255,255,255,0.04)]">
             <h2 className="font-serif text-xl text-white sm:text-2xl">
-              Step 2 · Services
+              Step 1 · Services
             </h2>
             <div className="mt-4 grid grid-cols-1 items-stretch gap-3 md:grid-cols-3">
               <label className={toggle(includePhoto)}>
@@ -1091,10 +817,10 @@ export function BundlePricingBuilder() {
         </>
       ) : null}
 
-      {showStep3 && effectiveStep === 3 && (
+      {effectiveStep === 2 && hasDroneStep && (
         <section className="rounded-[22px] border border-white/[0.08] bg-[#1a1a1a] p-5 shadow-[14px_14px_34px_rgba(0,0,0,0.64),-8px_-8px_18px_rgba(255,255,255,0.04)]">
           <h2 className="font-serif text-xl text-white sm:text-2xl">
-            Step 3 · Drone
+            Step 2 · Drone
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
             Add a dedicated drone package, or skip.
@@ -1162,10 +888,10 @@ export function BundlePricingBuilder() {
         </section>
       )}
 
-      {showStep4 && effectiveStep === 4 ? (
+      {effectiveStep === 3 ? (
         <section className="rounded-[22px] border border-white/[0.08] bg-[#1a1a1a] p-5 shadow-[14px_14px_34px_rgba(0,0,0,0.64),-8px_-8px_18px_rgba(255,255,255,0.04)]">
         <h2 className="font-serif text-xl text-white sm:text-2xl">
-          Step 4 · Savings
+          Step 3 · Savings
         </h2>
         <p className="mt-2 max-w-2xl text-sm text-zinc-500">
           Choose committed shoots to unlock more savings (up to {MAX_TOTAL_DISCOUNT_PERCENT}% max).
@@ -1247,41 +973,7 @@ export function BundlePricingBuilder() {
         <p className="mt-1 text-sm text-zinc-500">
           {result.effectiveDiscountPercent}% effective savings on services · Subtotal{" "}
           {currency(result.subtotal)}
-          {(result.driveTimeFee > 0 || result.localMultiDayLocationSurcharge > 0) && (
-            <>
-              {" "}
-              · +{currency(result.driveTimeFee + result.localMultiDayLocationSurcharge)}{" "}
-              travel / split
-            </>
-          )}
         </p>
-
-        {(streetLine.trim() ||
-          extraLocationLines.some((line) => line.trim().length > 0)) && (
-          <div className="mt-4 rounded-xl border border-white/[0.06] bg-[#141414]/40 px-3 py-3 text-xs">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">
-              Location notes
-            </p>
-            <ul className="mt-2 space-y-1.5 text-zinc-400">
-              {streetLine.trim() ? (
-                <li>
-                  <span className="text-zinc-600">Primary · </span>
-                  {streetLine.trim()}
-                </li>
-              ) : null}
-              {extraLocationLines.map((line, i) =>
-                line.trim() ? (
-                  <li key={i}>
-                    <span className="text-zinc-600">
-                      {locationCount > 1 ? `Location ${i + 2} · ` : `Day ${i + 2} · `}
-                    </span>
-                    {line.trim()}
-                  </li>
-                ) : null,
-              )}
-            </ul>
-          </div>
-        )}
 
         <dl className="mt-5 space-y-2 border-t border-white/[0.06] pt-5 text-sm">
           {includePhoto && (
@@ -1371,26 +1063,7 @@ export function BundlePricingBuilder() {
               {currency(result.cappedTotalDiscount)} total).
             </li>
           )}
-          {result.localMultiDayLocationSurcharge > 0 && (
-            <li className="flex justify-between text-zinc-300">
-              <span>
-                Local multi-day / multi-location (+{LOCAL_MULTI_DAY_OR_LOCATION_SURCHARGE_PERCENT}%
-                production)
-              </span>
-              <span className="tabular-nums">
-                +{currency(result.localMultiDayLocationSurcharge)}
-              </span>
-            </li>
-          )}
-          {result.driveTimeFee > 0 && (
-            <li className="flex justify-between text-zinc-300">
-              <span>
-                Drive time ({result.location.billableOneWayDriveHours} hr ×{" "}
-                {currency(DRIVE_TIME_RATE_USD_PER_HOUR)} / hr one-way)
-              </span>
-              <span className="tabular-nums">+{currency(result.driveTimeFee)}</span>
-            </li>
-          )}
+
         </ul>
       </aside>
 

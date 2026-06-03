@@ -27,11 +27,7 @@ export default function PricingPage() {
           Packages & live estimate
         </h1>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-          Figures here are planning estimates — usually within about 90% of final numbers for the
-          scope you configure. They may change after we review details, timeline, and
-          deliverables together. Combining services applies a{" "}
-          <span className="text-zinc-300">5%–10% bundle discount</span> (10% when photo, video, and
-          social are all in the estimate).
+          These figures are planning estimates subject to change based on final project scope, timeline, and deliverables. Combine services to automatically apply bundle savings of up to 10%.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link

@@ -117,7 +117,7 @@ export function OperationPillars() {
             id="pillars-heading"
             className="mt-3 font-serif text-3xl tracking-tight text-black sm:text-4xl"
           >
-            Integrated Services
+            Connected Services
           </h2>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-black">
             How photo, video, and social media support each other
@@ -223,43 +223,59 @@ export function OperationPillars() {
           </div>
 
           <div className="relative w-full max-w-xl overflow-hidden rounded-xl border border-white/5 bg-[#0a0a0a] ring-1 ring-inset ring-white/[0.04]">
-            {/* Hero-matched green wash (linear, right → center) + grid masked to the same fade */}
-            <div
-              className="pointer-events-none absolute inset-0 bg-[#0a0a0a]"
-              aria-hidden
-            >
-              <div
-                className="absolute inset-0"
+            {/* Geometric Camera Viewfinder Background (Matches Hero, Dark Mode, No Gradient) */}
+            <div className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden bg-[#0a0a0a]">
+              {/* Dot Grid */}
+              <div 
+                className="absolute inset-0 opacity-[0.25]"
                 style={{
-                  backgroundImage: `linear-gradient(
-                    to left,
-                    color-mix(in srgb, var(--brand-creative) 12%, transparent) 0%,
-                    transparent 52%
-                  )`,
+                  backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.08) 1.2px, transparent 1.2px)`,
+                  backgroundSize: '24px 24px',
                 }}
               />
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage: `
-                    linear-gradient(
-                      to bottom,
-                      rgba(255,255,255,0.045) 1px,
-                      transparent 1px
-                    ),
-                    linear-gradient(
-                      to right,
-                      rgba(255,255,255,0.045) 1px,
-                      transparent 1px
-                    )
-                  `,
-                  backgroundSize: "10px 10px",
-                  WebkitMaskImage:
-                    "linear-gradient(to left, #000 0%, transparent 52%)",
-                  maskImage:
-                    "linear-gradient(to left, #000 0%, transparent 52%)",
-                }}
-              />
+
+              {/* Viewfinder crosshairs */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute left-1/2 top-0 h-full w-[1px] bg-white/[0.02]" />
+                <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/[0.02]" />
+              </div>
+
+              {/* Viewfinder Corners */}
+              <div className="absolute inset-4 border border-transparent">
+                <div className="absolute left-0 top-0 h-3 w-3 border-l-[1.5px] border-t-[1.5px] border-zinc-700/50" />
+                <div className="absolute right-0 top-0 h-3 w-3 border-r-[1.5px] border-t-[1.5px] border-zinc-700/50" />
+                <div className="absolute left-0 bottom-0 h-3 w-3 border-l-[1.5px] border-b-[1.5px] border-zinc-700/50" />
+                <div className="absolute right-0 bottom-0 h-3 w-3 border-r-[1.5px] border-b-[1.5px] border-zinc-700/50" />
+              </div>
+
+              {/* Concentric Geometric Rings (Matches Hero Circular Guides) */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-[0.035] text-white">
+                <svg className="w-[450px] h-[450px]" viewBox="0 0 1000 1000" fill="none">
+                  <circle cx="500" cy="500" r="420" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 8" />
+                  <circle cx="500" cy="500" r="300" stroke="currentColor" strokeWidth="1" strokeDasharray="40 10 10 10" />
+                  <circle cx="500" cy="500" r="180" stroke="currentColor" strokeWidth="1" />
+                  <circle cx="500" cy="500" r="120" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" />
+                  <circle cx="500" cy="500" r="60" stroke="currentColor" strokeWidth="0.5" />
+                  <line x1="500" y1="50" x2="500" y2="950" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" />
+                  <line x1="50" y1="500" x2="950" y2="500" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" />
+                  <line x1="180" y1="180" x2="820" y2="820" stroke="currentColor" strokeWidth="0.5" />
+                  <line x1="820" y1="180" x2="180" y2="820" stroke="currentColor" strokeWidth="0.5" />
+                </svg>
+              </div>
+
+              {/* Metadata Details */}
+              <div className="absolute left-6 top-4 font-mono text-[8px] uppercase tracking-widest text-zinc-500/60">
+                <span className="text-[var(--brand-creative)] animate-pulse">●</span> REC
+              </div>
+              <div className="absolute right-6 top-4 font-mono text-[8px] uppercase tracking-widest text-zinc-500/60">
+                GRID: 3x3
+              </div>
+              <div className="absolute left-6 bottom-4 font-mono text-[8px] uppercase tracking-widest text-zinc-500/60">
+                F1.8 | ISO 250
+              </div>
+              <div className="absolute right-6 bottom-4 font-mono text-[8px] uppercase tracking-widest text-zinc-500/60">
+                Connected
+              </div>
             </div>
             <div className="relative z-10 p-8 sm:p-10">
               <h3 className="font-serif text-2xl text-white sm:text-3xl">

@@ -1,24 +1,131 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 export function CreativeShowcaseHero() {
   const reduceMotion = useReducedMotion();
+  const [time, setTime] = useState({ h: 0, m: 18, s: 54, f: 0 });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(prev => {
+        let f = prev.f + 1;
+        let s = prev.s;
+        let m = prev.m;
+        let h = prev.h;
+        if (f >= 30) {
+          f = 0;
+          s += 1;
+        }
+        if (s >= 60) {
+          s = 0;
+          m += 1;
+        }
+        if (m >= 60) {
+          m = 0;
+          h += 1;
+        }
+        if (h >= 24) {
+          h = 0;
+        }
+        return { h, m, s, f };
+      });
+    }, 1000 / 30); // 30 fps
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatTimecode = () => {
+    const pad = (num: number) => String(num).padStart(2, "0");
+    return `${pad(time.h)}:${pad(time.m)}:${pad(time.s)}:${pad(time.f)}`;
+  };
+
 
   return (
     <section className="relative -mt-[var(--header-height)] flex min-h-dvh w-full flex-col justify-center overflow-hidden bg-white px-4 pb-20 pt-[calc(var(--header-height)+4rem)] sm:px-6 lg:px-8">
-      {/* ── Subtle Video Background for White theme ── */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.06] mix-blend-multiply"
-        >
-          <source src="/wraparound%20shot%20of%20devices.mp4" type="video/mp4" />
-        </video>
+      {/* ── Premium Geometric Background ── */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
+        {/* Soft dot grid background */}
+        <div 
+          className="absolute inset-0 opacity-[0.4]"
+          style={{
+            backgroundImage: `radial-gradient(circle, #e4e4e7 1.5px, transparent 1.5px)`,
+            backgroundSize: '28px 28px',
+          }}
+        />
+
+        {/* Viewfinder crosshairs and guide lines */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {/* Subtle horizontal/vertical center lines */}
+          <div className="absolute left-1/2 top-0 h-full w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-zinc-200 to-transparent opacity-60" />
+          <div className="absolute top-1/2 left-0 w-full h-[1px] -translate-y-1/2 bg-gradient-to-r from-transparent via-zinc-200 to-transparent opacity-60" />
+          
+          {/* 3x3 Rule-of-thirds alignment lines */}
+          <div className="absolute left-[33.33%] top-0 h-full w-[1px] bg-zinc-100/70" />
+          <div className="absolute left-[66.66%] top-0 h-full w-[1px] bg-zinc-100/70" />
+          <div className="absolute top-[33.33%] left-0 w-full h-[1px] bg-zinc-100/70" />
+          <div className="absolute top-[66.66%] left-0 w-full h-[1px] bg-zinc-100/70" />
+        </div>
+
+        {/* Viewfinder Corners */}
+        <div className="absolute inset-6 md:inset-10 border-[1.5px] border-transparent">
+          {/* Top-Left Corner */}
+          <div className="absolute left-0 top-0 h-6 w-6 border-l-2 border-t-2 border-zinc-300" />
+          {/* Top-Right Corner */}
+          <div className="absolute right-0 top-0 h-6 w-6 border-r-2 border-t-2 border-zinc-300" />
+          {/* Bottom-Left Corner */}
+          <div className="absolute left-0 bottom-0 h-6 w-6 border-l-2 border-b-2 border-zinc-300" />
+          {/* Bottom-Right Corner */}
+          <div className="absolute right-0 bottom-0 h-6 w-6 border-r-2 border-b-2 border-zinc-300" />
+        </div>
+
+        {/* Dynamic Animated Geometric Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <svg className="w-[1200px] h-[1200px] opacity-[0.06] text-zinc-900" viewBox="0 0 1000 1000" fill="none">
+            {/* Outer dotted guide ring */}
+            <motion.circle
+              cx="500"
+              cy="500"
+              r="420"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeDasharray="4 8"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 180, repeat: Infinity, ease: "linear" }}
+            />
+            {/* Middle lens ring with angle ticks */}
+            <motion.circle
+              cx="500"
+              cy="500"
+              r="300"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeDasharray="40 10 10 10"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+            />
+            {/* Inner camera aperture rings */}
+            <circle cx="500" cy="500" r="180" stroke="currentColor" strokeWidth="1" />
+            <circle cx="500" cy="500" r="120" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" />
+            <circle cx="500" cy="500" r="60" stroke="currentColor" strokeWidth="0.5" />
+
+            {/* Focal guide angles */}
+            <line x1="500" y1="50" x2="500" y2="950" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" />
+            <line x1="50" y1="500" x2="950" y2="500" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 4" />
+
+            {/* Isometric focus lines */}
+            <motion.g
+              animate={{ rotate: 180 }}
+              transition={{ duration: 240, repeat: Infinity, ease: "linear" }}
+            >
+              <line x1="180" y1="180" x2="820" y2="820" stroke="currentColor" strokeWidth="0.5" />
+              <line x1="820" y1="180" x2="180" y2="820" stroke="currentColor" strokeWidth="0.5" />
+              <polygon points="500,420 580,500 500,580 420,500" stroke="currentColor" strokeWidth="1" />
+            </motion.g>
+          </svg>
+        </div>
+
         {/* Edge vignette & bottom fade to white */}
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_120%_120%_at_50%_40%,transparent_20%,#fff_82%)]"
@@ -28,7 +135,22 @@ export function CreativeShowcaseHero() {
           className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent"
           aria-hidden
         />
+
+        {/* Tech details/metadata in corners (placed after gradients for crisp visibility) */}
+        <div className="absolute left-10 top-[calc(var(--header-height)+1.5rem)] z-10 hidden font-mono text-[9px] uppercase tracking-widest text-zinc-700 sm:block">
+          <span className="text-[var(--brand-creative)] animate-pulse">●</span> REC [{formatTimecode()}]
+        </div>
+        <div className="absolute right-10 top-[calc(var(--header-height)+1.5rem)] z-10 hidden font-mono text-[9px] uppercase tracking-widest text-zinc-700 sm:block">
+          <span className="text-[var(--brand-creative)]">●</span> GRID [3x3] // ASPECT [16:9]
+        </div>
+        <div className="absolute left-10 bottom-8 z-10 hidden font-mono text-[9px] uppercase tracking-widest text-zinc-700 sm:block">
+          <span className="text-[var(--brand-creative)]">●</span> FOCAL [35mm | F1.8 | ISO 250]
+        </div>
+        <div className="absolute right-10 bottom-8 z-10 hidden font-mono text-[9px] uppercase tracking-widest text-zinc-700 sm:block">
+          <span className="text-[var(--brand-creative)]">●</span> SYS [INVISION.STUDIO_CR]
+        </div>
       </div>
+
 
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-12">
         {/* ── Left Column: Headline and Call to Actions ── */}
