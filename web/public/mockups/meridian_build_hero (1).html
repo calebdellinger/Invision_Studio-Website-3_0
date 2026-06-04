@@ -97,14 +97,7 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--white); }
-.nav-cta {
-  font-family: var(--sans); font-size: 10px;
-  font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--black) !important;
-  background: var(--gold);
-  padding: 10px 24px; border-radius: 2px;
-  text-shadow: none !important;
-}
+
 
 /* ── Bottom content ── */
 .hero-content {
@@ -200,7 +193,20 @@ nav {
 }
 
 </style>
-</head>
+<style>
+html, body {
+  overflow: hidden !important;
+  scroll-behavior: auto !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+</style></head>
 <body>
 
 <section class="hero">
@@ -219,7 +225,7 @@ nav {
       <li><a href="#">Services</a></li>
       <li><a href="#">Studio</a></li>
       <li><a href="#">About</a></li>
-      <li><a href="#" class="nav-cta">Start a Project</a></li>
+
     </ul>
   </nav>
 

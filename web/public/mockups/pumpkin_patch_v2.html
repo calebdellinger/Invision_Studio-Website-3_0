@@ -351,7 +351,20 @@ footer {
 .ft-text { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.2); text-transform: uppercase; }
 
 </style>
-</head>
+<style>
+html, body {
+  overflow: hidden !important;
+  scroll-behavior: auto !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+</style></head>
 <body>
 
 <!-- NAV -->

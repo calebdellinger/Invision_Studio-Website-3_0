@@ -427,7 +427,20 @@ footer {
   color: rgba(255,255,255,0.18);
 }
 </style>
-</head>
+<style>
+html, body {
+  overflow: hidden !important;
+  scroll-behavior: auto !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+</style></head>
 <body>
 
 <!-- NAV -->

@@ -91,7 +91,7 @@ export function OperationPillars() {
 
   return (
     <section
-      className="relative overflow-hidden bg-black px-4 pt-96 pb-20 sm:px-6 sm:pt-[36rem] sm:pb-28 lg:px-8"
+      className="relative overflow-hidden bg-black px-4 pt-[30rem] pb-20 sm:px-6 sm:pt-[42rem] sm:pb-28 lg:px-8"
       aria-labelledby="pillars-heading"
     >
       <div
