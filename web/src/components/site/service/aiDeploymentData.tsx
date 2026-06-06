@@ -16,7 +16,7 @@ export type Approach = {
   title: string;
   tagline: string;
   description: string;
-  highlights: string[];
+  highlights: { label: string; slug: string }[];
   features: ApproachFeature[];
   accent: "blue" | "green" | "amber";
 };
@@ -105,7 +105,12 @@ export const APPROACHES: Approach[] = [
     tagline: "Fastest deployment. High-speed automation.",
     description:
       "Your custom AI platform runs entirely on managed cloud servers. Orchestration, API integrations, and secure language models are handled by leading enterprise SaaS providers. Ideal for rapid operational overhead reduction, instant multi-location scalability, and low ongoing maintenance.",
-    highlights: ["Enterprise SaaS", "Cloud Orchestration", "Make & n8n Hosting", "Secure OpenAI/Anthropic APIs"],
+    highlights: [
+      { label: "Enterprise SaaS", slug: "enterprise-saas" },
+      { label: "Cloud Orchestration", slug: "cloud-orchestration" },
+      { label: "Make & n8n Hosting", slug: "workflow-hosting" },
+      { label: "Secure APIs", slug: "secure-apis" }
+    ],
     features: [
       {
         icon: <IconCloud />,
@@ -132,7 +137,12 @@ export const APPROACHES: Approach[] = [
     tagline: "Maximum security. Zero public training.",
     description:
       "We build and deploy a dedicated on-premise AI platform running on enterprise-grade hardware (like a Mac Studio M3 Max) inside your network. Every calculation, document analysis, and proposal draft is processed entirely locally. Absolute protection for proprietary estimating formulas and sensitive records.",
-    highlights: ["Mac Studio M3 Max", "Local LLMs (Llama 3 & Qwen)", "Air-gapped capable", "Zero public API leaks"],
+    highlights: [
+      { label: "Mac Studio M3 Max", slug: "local-hardware" },
+      { label: "Local LLMs", slug: "local-llms" },
+      { label: "Air-gapped capable", slug: "air-gapped" },
+      { label: "Zero public API leaks", slug: "zero-leaks" }
+    ],
     features: [
       {
         icon: <IconShield />,
@@ -159,7 +169,12 @@ export const APPROACHES: Approach[] = [
     tagline: "The optimal balance. Local security, cloud speed.",
     description:
       "Sensitive operations—such as proprietary estimate calculations, bid analyses, and internal databases—run on secure local nodes. Standard tasks, external supplier queries, and dispatch notifications are routed through the cloud. The target setup for growing enterprises.",
-    highlights: ["Local inference nodes", "Secure API gatekeepers", "Cloud orchestration", "Human-in-the-loop validation"],
+    highlights: [
+      { label: "Local inference nodes", slug: "local-inference-nodes" },
+      { label: "Secure API gatekeepers", slug: "secure-api-gatekeepers" },
+      { label: "Cloud orchestration", slug: "cloud-orchestration" },
+      { label: "Human-in-the-loop", slug: "human-validation" }
+    ],
     features: [
       {
         icon: <IconSplit />,

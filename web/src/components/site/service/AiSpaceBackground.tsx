@@ -112,7 +112,7 @@ export function AiSpaceBackground() {
         Math.max(W, H) * 0.62
       );
       cg.addColorStop(0, `rgba(${G.r},${G.g},${G.b},0.048)`);
-      cg.addColorStop(1, "rgba(0,0,0,0)");
+      cg.addColorStop(1, "rgba(255,255,255,0)");
       ctx.fillStyle = cg;
       ctx.fillRect(0, 0, W, H);
 
@@ -122,7 +122,7 @@ export function AiSpaceBackground() {
         const tw = Math.sin(s.phase) * 0.28 + 0.72;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${s.op * tw})`;
+        ctx.fillStyle = `rgba(${G.r},${G.g},${G.b},${s.op * tw * 0.6})`;
         ctx.fill();
       }
 
@@ -191,7 +191,7 @@ export function AiSpaceBackground() {
         const pg = ctx.createRadialGradient(px, py, 0, px, py, 7);
         pg.addColorStop(0, `rgba(${G.r},${G.g},${G.b},0.88)`);
         pg.addColorStop(0.5, `rgba(${G.r},${G.g},${G.b},0.26)`);
-        pg.addColorStop(1, "rgba(0,0,0,0)");
+        pg.addColorStop(1, "rgba(255,255,255,0)");
         ctx.beginPath();
         ctx.arc(px, py, 7, 0, Math.PI * 2);
         ctx.fillStyle = pg;
@@ -212,7 +212,7 @@ export function AiSpaceBackground() {
         const hg = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 5.5);
         hg.addColorStop(0, `rgba(${G.r},${G.g},${G.b},${al * 0.55})`);
         hg.addColorStop(0.38, `rgba(${G.r},${G.g},${G.b},${al * 0.12})`);
-        hg.addColorStop(1, "rgba(0,0,0,0)");
+        hg.addColorStop(1, "rgba(255,255,255,0)");
         ctx.beginPath();
         ctx.arc(n.x, n.y, r * 5.5, 0, Math.PI * 2);
         ctx.fillStyle = hg;

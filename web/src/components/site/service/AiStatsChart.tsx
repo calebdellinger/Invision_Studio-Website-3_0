@@ -89,7 +89,7 @@ function TimeReclaimBar({
         ))}
       </div>
 
-      <div className="relative h-10 overflow-hidden rounded-xl border border-white/[0.06] bg-[#080809]">
+      <div className="relative h-10 overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50">
         {/* Reclaimed zone — the dramatic "time back" area */}
         <motion.div
           className="absolute inset-y-0 right-0 overflow-hidden"
@@ -137,8 +137,8 @@ function TimeReclaimBar({
           transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="absolute inset-0 bg-[var(--brand-creative)]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/25 via-transparent to-black/20" />
-          <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.15)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/25 via-transparent to-white" />
+          <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.05)]" />
           <span className="absolute inset-0 flex items-center justify-center font-mono text-[10px] font-bold uppercase tracking-wider text-[#050505]">
             AI · {formatDuration(automatedTime)}
           </span>
@@ -188,7 +188,7 @@ function SavingsGauge({ percent }: { percent: number }) {
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-2xl font-bold leading-none text-white [font-family:var(--font-montserrat)]">
+        <span className="text-2xl font-bold leading-none text-zinc-900 [font-family:var(--font-montserrat)]">
           {percent}%
         </span>
         <span className="mt-0.5 text-[8px] font-bold uppercase tracking-widest text-zinc-500">faster</span>
@@ -221,7 +221,7 @@ function TimeBlockStack({
           return (
             <motion.div
               key={i}
-              className={`h-5 w-5 rounded-sm border border-white/[0.06] ${isPartial ? partial : fill}`}
+              className={`h-5 w-5 rounded-sm border border-zinc-200 ${isPartial ? partial : fill}`}
               initial={{ opacity: 0, scale: 0.6 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -238,7 +238,7 @@ function TimeBlockStack({
         })}
       </div>
       <p
-        className={`font-mono text-sm font-bold ${variant === "ai" ? "text-[var(--brand-creative)]" : "text-zinc-400 line-through decoration-zinc-600"}`}
+        className={`font-mono text-sm font-bold ${variant === "ai" ? "text-[var(--brand-creative)]" : "text-zinc-600 line-through decoration-zinc-600"}`}
       >
         {formatDuration(totalMinutes)}
       </p>
@@ -253,7 +253,7 @@ function TradeStatRow({ item, index }: { item: StatItem; index: number }) {
 
   return (
     <motion.div
-      className="rounded-xl border border-white/[0.06] bg-[#080809]/80 p-4 sm:p-5"
+      className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -264,7 +264,7 @@ function TradeStatRow({ item, index }: { item: StatItem; index: number }) {
           <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--brand-creative)]">
             {item.trade}
           </p>
-          <h4 className="mt-0.5 text-sm font-semibold text-white">{item.task}</h4>
+          <h4 className="mt-0.5 text-sm font-semibold text-zinc-900">{item.task}</h4>
           <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-500">{item.description}</p>
         </div>
 
@@ -299,10 +299,10 @@ function TradeStatRow({ item, index }: { item: StatItem; index: number }) {
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_12%,#0a0a0a)] px-2.5 py-1 font-mono text-[11px] font-bold text-[var(--brand-creative)]">
               <ClockIcon className="h-3 w-3" />−{formatDuration(timeSavedMin)}
             </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] font-bold text-zinc-300">
+            <span className="rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-1 font-mono text-[11px] font-bold text-zinc-700">
               {multiplier}× faster
             </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] font-bold text-zinc-400">
+            <span className="rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-1 font-mono text-[11px] font-bold text-zinc-600">
               {savedPct}% back
             </span>
           </div>
@@ -316,17 +316,17 @@ function TradeStatRow({ item, index }: { item: StatItem; index: number }) {
 
 export function AiStatsChart() {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0c0c0d]/90 p-5 ring-1 ring-inset ring-white/[0.03] sm:p-6">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-5 ring-1 ring-inset ring-zinc-100 sm:p-6">
       <div>
         <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
           Financial & Time ROI
         </p>
-        <h3 className="mt-1.5 text-xl font-semibold text-white [font-family:var(--font-montserrat)]">
+        <h3 className="mt-1.5 text-xl font-semibold text-zinc-900 [font-family:var(--font-montserrat)]">
           Operations Analysis & Revenue Growth Capacity
         </h3>
       </div>
 
-      <p className="mt-3 text-xs leading-relaxed text-zinc-400">
+      <p className="mt-3 text-xs leading-relaxed text-zinc-600">
         Same four trades as the simulator above. In addition to direct labor hours saved, these custom platforms
         help prevent material scrap, reduce fuel waste, avoid code inspection failures, and accelerate commercial bidding.
       </p>
@@ -347,7 +347,7 @@ export function AiStatsChart() {
       >
         <div className="grid gap-6 p-5 sm:grid-cols-[1fr_auto] sm:p-6">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-600">
               Combined Platform ROI
             </p>
 
@@ -371,21 +371,21 @@ export function AiStatsChart() {
               <TimeBlockStack totalMinutes={TOTAL_AUTO} variant="ai" label="With Platform" />
             </div>
 
-            <p className="mt-5 text-2xl font-bold tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-3xl">
+            <p className="mt-5 text-2xl font-bold tracking-tight text-zinc-900 [font-family:var(--font-montserrat)] sm:text-3xl">
               {formatDuration(TOTAL_SAVED)}{" "}
               <span className="text-base font-medium text-[var(--brand-creative)] sm:text-lg">
                 reclaimed · Direct Overhead & Bidding ROI
               </span>
             </p>
-            <div className="mt-4 grid gap-4 border-t border-white/[0.06] pt-4 sm:grid-cols-2">
+            <div className="mt-4 grid gap-4 border-t border-zinc-200 pt-4 sm:grid-cols-2">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--brand-creative)]">Estimated Cost Savings</p>
-                <p className="mt-1 text-sm text-zinc-300 font-semibold">$3,500 – $5,200 / month</p>
+                <p className="mt-1 text-sm text-zinc-700 font-semibold">$3,500 – $5,200 / month</p>
                 <p className="mt-0.5 text-[10px] text-zinc-500">From reduced material waste, fuel burn, and foreman hours.</p>
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--brand-creative)]">Growth Capacity Increase</p>
-                <p className="mt-1 text-sm text-zinc-300 font-semibold">+$150k+ in annual contracts</p>
+                <p className="mt-1 text-sm text-zinc-700 font-semibold">+$150k+ in annual contracts</p>
                 <p className="mt-0.5 text-[10px] text-zinc-500">From 4x bidding capacity and faster lead response times.</p>
               </div>
             </div>

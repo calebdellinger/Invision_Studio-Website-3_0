@@ -126,24 +126,24 @@ export default function AiIntegrationsServicePage() {
 
         {/* Edge vignette — keeps title legible against busy canvas */}
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_82%_82%_at_50%_46%,transparent_18%,rgba(0,0,0,0.55)_72%,#000_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_82%_82%_at_50%_46%,transparent_18%,rgba(255,255,255,0.7)_72%,#fff_100%)]"
           aria-hidden
         />
         {/* Bottom fade into content area */}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent"
           aria-hidden
         />
 
         {/* ── HUD Card A — system status (desktop xl only) ── */}
         <div className="hud-float-a pointer-events-none absolute left-[5%] top-[42%] hidden xl:block">
-          <div className="rounded-lg border border-white/[0.09] bg-black/70 p-3.5 backdrop-blur-md">
+          <div className="rounded-lg border border-zinc-200 bg-white/80 p-3.5 backdrop-blur-md">
             <div className="mb-2.5 flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--brand-creative)] opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--brand-creative)]" />
               </span>
-              <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-zinc-400">
+              <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-zinc-600">
                 System Active
               </span>
             </div>
@@ -166,7 +166,7 @@ export default function AiIntegrationsServicePage() {
 
         {/* ── HUD Card B — pipeline metrics (desktop xl only) ── */}
         <div className="hud-float-b pointer-events-none absolute right-[5%] top-[40%] hidden xl:block">
-          <div className="rounded-lg border border-white/[0.09] bg-black/70 p-3.5 backdrop-blur-md">
+          <div className="rounded-lg border border-zinc-200 bg-white/80 p-3.5 backdrop-blur-md">
             <p className="mb-2.5 font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-zinc-500">
               Platform Performance
             </p>
@@ -177,8 +177,8 @@ export default function AiIntegrationsServicePage() {
                 </p>
                 <p className="mt-0.5 text-[10px] text-zinc-500">average gross profit margin</p>
               </div>
-              <div className="border-t border-white/[0.07] pt-2">
-                <p className="font-mono text-xl font-bold leading-none text-white">12x</p>
+              <div className="border-t border-zinc-200 pt-2">
+                <p className="font-mono text-xl font-bold leading-none text-zinc-900">12x</p>
                 <p className="mt-0.5 text-[10px] text-zinc-500">faster commercial bid times</p>
               </div>
             </div>
@@ -199,11 +199,11 @@ export default function AiIntegrationsServicePage() {
           </div>
 
           {/* Title */}
-          <h1 className="max-w-4xl leading-[0.93] tracking-tight text-white [font-family:var(--font-fraunces)]">
+          <h1 className="max-w-4xl leading-[0.93] tracking-tight text-zinc-900 [font-family:var(--font-fraunces)]">
             <span className="block text-[clamp(2.75rem,8.5vw,6rem)] font-semibold">
               Custom AI Platforms
             </span>
-            <span className="block text-[clamp(1.5rem,4vw,3.5rem)] font-medium text-zinc-400">
+            <span className="block text-[clamp(1.5rem,4vw,3.5rem)] font-medium text-zinc-600">
               engineered for operations, built for growth
             </span>
           </h1>
@@ -225,7 +225,7 @@ export default function AiIntegrationsServicePage() {
             ].map((cap) => (
               <span
                 key={cap}
-                className="rounded-full border border-white/[0.1] bg-white/[0.04] px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-zinc-400"
+                className="rounded-full border border-zinc-200 bg-zinc-100 px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-zinc-600"
               >
                 {cap}
               </span>
@@ -236,13 +236,13 @@ export default function AiIntegrationsServicePage() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
             >
               Start a project
             </Link>
             <a
               href="#pipeline"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200 px-8 py-3.5 text-sm font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:text-zinc-900"
             >
               See it in action
               <svg
@@ -277,7 +277,7 @@ export default function AiIntegrationsServicePage() {
       </section>
 
       {/* ── CONTENT ─────────────────────────────────────────────────────────── */}
-      <div className="relative z-10 bg-[#050505]">
+      <div className="relative z-10 bg-white">
         {/* Green separator line at hero transition */}
         <div
           className="h-px bg-gradient-to-r from-transparent via-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] to-transparent"
@@ -308,16 +308,16 @@ export default function AiIntegrationsServicePage() {
         {/* ── Construction trade simulator ── */}
         <section
           id="pipeline"
-          className="border-t border-white/[0.06] px-4 py-16 sm:py-20"
+          className="border-t border-zinc-200 px-4 py-16 sm:py-20"
         >
           <div className="mx-auto max-w-3xl">
             <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--brand-creative)]">
               Interactive
             </p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl [font-family:var(--font-fraunces)]">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl [font-family:var(--font-fraunces)]">
               See AI work on a real jobsite problem
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
               Built for small construction crews — excavation, electrical, plumbing, and
               carpentry. Each trade gets AI integrations aimed at the tasks that usually
               slip through the cracks: fuel, materials, routing, compliance, and waste.
@@ -329,15 +329,15 @@ export default function AiIntegrationsServicePage() {
         </section>
 
         {/* ── Core capabilities ── */}
-        <section className="border-t border-white/[0.06] px-4 py-16 sm:py-20">
+        <section className="border-t border-zinc-200 px-4 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--brand-creative)]">
               Core components
             </p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl [font-family:var(--font-fraunces)]">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl [font-family:var(--font-fraunces)]">
               Three integration layers, one custom platform
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
               Generic templates produce generic results. We conduct a deep, two-stage data analysis of your
               specific operational patterns and external industry data to construct a dedicated platform for your business.
             </p>
@@ -364,18 +364,18 @@ export default function AiIntegrationsServicePage() {
               ].map(({ icon, tag, title, desc }) => (
                 <div
                   key={tag}
-                  className="rounded-xl border border-white/[0.08] bg-[#0e0e0f] p-5 ring-1 ring-inset ring-white/[0.03]"
+                  className="rounded-xl border border-zinc-200 bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-100"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-[#121213] text-[var(--brand-creative)]">
+                    <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 text-[var(--brand-creative)]">
                       {icon}
                     </span>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
                       {tag}
                     </p>
                   </div>
-                  <h4 className="mt-4 text-base font-semibold text-white">{title}</h4>
-                  <p className="mt-2 text-xs leading-relaxed text-zinc-400">{desc}</p>
+                  <h4 className="mt-4 text-base font-semibold text-zinc-900">{title}</h4>
+                  <p className="mt-2 text-xs leading-relaxed text-zinc-600">{desc}</p>
                 </div>
               ))}
             </div>
@@ -383,15 +383,15 @@ export default function AiIntegrationsServicePage() {
         </section>
 
         {/* ── Impact in numbers ── */}
-        <section className="border-t border-white/[0.06] px-4 py-16 sm:py-20">
+        <section className="border-t border-zinc-200 px-4 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--brand-creative)]">
               Efficiency data
             </p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl [font-family:var(--font-fraunces)]">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl [font-family:var(--font-fraunces)]">
               Quantifying the impact, by trade
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
               The same four subs from the simulator — excavation, electrical, plumbing, and
               carpentry. Each row shows how long manual planning takes versus an AI-assisted
               workflow your crew lead can review and run.
@@ -403,15 +403,15 @@ export default function AiIntegrationsServicePage() {
         </section>
 
         {/* ── Security & guardrails ── */}
-        <section className="border-t border-white/[0.06] px-4 py-16 sm:py-20">
+        <section className="border-t border-zinc-200 px-4 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl">
-            <div className="rounded-2xl border border-white/[0.08] bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-creative)_10%,transparent),transparent_45%),#0f0f10] p-5 ring-1 ring-inset ring-white/[0.03] sm:p-7">
+            <div className="rounded-2xl border border-zinc-200 bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-creative)_10%,transparent),transparent_45%),#0f0f10] p-5 ring-1 ring-inset ring-zinc-100 sm:p-7">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
                     Security & Governance
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                     Guardrails before deployment
                   </h2>
                 </div>
@@ -419,7 +419,7 @@ export default function AiIntegrationsServicePage() {
                   Enterprise Safe
                 </span>
               </div>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-400">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">
                 AI integrations fail when they generate surprises or leak data. We
                 prioritize security checkpoints: keeping models private, ensuring
                 every output goes through a human approval step (HIL), and generating
@@ -445,7 +445,7 @@ export default function AiIntegrationsServicePage() {
                 ].map(({ id, label, desc }) => (
                   <li
                     key={id}
-                    className="rounded-xl border border-white/[0.08] bg-[#111]/85 p-5 ring-1 ring-inset ring-white/[0.03]"
+                    className="rounded-xl border border-zinc-200 bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-100"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
@@ -455,7 +455,7 @@ export default function AiIntegrationsServicePage() {
                         {id}
                       </span>
                     </div>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-300">{desc}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-700">{desc}</p>
                   </li>
                 ))}
               </ul>
@@ -464,9 +464,9 @@ export default function AiIntegrationsServicePage() {
         </section>
 
         {/* ── FAQ ── */}
-        <section className="border-t border-white/[0.06] px-4 py-16 sm:py-20">
+        <section className="border-t border-zinc-200 px-4 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
               Frequently asked questions
             </h2>
             <p className="mt-3 text-sm text-zinc-500">
@@ -476,12 +476,12 @@ export default function AiIntegrationsServicePage() {
               {faqItems.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03]"
+                  className="group rounded-xl border border-zinc-200 bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-100"
                 >
-                  <summary className="cursor-pointer list-none text-sm font-semibold tracking-tight text-white">
+                  <summary className="cursor-pointer list-none text-sm font-semibold tracking-tight text-zinc-900">
                     {item.question}
                   </summary>
-                  <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-600">
                     {item.answer}
                   </p>
                 </details>
@@ -491,9 +491,9 @@ export default function AiIntegrationsServicePage() {
         </section>
 
         {/* ── Related services ── */}
-        <section className="border-t border-white/[0.06] px-4 py-16 sm:py-20">
+        <section className="border-t border-zinc-200 px-4 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
               Connect workflows with
             </h2>
             <p className="mt-3 text-sm text-zinc-500">
@@ -523,15 +523,15 @@ export default function AiIntegrationsServicePage() {
                 <Link
                   key={href}
                   href={href}
-                  className="group rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03] transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_0_30px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
+                  className="group rounded-xl border border-zinc-200 bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-100 transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_0_30px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
                 >
                   <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-creative)]">
                     {label}
                   </p>
-                  <h3 className="mt-2 text-lg font-semibold tracking-tight text-white">
+                  <h3 className="mt-2 text-lg font-semibold tracking-tight text-zinc-900">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">{desc}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-600">{desc}</p>
                 </Link>
               ))}
             </div>
@@ -539,17 +539,17 @@ export default function AiIntegrationsServicePage() {
         </section>
 
         {/* ── Final CTAs ── */}
-        <div className="border-t border-white/[0.06] px-4 py-14">
+        <div className="border-t border-zinc-200 px-4 py-14">
           <div className="mx-auto flex max-w-3xl flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
             >
               Start a project
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-zinc-200 px-8 py-3.5 text-sm font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:text-zinc-900"
             >
               All services
             </Link>

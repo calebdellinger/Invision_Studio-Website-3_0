@@ -9,6 +9,7 @@ import {
   useMotionValueEvent,
   useReducedMotion,
 } from "framer-motion";
+import Link from "next/link";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import {
   APPROACHES,
@@ -141,79 +142,96 @@ const ExpandedCard = memo(function ExpandedCard({
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.42, ease: SNAP_EASE }}
-      className={`relative overflow-hidden rounded-2xl border bg-[#0b0b0c] ring-1 ring-inset sm:rounded-3xl ${s.border} ${s.ring}`}
+      initial={{ opacity: 0, y: 30, scale: 0.97 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.97 }}
+      transition={{ duration: 0.5, ease: SNAP_EASE }}
+      className={`relative overflow-hidden rounded-2xl border bg-white ring-1 ring-inset shadow-2xl sm:rounded-[2rem] ${s.border} ${s.ring}`}
     >
       <div
-        className={`pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b ${s.glow} to-transparent`}
+        className={`pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b ${s.glow} to-transparent opacity-50`}
         aria-hidden
       />
 
-      <div className="relative border-b border-white/[0.06] bg-[#060606] px-4 py-5 sm:px-6 sm:py-6">
-        <div className="h-[11rem] sm:h-[13rem]">
+      <div className="relative border-b border-zinc-100 bg-white/40 backdrop-blur-md px-4 py-6 sm:px-8 sm:py-8">
+        <div className="h-[12rem] sm:h-[16rem] relative rounded-2xl overflow-hidden shadow-inner bg-zinc-50/50 border border-zinc-100/80">
           <ApproachIllustration id={approach.id} accent={approach.accent} />
+          <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl pointer-events-none" />
         </div>
       </div>
 
-      <div className="relative p-5 sm:p-7">
+      <div className="relative p-6 sm:p-10 bg-gradient-to-b from-white to-zinc-50/50">
         <div className="flex items-start justify-between gap-4">
-          <motion.div layoutId={`approach-chip-${approach.id}`} className="flex items-center gap-4">
-            <ApproachMonogram id={approach.id} active />
-            <div>
+          <motion.div layoutId={`approach-chip-${approach.id}`} className="flex items-start gap-5">
+            <div className="hidden sm:block p-3 bg-white rounded-2xl shadow-sm border border-zinc-100">
+               <ApproachMonogram id={approach.id} active />
+            </div>
+            <div className="pt-1">
               <span
-                className={`inline-flex rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] ${s.badge}`}
+                className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm ${s.badge}`}
               >
                 {approach.label}
               </span>
-              <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+              <h3 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-4xl">
                 {approach.title}
               </h3>
-              <p className="mt-1 text-sm font-medium text-zinc-300">{approach.tagline}</p>
+              <p className="mt-2 text-xs font-bold text-zinc-400 uppercase tracking-[0.15em]">{approach.tagline}</p>
             </div>
           </motion.div>
           <button
             type="button"
             onClick={onClose}
-            className="shrink-0 rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
+            className="shrink-0 rounded-full bg-white border border-zinc-200 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-600 shadow-sm transition-all hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 active:scale-95"
           >
             Close
           </button>
         </div>
 
-        <p className="mt-5 text-sm leading-relaxed text-zinc-400 sm:text-[15px]">
-          {approach.description}
-        </p>
+        <div className="mt-10">
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-3">Architecture Overview</h4>
+          <p className="text-[15px] leading-relaxed text-zinc-600 sm:text-[17px] max-w-3xl">
+            {approach.description}
+          </p>
+        </div>
 
-        <ul className="mt-6 space-y-3">
-          {approach.features.map((feature) => (
-            <li
-              key={feature.title}
-              className="flex gap-3 rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-4"
-            >
-              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border ${s.icon}`}>
-                {feature.icon}
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-zinc-200">{feature.title}</p>
-                <p className="mt-1 text-xs leading-relaxed text-zinc-500">{feature.description}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-12">
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-5">Core Capabilities</h4>
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {approach.features.map((feature) => (
+              <li
+                key={feature.title}
+                className="group relative flex gap-4 rounded-2xl border border-zinc-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md hover:border-zinc-200"
+              >
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${s.glow} opacity-0 transition-opacity duration-300 group-hover:opacity-10`} />
+                <span className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border bg-white shadow-sm transition-transform duration-300 group-hover:scale-110 ${s.icon}`}>
+                  {feature.icon}
+                </span>
+                <div className="relative">
+                  <p className="text-[15px] font-bold text-zinc-900">{feature.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-500">{feature.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        <ul className="mt-5 flex flex-wrap gap-1.5">
-          {approach.highlights.map((item) => (
-            <li
-              key={item}
-              className={`rounded-md border px-2.5 py-1 text-[10px] font-medium tracking-wide sm:text-[11px] ${s.node}`}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-10 pt-8 border-t border-zinc-100">
+          <ul className="flex flex-wrap gap-2.5">
+            {approach.highlights.map((item) => (
+              <li key={item.slug}>
+                <Link
+                  href={`/services/ai-integrations/architecture#${item.slug}`}
+                  className={`inline-flex items-center gap-1.5 rounded-lg border bg-white px-3.5 py-2 text-[11px] font-bold tracking-wider sm:text-xs shadow-sm transition-all hover:bg-zinc-50 hover:scale-105 active:scale-95 ${s.node}`}
+                >
+                  {item.label}
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 opacity-60">
+                     <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd" />
+                  </svg>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </motion.article>
   );
@@ -235,7 +253,7 @@ const OrbitOrb = memo(function OrbitOrb({
   return (
     <div
       ref={wrapperRef}
-      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
       style={{ transformStyle: "preserve-3d" }}
     >
       <div
@@ -247,12 +265,12 @@ const OrbitOrb = memo(function OrbitOrb({
           layoutId={`approach-chip-${approach.id}`}
           onClick={() => onSelect(approach.id)}
           aria-label={`Open ${approach.title} deployment model`}
-          className="relative flex w-[9.5rem] cursor-pointer flex-col items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#0a0a0a]/95 px-4 py-5 text-center shadow-[0_20px_50px_-30px_rgba(0,0,0,0.9)] backdrop-blur-sm transition-[border-color,box-shadow,opacity] hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_24px_60px_-28px_color-mix(in_srgb,var(--brand-creative)_25%,transparent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-creative)] sm:w-[10.5rem]"
+          className="pointer-events-auto relative flex w-[9.5rem] cursor-pointer flex-col items-center gap-3 rounded-2xl border border-zinc-200 bg-white/95 px-4 py-5 text-center shadow-[0_20px_50px_-30px_rgba(0,0,0,0.9)] backdrop-blur-md transition-[border-color,box-shadow,opacity] hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_24px_60px_-28px_color-mix(in_srgb,var(--brand-creative)_25%,transparent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-creative)] sm:w-[10.5rem]"
           animate={{ opacity: isDimmed ? 0.4 : 1 }}
           transition={{ opacity: { duration: 0.25 }, layout: { duration: 0.48, ease: SNAP_EASE } }}
         >
           <ApproachMonogram id={approach.id} active={false} />
-          <span className="text-sm font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-base">
+          <span className="text-sm font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-base">
             {approach.title}
           </span>
           <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">
@@ -368,8 +386,8 @@ export function AiDeploymentOrbit() {
           className="relative mx-auto h-[min(56vw,24rem)] max-h-[24rem] w-full max-w-3xl contain-[layout_style] [perspective:1400px] sm:h-[28rem]"
           style={{ perspectiveOrigin: "50% 40%" }}
         >
-          <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: "preserve-3d" }}>
-            <div className="relative h-48 w-48 sm:h-56 sm:w-56" style={{ transformStyle: "preserve-3d" }}>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transformStyle: "preserve-3d" }}>
+            <div className="relative h-48 w-48 sm:h-56 sm:w-56 pointer-events-none" style={{ transformStyle: "preserve-3d" }}>
               {APPROACHES.map((approach) => {
                 if (selected === approach.id) return null;
                 return (

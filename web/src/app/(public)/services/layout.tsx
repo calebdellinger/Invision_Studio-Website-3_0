@@ -17,7 +17,7 @@ export default function ServicesLayout({
 }>) {
   return (
     <div
-      className={`${montserrat.variable} min-h-full bg-black text-zinc-300`}
+      className={`${montserrat.variable} min-h-full bg-white text-zinc-800`}
     >
       {children}
     </div>

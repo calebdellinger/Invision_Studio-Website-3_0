@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="relative flex min-h-full flex-1 flex-col overflow-x-hidden bg-black">
+    <div className="relative flex min-h-full flex-1 flex-col overflow-x-clip bg-white">
       <ServicesFlow />
     </div>
   );
