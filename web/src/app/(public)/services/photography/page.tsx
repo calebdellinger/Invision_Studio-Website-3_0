@@ -547,7 +547,7 @@ export default function PhotographyServicePage() {
           </div>
         }
         headerEdgeSlot={
-          <div className="px-4 text-center">
+          <div className="px-4 text-center -translate-y-6">
             <p className="text-6xl font-semibold tracking-tight text-white [font-family:var(--font-plus-jakarta)] sm:text-7xl lg:text-8xl">
               Photography
             </p>
