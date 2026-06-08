@@ -225,23 +225,28 @@ function PhotoTypeGrid() {
       {types.map(({ Icon, label, tagline, description, channels }) => (
         <div
           key={label}
-          className="rounded-xl border border-black/[0.08] bg-white p-5 ring-1 ring-inset ring-black/[0.03]"
+          className="group relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-5.5 text-left transition-all duration-300 ease-out shadow-[0_6px_16px_-4px_rgba(0,0,0,0.05),0_2px_4px_-1px_rgba(0,0,0,0.02),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)] hover:-translate-y-1 hover:rotate-[1deg] hover:border-zinc-300 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.1),0_6px_12px_-2px_rgba(0,0,0,0.03),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(228,228,231,1)]"
         >
+          {/* Shimmer sweep */}
+          <span
+            className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-zinc-100/35 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full"
+            aria-hidden
+          />
           <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-black/10 bg-white text-[var(--brand-creative)]">
+            <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-[var(--brand-creative)] shadow-[inset_0_1.5px_2px_rgba(0,0,0,0.03),inset_0_-2px_0_rgba(228,228,231,1)]">
               <Icon />
             </span>
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
               {label}
             </p>
           </div>
-          <p className="mt-3 text-[15px] font-semibold text-zinc-900">{tagline}</p>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-600">{description}</p>
-          <div className="mt-4 flex flex-wrap gap-1.5">
+          <p className="mt-3 text-sm font-bold text-zinc-950 tracking-tight">{tagline}</p>
+          <p className="mt-1.5 text-xs leading-relaxed text-zinc-500 font-medium">{description}</p>
+          <div className="mt-4 flex flex-wrap gap-1.5 relative z-10">
             {channels.map((ch) => (
               <span
                 key={ch}
-                className="rounded-full border border-black/[0.07] bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-zinc-600"
+                className="rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-0.5 text-[9px] font-medium tracking-wide text-zinc-600"
               >
                 {ch}
               </span>
@@ -305,68 +310,98 @@ function AssetReuseMap() {
 
   const colorMap = {
     blue: {
-      badge: "border-blue-400/20 bg-blue-400/5 text-blue-400",
-      icon: "border-blue-400/20 bg-blue-400/10 text-blue-400",
+      badge: "border-blue-200 bg-blue-50 text-blue-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]",
+      icon: "border-blue-200 bg-blue-50 text-blue-600",
     },
     pink: {
-      badge: "border-pink-400/20 bg-pink-400/5 text-pink-400",
-      icon: "border-pink-400/20 bg-pink-400/10 text-pink-400",
+      badge: "border-pink-200 bg-pink-50 text-pink-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]",
+      icon: "border-pink-200 bg-pink-50 text-pink-600",
     },
     orange: {
-      badge: "border-orange-400/20 bg-orange-400/5 text-orange-400",
-      icon: "border-orange-400/20 bg-orange-400/10 text-orange-400",
+      badge: "border-orange-200 bg-orange-50 text-orange-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]",
+      icon: "border-orange-200 bg-orange-50 text-orange-600",
     },
     amber: {
-      badge: "border-amber-400/20 bg-amber-400/5 text-amber-400",
-      icon: "border-amber-400/20 bg-amber-400/10 text-amber-400",
+      badge: "border-amber-200 bg-amber-50 text-amber-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]",
+      icon: "border-amber-200 bg-amber-50 text-amber-600",
     },
   };
 
   return (
-    <div className="space-y-5">
-      {/* Source card */}
-      <div className="relative rounded-2xl border border-[color-mix(in_srgb,var(--brand-creative)_30%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_6%,#0a0a0a)] p-6 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--brand-creative)_40%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_14%,transparent)] text-[var(--brand-creative)]">
-          <IconCamera />
+    <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch w-full">
+      {/* Left Column: 3D Camera Source Node */}
+      <div className="lg:col-span-4 flex flex-col justify-between items-center rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-8 text-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.02),0_12px_28px_-8px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.8)]">
+        <div className="flex flex-col items-center">
+          <div className="group relative flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-zinc-950 text-white shadow-[0_12px_24px_rgba(0,0,0,0.12),inset_0_2px_4px_rgba(255,255,255,0.2)] cursor-pointer">
+            <IconCamera />
+            <span className="absolute -inset-2 rounded-full border border-dashed border-[var(--brand-creative)]/40 animate-[spin_30s_linear_infinite]" />
+          </div>
+          
+          <div className="mt-8">
+            <span className="inline-flex rounded-full bg-[var(--brand-creative)]/10 px-3 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-[var(--brand-creative)]">
+              Source shoot
+            </span>
+            <h4 className="mt-3.5 font-serif text-lg font-bold text-zinc-950 tracking-tight">
+              One Creative Production
+            </h4>
+            <p className="mt-2 text-xs leading-relaxed text-zinc-500 font-semibold max-w-[200px] mx-auto">
+              A single photography session feeds your entire multi-channel marketing funnel.
+            </p>
+          </div>
         </div>
-        <p className="mt-3 text-base font-semibold text-zinc-900 [font-family:var(--font-montserrat)]">
-          One Professional Photo Shoot
-        </p>
-        <p className="mt-1 text-sm text-zinc-600">
-          A single session with Invision Creative builds a library of assets
-          deployable across every channel you use — simultaneously.
-        </p>
-        <div className="absolute bottom-0 left-1/2 h-5 w-px -translate-x-1/2 translate-y-full bg-gradient-to-b from-[color-mix(in_srgb,var(--brand-creative)_50%,transparent)] to-transparent" aria-hidden />
+
+        {/* Animated bounce pointer representing direction */}
+        <div className="mt-8 flex justify-center text-[var(--brand-creative)] lg:rotate-0 rotate-90">
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 animate-bounce"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </div>
       </div>
 
-      {/* Destination grid */}
-      <div className="grid gap-4 sm:grid-cols-2">
+      {/* Right Column: 3D Grid of Deployment Channels */}
+      <div className="lg:col-span-8 grid gap-4 sm:grid-cols-2">
         {categories.map(({ id, label, Icon, color, items }) => {
           const c = colorMap[color];
           return (
             <div
               key={id}
-              className="rounded-xl border border-black/[0.07] bg-white p-5"
+              className="group relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-5 text-left transition-all duration-300 ease-out shadow-[0_6px_16px_-4px_rgba(0,0,0,0.05),0_2px_4px_-1px_rgba(0,0,0,0.02),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)] hover:-translate-y-1 hover:rotate-[1deg] hover:border-zinc-300 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.12),0_6px_12px_-2px_rgba(0,0,0,0.03),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(228,228,231,1)]"
             >
+              {/* Shimmer sweep */}
+              <span
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-zinc-100/35 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full"
+                aria-hidden
+              />
+              
               <div className="mb-4 flex items-center gap-2.5">
                 <span
-                  className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border ${c.icon}`}
+                  className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border shadow-sm ${c.icon}`}
                 >
                   <Icon />
                 </span>
                 <span
-                  className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] ${c.badge}`}
+                  className={`rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.15em] ${c.badge}`}
                 >
                   {label}
                 </span>
               </div>
-              <ul className="space-y-3">
+              
+              <ul className="space-y-3 relative z-10">
                 {items.map((item) => (
                   <li key={item.name} className="flex items-start gap-2.5">
-                    <span className="mt-[3px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--brand-creative)]" aria-hidden />
+                    <span className="mt-[6px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--brand-creative)]" aria-hidden />
                     <div>
-                      <p className="text-sm font-medium text-zinc-200">{item.name}</p>
-                      <p className="text-xs leading-relaxed text-zinc-600">{item.desc}</p>
+                      <p className="text-xs font-bold text-zinc-800 leading-tight">{item.name}</p>
+                      <p className="mt-0.5 text-[10px] leading-relaxed text-zinc-500 font-medium">{item.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -411,26 +446,26 @@ function PhotoStatsChart() {
   ];
 
   return (
-    <div className="rounded-2xl border border-black/[0.08] bg-white p-6 ring-1 ring-inset ring-black/[0.03]">
-      <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
+    <div className="rounded-3xl border border-zinc-200/80 bg-white p-6 sm:p-8 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.05),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)]">
+      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
         Industry data
       </p>
-      <h3 className="mt-2 text-xl font-semibold text-zinc-900 [font-family:var(--font-montserrat)]">
+      <h3 className="mt-2 text-xl font-semibold text-zinc-900 [font-family:var(--font-montserrat)] tracking-tight">
         Why professional photography is non-negotiable
       </h3>
-      <p className="mt-1 text-xs text-zinc-600">
+      <p className="mt-1 text-xs text-zinc-500">
         Sources: Kissmetrics · BigCommerce · Venngage · HubSpot · Redfin
       </p>
       <div className="mt-6 space-y-5">
         {stats.map((stat, i) => (
           <div key={stat.label}>
             <div className="mb-2 flex items-start justify-between gap-4">
-              <p className="text-xs leading-snug text-zinc-600">{stat.label}</p>
+              <p className="text-xs leading-snug text-zinc-600 font-semibold">{stat.label}</p>
               <p className="flex-shrink-0 text-sm font-bold text-[var(--brand-creative)]">
                 {stat.value}%
               </p>
             </div>
-            <div className="h-2 overflow-hidden rounded-full bg-white/[0.06]">
+            <div className="h-2 overflow-hidden rounded-full bg-zinc-100 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]">
               <div
                 className="bar-grow-anim h-full rounded-full bg-[var(--brand-creative)]"
                 style={{
@@ -460,12 +495,12 @@ function BigStatRow() {
       {callouts.map(({ value, label }) => (
         <div
           key={label}
-          className="rounded-xl border border-black/[0.08] bg-white p-4 text-center ring-1 ring-inset ring-black/[0.03]"
+          className="relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-5 text-center transition-all duration-300 ease-out shadow-[0_6px_16px_-4px_rgba(0,0,0,0.05),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)] hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-6px_rgba(0,0,0,0.08)]"
         >
-          <p className="text-2xl font-bold text-[var(--brand-creative)] sm:text-3xl [font-family:var(--font-montserrat)]">
+          <p className="text-2xl font-bold text-[var(--brand-creative)] sm:text-3xl [font-family:var(--font-montserrat)] tracking-tight">
             {value}
           </p>
-          <p className="mt-1 text-[11px] leading-snug text-zinc-600">{label}</p>
+          <p className="mt-1 text-[10px] leading-snug text-zinc-500 font-semibold">{label}</p>
         </div>
       ))}
     </div>
@@ -591,21 +626,21 @@ export default function PhotographyServicePage() {
         footerSlot={
           <div className="space-y-12">
             {/* What makes ours different */}
-            <section className="rounded-2xl border border-black/[0.08] bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-creative)_10%,transparent),transparent_45%),#0f0f10] p-5 ring-1 ring-inset ring-black/[0.03] sm:p-7">
+            <section className="rounded-3xl border border-zinc-200/80 bg-[radial-gradient(circle_at_15%_20%,rgba(80,161,42,0.04),transparent_45%),#ffffff] p-6 sm:p-8 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.05),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)]">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
                     Our approach
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-950 [font-family:var(--font-fraunces)] sm:text-3xl">
                     Strategy before shutter
                   </h2>
                 </div>
-                <span className="inline-flex rounded-full border border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_14%,transparent)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--brand-creative)]">
+                <span className="inline-flex rounded-full border border-[color-mix(in_srgb,var(--brand-creative)_30%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_10%,transparent)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--brand-creative)]">
                   Built to convert
                 </span>
               </div>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-500 font-medium">
                 Most photographers show up and shoot. We show up with a plan. Before
                 the camera comes out, every image is mapped to a job — trust-building,
                 product clarity, lifestyle aspiration, or conversion. That intent is
@@ -633,17 +668,22 @@ export default function PhotographyServicePage() {
                   ].map(({ id, label, desc }) => (
                     <li
                       key={id}
-                      className="rounded-xl border border-black/[0.08] bg-white/85 p-5 ring-1 ring-inset ring-black/[0.03]"
+                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-5 text-left transition-all duration-300 ease-out shadow-[0_6px_16px_-4px_rgba(0,0,0,0.05),0_2px_4px_-1px_rgba(0,0,0,0.02),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)] hover:-translate-y-1 hover:rotate-[1deg] hover:border-zinc-300 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.1),0_6px_12px_-2px_rgba(0,0,0,0.03),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(228,228,231,1)]"
                     >
-                      <div className="flex items-center justify-between gap-2">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
+                      {/* Shimmer sweep */}
+                      <span
+                        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-zinc-100/35 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full"
+                        aria-hidden
+                      />
+                      <div className="relative z-10 flex items-center justify-between gap-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
                           {label}
                         </p>
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-400">
                           {id}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                      <p className="relative z-10 mt-2 text-xs leading-relaxed text-zinc-500 font-medium">
                         {desc}
                       </p>
                     </li>
@@ -664,7 +704,7 @@ export default function PhotographyServicePage() {
                 {faqItems.map((item) => (
                   <details
                     key={item.question}
-                    className="group rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03]"
+                    className="group rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.04),inset_0_2px_0_rgba(255,255,255,1),inset_0_-3px_0_rgba(240,240,243,1)] transition-colors duration-300 hover:border-zinc-300"
                   >
                     <summary className="cursor-pointer list-none text-sm font-semibold tracking-tight text-zinc-900">
                       {item.question}
@@ -682,7 +722,7 @@ export default function PhotographyServicePage() {
               <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                 Pair photography with
               </h2>
-              <p className="mt-3 text-sm text-zinc-600">
+              <p className="mt-3 text-sm text-zinc-500">
                 Photography works harder when it&#39;s connected to a full
                 visual system.
               </p>
@@ -710,15 +750,20 @@ export default function PhotographyServicePage() {
                   <Link
                     key={href}
                     href={href}
-                    className="group rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03] transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_0_30px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
+                    className="group relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-5.5 text-left transition-all duration-300 ease-out shadow-[0_6px_16px_-4px_rgba(0,0,0,0.05),0_2px_4px_-1px_rgba(0,0,0,0.02),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)] hover:-translate-y-1 hover:rotate-[1deg] hover:border-[var(--brand-creative)]/50 hover:shadow-[0_12px_24px_-8px_rgba(80,161,42,0.08),0_6px_12px_-2px_rgba(80,161,42,0.03),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(228,228,231,1)]"
                   >
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-creative)]">
+                    {/* Shimmer sweep */}
+                    <span
+                      className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-zinc-100/35 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full"
+                      aria-hidden
+                    />
+                    <p className="relative z-10 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--brand-creative)]">
                       {label}
                     </p>
-                    <h3 className="mt-2 text-lg font-semibold tracking-tight text-zinc-900">
+                    <h3 className="relative z-10 mt-2 text-lg font-semibold tracking-tight text-zinc-900">
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                    <p className="relative z-10 mt-2 text-sm leading-relaxed text-zinc-500 font-medium">
                       {desc}
                     </p>
                   </Link>
