@@ -583,12 +583,22 @@ export default function PhotographyServicePage() {
         }
         headerEdgeSlot={
           <div className="px-4 text-center -translate-y-6">
-            <p className="text-6xl font-semibold tracking-tight text-white [font-family:var(--font-plus-jakarta)] sm:text-7xl lg:text-8xl">
+            <p className="text-6xl font-semibold tracking-tight text-zinc-950 [font-family:var(--font-plus-jakarta)] sm:text-7xl lg:text-8xl">
               Photography
             </p>
-            <p className="mt-8 inline-block rounded-lg border border-black/15 bg-white/35 px-5 py-2 text-sm font-medium tracking-wide text-zinc-100 [font-family:var(--font-plus-jakarta)] sm:mt-10 sm:text-base">
-              In 1839, when photography was first announced, French painter Paul Delaroche reportedly said it was &ldquo;the greatest invention since the printing press&rdquo;
-            </p>
+            <div className="mt-10 mx-auto max-w-2xl rounded-2xl border border-zinc-200 bg-white/90 px-6 py-5 shadow-[0_12px_32px_rgba(0,0,0,0.05),inset_0_2px_0_rgba(255,255,255,1),inset_0_-4px_0_rgba(240,240,243,1)] text-center relative overflow-hidden backdrop-blur-sm">
+              <span className="absolute -left-2 -top-4 font-serif text-8xl text-zinc-100 pointer-events-none select-none" aria-hidden>&ldquo;</span>
+              <p className="text-sm sm:text-base italic leading-relaxed text-zinc-800 font-medium">
+                &ldquo;In 1839, when photography was first announced, French painter Paul Delaroche reportedly said it was the greatest invention since the printing press.&rdquo;
+              </p>
+              <div className="mt-3.5 flex items-center justify-center gap-2">
+                <span className="h-px w-6 bg-zinc-200" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
+                  Paul Delaroche, 1839
+                </p>
+                <span className="h-px w-6 bg-zinc-200" />
+              </div>
+            </div>
           </div>
         }
         powerSectionSpacingClassName="pt-32 sm:pt-36 lg:pt-40"
