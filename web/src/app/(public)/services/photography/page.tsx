@@ -571,7 +571,7 @@ export default function PhotographyServicePage() {
                 alt="Commercial photography hero image."
                 fill
                 priority
-                className="object-cover"
+                className="object-cover pointer-events-none select-none"
                 sizes="100vw"
               />
               <div
