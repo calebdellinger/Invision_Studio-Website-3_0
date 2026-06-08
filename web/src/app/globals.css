@@ -180,3 +180,9 @@ body {
     animation: none;
   }
 }
+
+img {
+  pointer-events: none;
+  user-select: none;
+}
+
