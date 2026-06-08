@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
-  --background: #050505;
-  --foreground: #e8e8e8;
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
   --brand-creative: #50a12a;
   --brand-creative-muted: #2d5a1a;
   --brand-partner: #8b5cf6;
-  --surface: #0c0c0c;
+  --surface: #f4f4f5;
   /* Header: logo scale + py-3 (0.75rem × 2) — keep in sync with SiteHeader */
   --header-logo-height: clamp(39px, 13.6vw, 91px);
   --header-padding-y: 0.75rem;

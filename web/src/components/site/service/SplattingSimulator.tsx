@@ -473,10 +473,10 @@ export function SplattingSimulator() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0c0c0e] p-6 shadow-[0_32px_80px_-32px_rgba(0,0,0,0.85)] ring-1 ring-inset ring-white/[0.03]">
+    <div className="relative overflow-hidden rounded-2xl border border-black/[0.08] bg-[#0c0c0e] p-6 shadow-[0_32px_80px_-32px_rgba(0,0,0,0.85)] ring-1 ring-inset ring-black/[0.03]">
       
       {/* ── Viewport Control Headers ── */}
-      <div className="flex flex-col gap-4 border-b border-white/[0.06] pb-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 border-b border-black/[0.06] pb-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-1.5">
           {[
             { id: "residential", label: "Villa Interior" },
@@ -489,7 +489,7 @@ export function SplattingSimulator() {
               className={`rounded-md border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
                 activeScene === scene.id
                   ? "border-[color-mix(in_srgb,var(--brand-creative)_40%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_10%,transparent)] text-[color-mix(in_srgb,var(--brand-creative)_90%,white_10%)]"
-                  : "border-white/[0.05] bg-white/[0.01] text-zinc-500 hover:border-white/[0.12] hover:text-zinc-300"
+                  : "border-black/[0.05] bg-white/[0.01] text-zinc-600 hover:border-black/[0.12] hover:text-zinc-600"
               }`}
             >
               {scene.label}
@@ -498,7 +498,7 @@ export function SplattingSimulator() {
         </div>
 
         {/* Display rendering mode selectors */}
-        <div className="flex rounded-lg border border-white/[0.08] bg-[#080809] p-1">
+        <div className="flex rounded-lg border border-black/[0.08] bg-[#080809] p-1">
           {[
             { id: "points", label: "Points" },
             { id: "splats", label: "Gaussian Splats" },
@@ -510,7 +510,7 @@ export function SplattingSimulator() {
               className={`rounded-md px-3 py-1 text-xs font-semibold transition-all duration-250 ${
                 renderMode === mode.id
                   ? "bg-[var(--brand-creative)] text-[#0a0a0a]"
-                  : "text-zinc-500 hover:text-zinc-300"
+                  : "text-zinc-600 hover:text-zinc-600"
               }`}
             >
               {mode.label}
@@ -520,7 +520,7 @@ export function SplattingSimulator() {
       </div>
 
       {/* ── Interactive Canvas Arena ── */}
-      <div className="relative mt-6 aspect-[16/10] w-full min-h-[300px] cursor-grab active:cursor-grabbing rounded-xl bg-black/60 overflow-hidden border border-white/[0.05]">
+      <div className="relative mt-6 aspect-[16/10] w-full min-h-[300px] cursor-grab active:cursor-grabbing rounded-xl bg-white/60 overflow-hidden border border-black/[0.05]">
         <canvas
           ref={canvasRef}
           onMouseDown={handleMouseDown}
@@ -531,25 +531,25 @@ export function SplattingSimulator() {
         />
 
         {/* Floating HUD status stats (Top Right) */}
-        <div className="pointer-events-none absolute right-4 top-4 flex flex-col gap-1.5 font-mono text-[9px] text-zinc-500">
-          <div className="flex items-center justify-between gap-4 rounded border border-white/[0.04] bg-black/80 px-2 py-1 backdrop-blur-sm">
+        <div className="pointer-events-none absolute right-4 top-4 flex flex-col gap-1.5 font-mono text-[9px] text-zinc-600">
+          <div className="flex items-center justify-between gap-4 rounded border border-black/[0.04] bg-white/80 px-2 py-1 backdrop-blur-sm">
             <span>Scan Engine:</span>
             <span className="text-[var(--brand-creative)] font-semibold uppercase tracking-wider">WebGPU v2</span>
           </div>
-          <div className="flex items-center justify-between gap-4 rounded border border-white/[0.04] bg-black/80 px-2 py-1 backdrop-blur-sm">
+          <div className="flex items-center justify-between gap-4 rounded border border-black/[0.04] bg-white/80 px-2 py-1 backdrop-blur-sm">
             <span>Render Mode:</span>
-            <span className="text-white uppercase font-semibold">
+            <span className="text-zinc-900 uppercase font-semibold">
               {renderMode === "points" ? "Point Cloud" : renderMode === "splats" ? "Volumetric Gaussian" : "Splatting Mesh"}
             </span>
           </div>
-          <div className="flex items-center justify-between gap-4 rounded border border-white/[0.04] bg-black/80 px-2 py-1 backdrop-blur-sm">
+          <div className="flex items-center justify-between gap-4 rounded border border-black/[0.04] bg-white/80 px-2 py-1 backdrop-blur-sm">
             <span>Viewport FPS:</span>
             <span className="text-[var(--brand-creative)]">60.00 FPS</span>
           </div>
         </div>
 
         {/* Scanning instruction pill (Bottom center) */}
-        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-white/[0.08] bg-black/75 px-3 py-1.5 text-[10px] text-zinc-400 backdrop-blur-sm">
+        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-black/[0.08] bg-white/75 px-3 py-1.5 text-[10px] text-zinc-600 backdrop-blur-sm">
           Drag on screen to rotate structure · Adjust density below
         </div>
       </div>
@@ -559,7 +559,7 @@ export function SplattingSimulator() {
         <div className="space-y-4">
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              <label className="text-xs font-semibold uppercase tracking-wider text-zinc-600">
                 Splat Count / Density
               </label>
               <span className="font-mono text-xs text-[var(--brand-creative)]">
@@ -574,7 +574,7 @@ export function SplattingSimulator() {
               onChange={(e) => setDensityPercent(Number(e.target.value))}
               className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-zinc-800 accent-[var(--brand-creative)]"
             />
-            <p className="mt-1.5 text-[11px] text-zinc-500 leading-normal">
+            <p className="mt-1.5 text-[11px] text-zinc-600 leading-normal">
               Adjusts the resolution density of the 3D ellipsoid point-grid mapping.
             </p>
           </div>
@@ -585,8 +585,8 @@ export function SplattingSimulator() {
             onClick={() => setShowWireframe(!showWireframe)}
             className={`rounded-lg border px-4 py-2.5 text-xs font-semibold transition-all ${
               showWireframe
-                ? "border-[color-mix(in_srgb,var(--brand-creative)_30%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_6%,transparent)] text-zinc-300"
-                : "border-white/10 bg-white/[0.02] text-zinc-500 hover:border-white/20"
+                ? "border-[color-mix(in_srgb,var(--brand-creative)_30%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_6%,transparent)] text-zinc-600"
+                : "border-black/10 bg-white/[0.02] text-zinc-600 hover:border-black/20"
             }`}
           >
             {showWireframe ? "Hide Scan Cage" : "Show Scan Cage"}
@@ -597,7 +597,7 @@ export function SplattingSimulator() {
             className={`rounded-lg border px-4 py-2.5 text-xs font-semibold transition-all ${
               isRotating
                 ? "border-[color-mix(in_srgb,var(--brand-creative)_40%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_10%,transparent)] text-[var(--brand-creative)]"
-                : "border-white/10 bg-white/[0.02] text-zinc-300 hover:border-white/20"
+                : "border-black/10 bg-white/[0.02] text-zinc-600 hover:border-black/20"
             }`}
           >
             {isRotating ? "Auto-Rotate On" : "Auto-Rotate Paused"}

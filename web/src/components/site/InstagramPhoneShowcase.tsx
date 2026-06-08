@@ -55,13 +55,13 @@ function PhoneShell({
   return (
     <Link
       href={ctaHref}
-      className={`group block w-[min(90vw,230px)] rounded-[2.6rem] border border-white/20 bg-[#0b0b0b] p-2 shadow-[0_28px_72px_-30px_rgba(0,0,0,0.9)] transition-[transform,border-color] hover:-translate-y-0.5 hover:border-white/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-creative)] ${className ?? ""}`}
+      className={`group block w-[min(90vw,230px)] rounded-[2.6rem] border border-white/10 bg-black p-2 shadow-[0_28px_72px_-30px_rgba(0,0,0,0.9)] transition-[transform,border-color] hover:-translate-y-0.5 hover:border-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-creative)] ${className ?? ""}`}
     >
-      <article className="relative aspect-[9/19.5] overflow-hidden rounded-[2.2rem] border border-white/10 bg-black">
+      <article className="relative aspect-[9/19.5] overflow-hidden rounded-[2.2rem] border border-white/5 bg-black">
         <div className="pointer-events-none absolute left-1/2 top-1.5 z-30 h-5 w-[5.5rem] -translate-x-1/2 rounded-full bg-black ring-1 ring-white/10" />
         {children}
         <div className="pointer-events-none absolute inset-0 z-40 flex items-center justify-center bg-black/70 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-          <span className="rounded-full border border-white/30 bg-black/40 px-3 py-1 text-[10px] font-semibold tracking-wide text-white">
+          <span className="rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3 py-1 text-[10px] font-semibold tracking-wide text-white">
             {ctaLabel}
           </span>
         </div>
@@ -78,10 +78,10 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
       ctaLabel="Why Instagram?"
       ctaHref="/services/social-media/instagram"
     >
-      <div className="relative z-20 border-b border-white/[0.08] bg-[#0f0f11] px-4 pt-9 pb-2">
+      <div className="relative z-20 border-b border-black/[0.08] bg-[#0f0f11] px-4 pt-9 pb-2">
         <div className="flex items-center justify-between">
-          <p className="text-base font-semibold text-white">Instagram</p>
-          <div className="flex items-center gap-2 text-zinc-300">
+          <p className="text-base font-semibold text-zinc-900">Instagram</p>
+          <div className="flex items-center gap-2 text-zinc-600">
             <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
             <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
             <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
@@ -91,7 +91,7 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
           {POSTS.map((post, i) => (
             <div key={`${post.src}-story-${i}`} className="shrink-0">
               <div className="rounded-full bg-[conic-gradient(from_120deg,#f9ce34,#ee2a7b,#6228d7,#f9ce34)] p-[1.5px]">
-                <div className="rounded-full bg-black p-[1.5px]">
+                <div className="rounded-full bg-white p-[1.5px]">
                   <div className="h-11 w-11 overflow-hidden rounded-full bg-zinc-900">
                     <Image
                       src={post.src}
@@ -109,7 +109,7 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
         </div>
       </div>
 
-      <div className="relative h-[calc(100%-7.7rem)] overflow-hidden bg-black">
+      <div className="relative h-[calc(100%-7.7rem)] overflow-hidden bg-white">
         <div
           className={`${reduceMotion ? "" : styles.scrollTrack} flex flex-col`}
           style={{ "--ig-loop-duration": `${durationSec}s` } as CSSProperties}
@@ -117,11 +117,11 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
           {POSTS.map((post, i) => (
             <article
               key={`post-${i}`}
-              className="border-b border-white/[0.08] bg-black"
+              className="border-b border-black/[0.08] bg-white"
             >
               <div className="flex items-center justify-between px-3 py-2.5">
                 <div className="flex items-center gap-2.5">
-                  <div className="h-7 w-7 overflow-hidden rounded-full border border-white/10">
+                  <div className="h-7 w-7 overflow-hidden rounded-full border border-black/10">
                     <Image
                       src={post.src}
                       alt=""
@@ -133,7 +133,7 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
                   </div>
                   <p className="text-[11px] font-semibold text-zinc-100">{post.handle}</p>
                 </div>
-                <span className="text-xs text-zinc-500">...</span>
+                <span className="text-xs text-zinc-600">...</span>
               </div>
 
               <div className="relative aspect-square w-full">
@@ -155,7 +155,7 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
                 <p className="mt-2 text-[11px] font-semibold text-zinc-200">
                   {post.likes}
                 </p>
-                <p className="mt-1 text-[11px] text-zinc-400">
+                <p className="mt-1 text-[11px] text-zinc-600">
                   <span className="font-semibold text-zinc-200">{post.handle}</span>{" "}
                   Project highlights in motion and stills.
                 </p>
@@ -167,11 +167,11 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
             <article
               key={`dup-post-${i}`}
               aria-hidden="true"
-              className="border-b border-white/[0.08] bg-black"
+              className="border-b border-black/[0.08] bg-white"
             >
               <div className="flex items-center justify-between px-3 py-2.5">
                 <div className="flex items-center gap-2.5">
-                  <div className="h-7 w-7 overflow-hidden rounded-full border border-white/10">
+                  <div className="h-7 w-7 overflow-hidden rounded-full border border-black/10">
                     <Image
                       src={post.src}
                       alt=""
@@ -183,7 +183,7 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
                   </div>
                   <p className="text-[11px] font-semibold text-zinc-100">{post.handle}</p>
                 </div>
-                <span className="text-xs text-zinc-500">...</span>
+                <span className="text-xs text-zinc-600">...</span>
               </div>
 
               <div className="relative aspect-square w-full">
@@ -205,7 +205,7 @@ function InstagramPhone({ reduceMotion }: { reduceMotion: boolean }) {
                 <p className="mt-2 text-[11px] font-semibold text-zinc-200">
                   {post.likes}
                 </p>
-                <p className="mt-1 text-[11px] text-zinc-400">
+                <p className="mt-1 text-[11px] text-zinc-600">
                   <span className="font-semibold text-zinc-200">{post.handle}</span>{" "}
                   Project highlights in motion and stills.
                 </p>
@@ -255,10 +255,10 @@ function FacebookPhone({ reduceMotion }: { reduceMotion: boolean }) {
         <div className="flex items-center justify-between">
           <p className="text-sm font-bold text-[#1877f2]">facebook</p>
           <div className="flex items-center gap-1.5">
-            <span className="rounded-full bg-[#2c3037] px-1.5 py-0.5 text-[9px] text-zinc-300">
+            <span className="rounded-full bg-[#2c3037] px-1.5 py-0.5 text-[9px] text-zinc-600">
               +
             </span>
-            <span className="rounded-full bg-[#2c3037] px-1.5 py-0.5 text-[9px] text-zinc-300">
+            <span className="rounded-full bg-[#2c3037] px-1.5 py-0.5 text-[9px] text-zinc-600">
               ...
             </span>
           </div>
@@ -281,10 +281,10 @@ function FacebookPhone({ reduceMotion }: { reduceMotion: boolean }) {
                   <p className="text-[9px] font-semibold text-zinc-100">
                     Invision Creative
                   </p>
-                  <p className="text-[8px] text-zinc-500">2h · Public</p>
+                  <p className="text-[8px] text-zinc-600">2h · Public</p>
                 </div>
               </div>
-              <p className="mt-1.5 text-[8px] leading-relaxed text-zinc-300">
+              <p className="mt-1.5 text-[8px] leading-relaxed text-zinc-600">
                 {card.text}
               </p>
               <div className="relative mt-2 aspect-[4/5] overflow-hidden rounded-md">
@@ -296,11 +296,11 @@ function FacebookPhone({ reduceMotion }: { reduceMotion: boolean }) {
                   sizes="220px"
                 />
               </div>
-              <div className="mt-1.5 flex justify-between text-[8px] text-zinc-400">
+              <div className="mt-1.5 flex justify-between text-[8px] text-zinc-600">
                 <p>{card.stats}</p>
                 <p>{card.comments}</p>
               </div>
-              <div className="mt-1.5 grid grid-cols-3 border-t border-[#3a3f48] pt-1.5 text-center text-[8px] text-zinc-300">
+              <div className="mt-1.5 grid grid-cols-3 border-t border-[#3a3f48] pt-1.5 text-center text-[8px] text-zinc-600">
                 <span>Like</span>
                 <span>Comment</span>
                 <span>Share</span>
@@ -320,10 +320,10 @@ function FacebookPhone({ reduceMotion }: { reduceMotion: boolean }) {
                   <p className="text-[9px] font-semibold text-zinc-100">
                     Invision Creative
                   </p>
-                  <p className="text-[8px] text-zinc-500">2h · Public</p>
+                  <p className="text-[8px] text-zinc-600">2h · Public</p>
                 </div>
               </div>
-              <p className="mt-1.5 text-[8px] leading-relaxed text-zinc-300">
+              <p className="mt-1.5 text-[8px] leading-relaxed text-zinc-600">
                 {card.text}
               </p>
               <div className="relative mt-2 aspect-[4/5] overflow-hidden rounded-md">
@@ -335,11 +335,11 @@ function FacebookPhone({ reduceMotion }: { reduceMotion: boolean }) {
                   sizes="220px"
                 />
               </div>
-              <div className="mt-1.5 flex justify-between text-[8px] text-zinc-400">
+              <div className="mt-1.5 flex justify-between text-[8px] text-zinc-600">
                 <p>{card.stats}</p>
                 <p>{card.comments}</p>
               </div>
-              <div className="mt-1.5 grid grid-cols-3 border-t border-[#3a3f48] pt-1.5 text-center text-[8px] text-zinc-300">
+              <div className="mt-1.5 grid grid-cols-3 border-t border-[#3a3f48] pt-1.5 text-center text-[8px] text-zinc-600">
                 <span>Like</span>
                 <span>Comment</span>
                 <span>Share</span>
@@ -435,7 +435,7 @@ function TikTokPhone({ reduceMotion }: { reduceMotion: boolean }) {
       ctaLabel="Why TikTok?"
       ctaHref="/services/social-media?autoPlatform=tiktok"
     >
-      <div ref={viewportRef} className="relative h-full bg-black">
+      <div ref={viewportRef} className="relative h-full bg-white">
         <div
           className="absolute inset-0 flex h-full flex-col"
           style={
@@ -463,17 +463,17 @@ function TikTokPhone({ reduceMotion }: { reduceMotion: boolean }) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/25" />
 
               <div className="absolute bottom-3 left-3 right-10 z-10">
-                <p className="text-[9px] font-semibold text-white">
+                <p className="text-[9px] font-semibold text-zinc-900">
                   {video.handle}
                 </p>
                 <p className="mt-1 text-[8px] leading-relaxed text-zinc-200">
                   {video.caption}
                 </p>
-                <p className="mt-1 text-[8px] text-zinc-400">{video.sound}</p>
+                <p className="mt-1 text-[8px] text-zinc-600">{video.sound}</p>
               </div>
 
-              <div className="absolute bottom-3 right-2.5 z-10 flex flex-col items-center gap-2 text-white">
-                <div className="h-7 w-7 rounded-full border border-white/40 bg-black/35" />
+              <div className="absolute bottom-3 right-2.5 z-10 flex flex-col items-center gap-2 text-zinc-900">
+                <div className="h-7 w-7 rounded-full border border-black/40 bg-white/35" />
                 <div className="text-center">
                   <p className="text-[10px]">❤</p>
                   <p className="text-[7px] text-zinc-200">{video.likes}</p>
@@ -491,13 +491,13 @@ function TikTokPhone({ reduceMotion }: { reduceMotion: boolean }) {
           ))}
         </div>
 
-        <div className="absolute left-3 right-3 top-6 z-10 flex justify-center text-[9px] font-semibold text-white">
-          <div className="absolute left-0 top-0 flex items-center gap-1 rounded-full bg-black/45 px-1.5 py-0.5 ring-1 ring-white/10">
+        <div className="absolute left-3 right-3 top-6 z-10 flex justify-center text-[9px] font-semibold text-zinc-900">
+          <div className="absolute left-0 top-0 flex items-center gap-1 rounded-full bg-white/45 px-1.5 py-0.5 ring-1 ring-black/10">
             <span className="text-[10px] leading-none text-[#25f4ee]">♪</span>
             <span className="text-[10px] leading-none text-[#fe2c55]">♪</span>
           </div>
           <p className="border-b border-white px-2 pb-0.5">Following</p>
-          <p className="px-2 pb-0.5 text-zinc-300">For You</p>
+          <p className="px-2 pb-0.5 text-zinc-600">For You</p>
         </div>
 
         <div
@@ -556,7 +556,7 @@ function PinterestPhone({ reduceMotion }: { reduceMotion: boolean }) {
           className="object-cover"
           sizes="110px"
         />
-        <div className="absolute right-1.5 top-1.5 rounded-full bg-[#e60023] px-1.5 py-0.5 text-[7px] font-semibold text-white">
+        <div className="absolute right-1.5 top-1.5 rounded-full bg-[#e60023] px-1.5 py-0.5 text-[7px] font-semibold text-zinc-900">
           Save
         </div>
       </div>
@@ -681,7 +681,7 @@ export function InstagramPhoneShowcase() {
         </div>
 
         <div
-          className="mx-auto [perspective:1400px]"
+          className="mx-auto [perspective:1400px] overflow-x-clip touch-pan-y"
           style={{
             WebkitMaskImage:
               "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
@@ -689,7 +689,9 @@ export function InstagramPhoneShowcase() {
               "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
           }}
         >
-          <div className="relative h-[512px] w-[608px] max-w-[95vw]">
+          <div 
+            className="relative h-[512px] w-[608px] max-w-[95vw] [--bg-opacity:0] sm:[--bg-opacity:0.78]"
+          >
             {slideOrder.map((id) => {
               const rel = getRelativePosition(id);
               const isVisible = rel === 0 || rel === -1 || rel === 1;
@@ -705,18 +707,17 @@ export function InstagramPhoneShowcase() {
               return (
                 <div
                   key={id}
-                  className={`absolute left-1/2 top-1/2 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    rel !== 0 ? "hidden sm:block" : ""
+                  className={`absolute left-1/2 top-1/2 transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    rel !== 0 ? "pointer-events-none" : ""
                   }`}
                   style={{
                     transform,
-                    opacity: !isVisible ? 0 : rel === 0 ? 1 : 0.78,
+                    opacity: rel === 0 ? 1 : (isVisible ? "var(--bg-opacity)" : 0),
                     zIndex: rel === 0 ? 30 : rel === -1 || rel === 1 ? 20 : 10,
-                    pointerEvents: rel === 0 ? "auto" : "none",
                     filter:
                       rel === 0
-                        ? "drop-shadow(0 34px 56px rgba(0,0,0,0.47))"
-                        : "drop-shadow(0 14px 28px rgba(0,0,0,0.31))",
+                        ? "drop-shadow(0 12px 24px rgba(0,0,0,0.25))"
+                        : "drop-shadow(0 6px 12px rgba(0,0,0,0.15))",
                   }}
                 >
                   {slides[id]}

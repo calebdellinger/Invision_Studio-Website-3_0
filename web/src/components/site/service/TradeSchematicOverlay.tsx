@@ -34,9 +34,9 @@ export function TradeSchematicOverlay({
           className="absolute inset-0 pointer-events-none z-20 flex items-center justify-center overflow-hidden"
         >
           {/* Dark background to make the image pop */}
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-md" />
           
-          <div className="relative z-10 h-[90%] aspect-square max-w-[90%] sm:h-[85%] sm:aspect-video sm:max-w-2xl rounded-lg overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/20">
+          <div className="relative z-10 h-[90%] aspect-square max-w-[90%] sm:h-[85%] sm:aspect-video sm:max-w-2xl rounded-lg overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-black/20">
             <Image 
               src={imgSrc} 
               alt={`${trade} ${type}`}
@@ -44,13 +44,13 @@ export function TradeSchematicOverlay({
               className={`object-cover opacity-90 ${type === 'blueprint' ? 'mix-blend-screen grayscale contrast-125' : ''}`}
             />
             {/* Tech UI Overlays */}
-            <div className="absolute inset-0 border border-white/10 m-2 rounded pointer-events-none" />
-            <div className="absolute top-4 left-4 font-mono text-[9px] text-white/70">
+            <div className="absolute inset-0 border border-black/10 m-2 rounded pointer-events-none" />
+            <div className="absolute top-4 left-4 font-mono text-[9px] text-zinc-900/70">
               SYS.ANALYSIS // {trade.toUpperCase()} // {type.toUpperCase()}
             </div>
             
             {/* Scanning reticle over image */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-white/30 rounded-full flex items-center justify-center">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-black/30 rounded-full flex items-center justify-center">
                <div className="w-1 h-1 bg-white/80 rounded-full" />
             </div>
           </div>

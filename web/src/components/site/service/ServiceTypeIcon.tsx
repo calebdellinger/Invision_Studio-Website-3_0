@@ -79,11 +79,35 @@ export function ServiceTypeIcon({ id, className, ...rest }: IconProps) {
           aria-hidden
           {...rest}
         >
-          <rect x="4" y="4" width="16" height="16" rx="2.5" />
-          <path d="M9 9.5h6M9 12h6M9 14.5h3.5" opacity={0.5} />
-          <circle cx="8" cy="9.5" r="1.2" fill="currentColor" stroke="none" />
-          <circle cx="16" cy="12" r="1.2" fill="currentColor" stroke="none" />
-          <circle cx="8" cy="14.5" r="1.2" fill="currentColor" stroke="none" />
+          {/* Neural Network Nodes & Connections */}
+          {/* Layer 1 */}
+          <circle cx="4" cy="8" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="4" cy="16" r="1.5" fill="currentColor" stroke="none" />
+          
+          {/* Layer 2 (Center) */}
+          <circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="12" cy="18" r="1.5" fill="currentColor" stroke="none" />
+
+          {/* Layer 3 */}
+          <circle cx="20" cy="8" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="20" cy="16" r="1.5" fill="currentColor" stroke="none" />
+
+          {/* Connections - L1 to L2 */}
+          <path d="M5.5 8.5 L10.5 6.5" opacity="0.4" />
+          <path d="M5.5 8.5 L10.5 11.5" opacity="0.4" />
+          <path d="M5.5 15.5 L10.5 12.5" opacity="0.4" />
+          <path d="M5.5 15.5 L10.5 17.5" opacity="0.4" />
+          
+          {/* Connections - L2 to L3 */}
+          <path d="M13.5 6.5 L18.5 7.5" opacity="0.4" />
+          <path d="M13.5 11.5 L18.5 8.5" opacity="0.4" />
+          <path d="M13.5 12.5 L18.5 15.5" opacity="0.4" />
+          <path d="M13.5 17.5 L18.5 16.5" opacity="0.4" />
+
+          {/* Cross-layer highlight */}
+          <path d="M5.5 8.5 L10.5 17.5" opacity="0.2" strokeDasharray="2 2" />
+          <path d="M13.5 6.5 L18.5 15.5" opacity="0.2" strokeDasharray="2 2" />
         </svg>
       );
     case "gaussian":

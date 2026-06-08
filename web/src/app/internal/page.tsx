@@ -35,8 +35,8 @@ export default function InternalTeamHomePage() {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="mb-8">
-        <h1 className="font-serif text-2xl text-white sm:text-3xl">Team resources</h1>
-        <p className="mt-2 max-w-xl text-sm text-zinc-400">
+        <h1 className="font-serif text-2xl text-zinc-900 sm:text-3xl">Team resources</h1>
+        <p className="mt-2 max-w-xl text-sm text-zinc-600">
           Central place for internal links, checklists, and files. Replace placeholders with real
           content as you build this out.
         </p>
@@ -54,12 +54,12 @@ export default function InternalTeamHomePage() {
         {placeholderSections.map((section) => (
           <li
             key={section.title}
-            className="rounded-lg border border-white/10 bg-black/25 p-5 backdrop-blur"
+            className="rounded-lg border border-black/10 bg-white/25 p-5 backdrop-blur"
           >
             <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--brand-creative)]">
               {section.title}
             </h2>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-300">
+            <ul className="mt-4 space-y-2 text-sm text-zinc-600">
               {section.items.map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />

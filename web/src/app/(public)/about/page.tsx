@@ -17,7 +17,7 @@ export default function AboutPage() {
           return (
             <section
               key={`portrait-${index}`}
-              className="border-b border-white/5 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+              className="border-b border-black/5 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
               aria-label="Introduction"
             >
               <div className="mx-auto flex max-w-3xl justify-center">
@@ -27,7 +27,7 @@ export default function AboutPage() {
                     alt={block.image.alt}
                     width={block.width}
                     height={block.height}
-                    className="h-auto w-full rounded-sm object-contain ring-1 ring-inset ring-white/5"
+                    className="h-auto w-full rounded-sm object-contain ring-1 ring-inset ring-black/5"
                     sizes="(max-width: 768px) 100vw, 28rem"
                     priority
                   />
@@ -42,7 +42,7 @@ export default function AboutPage() {
         return (
           <section
             key={`split-${index}-${block.title}`}
-            className="border-b border-white/5 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+            className="border-b border-black/5 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
             aria-labelledby={`story-step-${index}`}
           >
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
@@ -56,7 +56,7 @@ export default function AboutPage() {
                   alt={block.image.alt}
                   width={block.width}
                   height={block.height}
-                  className="h-auto w-full rounded-sm object-contain ring-1 ring-inset ring-white/5"
+                  className="h-auto w-full rounded-sm object-contain ring-1 ring-inset ring-black/5"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {"imageCredit" in block && block.imageCredit ? (
@@ -72,11 +72,11 @@ export default function AboutPage() {
               >
                 <h2
                   id={`story-step-${index}`}
-                  className="font-serif text-2xl text-white sm:text-3xl"
+                  className="font-serif text-2xl text-zinc-900 sm:text-3xl"
                 >
                   {block.title}
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                <p className="mt-4 text-sm leading-relaxed text-zinc-600">
                   {block.body}
                 </p>
               </div>

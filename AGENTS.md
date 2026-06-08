@@ -19,7 +19,7 @@ Use this file so automated agents (Cursor, CI bots, etc.) align with repo intent
 ## Implementation conventions
 
 - TypeScript, App Router, Tailwind v4.
-- **No light theme** unless the user asks — cinematic dark UI sitewide.
+- **Unified light theme sitewide:** as per user request, background is white and content is dark or green. Only exception is a specific black section on the home page.
 - **Visual-first:** prefer image/video placeholders and short labels; avoid long marketing copy on `/`, `/work`, `/services`.
 - **Cross-link:** Footer and About reference Marketing; header **Brand switch** links Marketing ↔ Creative (Creative is this deployment; Marketing is external).
 

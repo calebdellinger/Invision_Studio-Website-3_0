@@ -44,20 +44,20 @@ export function SocialServiceShell({
   const grid =
     tradeoffs.length === 1 ? (
       <div>
-        <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-montserrat)] sm:text-3xl">
           Platform strengths & trade-offs
         </h2>
-        <p className="mt-3 text-sm text-zinc-500">
+        <p className="mt-3 text-sm text-zinc-600">
           How {platform} fits your strategy — what you leverage, what you plan
           for.
         </p>
-        <div className="mt-8 overflow-hidden rounded-xl border border-white/[0.08] bg-[#111]/80 ring-1 ring-inset ring-white/[0.03]">
+        <div className="mt-8 overflow-hidden rounded-xl border border-black/[0.08] bg-white/80 ring-1 ring-inset ring-black/[0.03]">
           <div className="grid md:grid-cols-2">
-            <div className="border-b border-white/[0.06] p-6 md:border-b-0 md:border-r md:border-white/[0.06]">
+            <div className="border-b border-black/[0.06] p-6 md:border-b-0 md:border-r md:border-black/[0.06]">
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
                 Strengths
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
                 {tradeoffs[0].strength}
               </p>
             </div>
@@ -65,7 +65,7 @@ export function SocialServiceShell({
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-600">
                 Weaknesses
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-500">
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
                 {tradeoffs[0].weakness}
               </p>
             </div>
@@ -74,28 +74,28 @@ export function SocialServiceShell({
       </div>
     ) : (
       <div>
-        <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-montserrat)] sm:text-3xl">
           Strengths & trade-offs
         </h2>
-        <p className="mt-3 text-sm text-zinc-500">
+        <p className="mt-3 text-sm text-zinc-600">
           Strategic realities on {platform} — what you gain, what you accept.
         </p>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2">
           {tradeoffs.map((row, i) => (
             <li
               key={i}
-              className="rounded-xl border border-white/[0.07] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03]"
+              className="rounded-xl border border-black/[0.07] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03]"
             >
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-creative)]">
                 Strength
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                 {row.strength}
               </p>
               <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">
                 Trade-off
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                 {row.weakness}
               </p>
             </li>
@@ -119,10 +119,10 @@ export function SocialServiceShell({
 
           {pillars.length ? (
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-montserrat)] sm:text-3xl">
                 Platform playbook
               </h2>
-              <p className="mt-3 text-sm text-zinc-500">
+              <p className="mt-3 text-sm text-zinc-600">
                 A practical system for making {platform} content consistent and
                 conversion-aware.
               </p>
@@ -130,12 +130,12 @@ export function SocialServiceShell({
                 {pillars.map((pillar) => (
                   <li
                     key={pillar.title}
-                    className="rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03]"
+                    className="rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03]"
                   >
-                    <h3 className="text-base font-semibold tracking-tight text-white">
+                    <h3 className="text-base font-semibold tracking-tight text-zinc-900">
                       {pillar.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                       {pillar.body}
                     </p>
                   </li>
@@ -146,15 +146,15 @@ export function SocialServiceShell({
 
           {cadence.length ? (
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-montserrat)] sm:text-3xl">
                 Cadence that keeps momentum
               </h2>
-              <p className="mt-3 text-sm text-zinc-500">
+              <p className="mt-3 text-sm text-zinc-600">
                 We plan around repeatable publishing rhythms, not one-off spikes.
               </p>
-              <ul className="mt-6 space-y-3 rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03]">
+              <ul className="mt-6 space-y-3 rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03]">
                 {cadence.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm text-zinc-300">
+                  <li key={item} className="flex gap-3 text-sm text-zinc-600">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-creative)]" />
                     <span>{item}</span>
                   </li>
@@ -165,17 +165,17 @@ export function SocialServiceShell({
 
           {metrics.length ? (
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-montserrat)] sm:text-3xl">
                 What we measure
               </h2>
-              <p className="mt-3 text-sm text-zinc-500">
+              <p className="mt-3 text-sm text-zinc-600">
                 Metrics that indicate true platform fit and business traction.
               </p>
               <ul className="mt-8 grid gap-4 sm:grid-cols-2">
                 {metrics.map((metric) => (
                   <li
                     key={metric}
-                    className="rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 text-sm leading-relaxed text-zinc-300 ring-1 ring-inset ring-white/[0.03]"
+                    className="rounded-xl border border-black/[0.08] bg-white/80 p-5 text-sm leading-relaxed text-zinc-600 ring-1 ring-inset ring-black/[0.03]"
                   >
                     {metric}
                   </li>

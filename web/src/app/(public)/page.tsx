@@ -15,26 +15,11 @@ export default function Home() {
 
       <OperationPillars />
 
-      <section className="-mb-px w-full overflow-hidden bg-black" aria-label="Mirrored mountain scene">
-        <Image
-          src="/rebuild-gallery/3pillarsHero.jpg"
-          alt="Mirrored mountain silhouette"
-          width={1920}
-          height={1080}
-          className="h-auto w-full scale-y-[-1]"
-          priority={false}
-        />
-      </section>
-
-      <div className="relative z-10 -mt-[240px] translate-y-[17%]">
+      <div className="relative z-10">
         <InstagramPhoneShowcase />
       </div>
 
       <HomepageMockupShowcase />
-
-      <div className="bg-white py-24 sm:py-32">
-        <HeroMockupStage />
-      </div>
 
       <CategoryTiles />
     </div>

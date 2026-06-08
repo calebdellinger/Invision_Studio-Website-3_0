@@ -225,23 +225,23 @@ function PhotoTypeGrid() {
       {types.map(({ Icon, label, tagline, description, channels }) => (
         <div
           key={label}
-          className="rounded-xl border border-white/[0.08] bg-[#0e0e0e] p-5 ring-1 ring-inset ring-white/[0.03]"
+          className="rounded-xl border border-black/[0.08] bg-white p-5 ring-1 ring-inset ring-black/[0.03]"
         >
           <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-[#111] text-[var(--brand-creative)]">
+            <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-black/10 bg-white text-[var(--brand-creative)]">
               <Icon />
             </span>
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
               {label}
             </p>
           </div>
-          <p className="mt-3 text-[15px] font-semibold text-white">{tagline}</p>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-400">{description}</p>
+          <p className="mt-3 text-[15px] font-semibold text-zinc-900">{tagline}</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-600">{description}</p>
           <div className="mt-4 flex flex-wrap gap-1.5">
             {channels.map((ch) => (
               <span
                 key={ch}
-                className="rounded-full border border-white/[0.07] bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-zinc-500"
+                className="rounded-full border border-black/[0.07] bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-zinc-600"
               >
                 {ch}
               </span>
@@ -329,10 +329,10 @@ function AssetReuseMap() {
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--brand-creative)_40%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_14%,transparent)] text-[var(--brand-creative)]">
           <IconCamera />
         </div>
-        <p className="mt-3 text-base font-semibold text-white [font-family:var(--font-montserrat)]">
+        <p className="mt-3 text-base font-semibold text-zinc-900 [font-family:var(--font-montserrat)]">
           One Professional Photo Shoot
         </p>
-        <p className="mt-1 text-sm text-zinc-400">
+        <p className="mt-1 text-sm text-zinc-600">
           A single session with Invision Creative builds a library of assets
           deployable across every channel you use — simultaneously.
         </p>
@@ -346,7 +346,7 @@ function AssetReuseMap() {
           return (
             <div
               key={id}
-              className="rounded-xl border border-white/[0.07] bg-[#0d0d0d] p-5"
+              className="rounded-xl border border-black/[0.07] bg-white p-5"
             >
               <div className="mb-4 flex items-center gap-2.5">
                 <span
@@ -366,7 +366,7 @@ function AssetReuseMap() {
                     <span className="mt-[3px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--brand-creative)]" aria-hidden />
                     <div>
                       <p className="text-sm font-medium text-zinc-200">{item.name}</p>
-                      <p className="text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+                      <p className="text-xs leading-relaxed text-zinc-600">{item.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -411,21 +411,21 @@ function PhotoStatsChart() {
   ];
 
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0d0d0d] p-6 ring-1 ring-inset ring-white/[0.03]">
+    <div className="rounded-2xl border border-black/[0.08] bg-white p-6 ring-1 ring-inset ring-black/[0.03]">
       <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
         Industry data
       </p>
-      <h3 className="mt-2 text-xl font-semibold text-white [font-family:var(--font-montserrat)]">
+      <h3 className="mt-2 text-xl font-semibold text-zinc-900 [font-family:var(--font-montserrat)]">
         Why professional photography is non-negotiable
       </h3>
-      <p className="mt-1 text-xs text-zinc-500">
+      <p className="mt-1 text-xs text-zinc-600">
         Sources: Kissmetrics · BigCommerce · Venngage · HubSpot · Redfin
       </p>
       <div className="mt-6 space-y-5">
         {stats.map((stat, i) => (
           <div key={stat.label}>
             <div className="mb-2 flex items-start justify-between gap-4">
-              <p className="text-xs leading-snug text-zinc-400">{stat.label}</p>
+              <p className="text-xs leading-snug text-zinc-600">{stat.label}</p>
               <p className="flex-shrink-0 text-sm font-bold text-[var(--brand-creative)]">
                 {stat.value}%
               </p>
@@ -460,12 +460,12 @@ function BigStatRow() {
       {callouts.map(({ value, label }) => (
         <div
           key={label}
-          className="rounded-xl border border-white/[0.08] bg-[#0d0d0d] p-4 text-center ring-1 ring-inset ring-white/[0.03]"
+          className="rounded-xl border border-black/[0.08] bg-white p-4 text-center ring-1 ring-inset ring-black/[0.03]"
         >
           <p className="text-2xl font-bold text-[var(--brand-creative)] sm:text-3xl [font-family:var(--font-montserrat)]">
             {value}
           </p>
-          <p className="mt-1 text-[11px] leading-snug text-zinc-500">{label}</p>
+          <p className="mt-1 text-[11px] leading-snug text-zinc-600">{label}</p>
         </div>
       ))}
     </div>
@@ -548,17 +548,17 @@ export default function PhotographyServicePage() {
         }
         headerEdgeSlot={
           <div className="px-4 text-center">
-            <p className="text-6xl font-semibold tracking-tight text-white [font-family:var(--font-plus-jakarta)] sm:text-7xl lg:text-8xl">
+            <p className="text-6xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-plus-jakarta)] sm:text-7xl lg:text-8xl">
               Photography
             </p>
-            <p className="mt-8 inline-block rounded-lg border border-white/15 bg-black/35 px-5 py-2 text-sm font-medium tracking-wide text-zinc-100 [font-family:var(--font-plus-jakarta)] sm:mt-10 sm:text-base">
+            <p className="mt-8 inline-block rounded-lg border border-black/15 bg-white/35 px-5 py-2 text-sm font-medium tracking-wide text-zinc-100 [font-family:var(--font-plus-jakarta)] sm:mt-10 sm:text-base">
               In 1839, when photography was first announced, French painter Paul Delaroche reportedly said it was &ldquo;the greatest invention since the printing press&rdquo;
             </p>
           </div>
         }
         powerSectionSpacingClassName="pt-32 sm:pt-36 lg:pt-40"
         introSlot={
-          <p className="rounded-full border border-white/10 bg-black/30 px-4 py-2 text-xs tracking-wide text-zinc-300 backdrop-blur-sm">
+          <p className="rounded-full border border-black/10 bg-white/30 px-4 py-2 text-xs tracking-wide text-zinc-600 backdrop-blur-sm">
             Visual quality is your brand before the first conversation.
           </p>
         }
@@ -567,7 +567,7 @@ export default function PhotographyServicePage() {
         assetTitle="Shoot once. Deploy everywhere."
         assetBody={
           <div className="space-y-5">
-            <p className="text-[15px] leading-relaxed text-zinc-400">
+            <p className="text-[15px] leading-relaxed text-zinc-600">
               Stock imagery looks like stock imagery. Competitors can use it too
               — and often do. A custom photo shoot creates a visual library that
               is entirely yours: unique, brand-matched, and deployable across
@@ -579,7 +579,7 @@ export default function PhotographyServicePage() {
         compoundTitle="The business case, in numbers"
         compoundBody={
           <div className="space-y-5">
-            <p className="text-[15px] leading-relaxed text-zinc-400">
+            <p className="text-[15px] leading-relaxed text-zinc-600">
               The ROI on professional imagery is well documented. Across
               industries, companies that invest in quality photography see
               measurable improvements in engagement, conversions, and time-to-decision.
@@ -591,13 +591,13 @@ export default function PhotographyServicePage() {
         footerSlot={
           <div className="space-y-12">
             {/* What makes ours different */}
-            <section className="rounded-2xl border border-white/[0.08] bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-creative)_10%,transparent),transparent_45%),#0f0f10] p-5 ring-1 ring-inset ring-white/[0.03] sm:p-7">
+            <section className="rounded-2xl border border-black/[0.08] bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-creative)_10%,transparent),transparent_45%),#0f0f10] p-5 ring-1 ring-inset ring-black/[0.03] sm:p-7">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
                     Our approach
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                     Strategy before shutter
                   </h2>
                 </div>
@@ -605,7 +605,7 @@ export default function PhotographyServicePage() {
                   Built to convert
                 </span>
               </div>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-400">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">
                 Most photographers show up and shoot. We show up with a plan. Before
                 the camera comes out, every image is mapped to a job — trust-building,
                 product clarity, lifestyle aspiration, or conversion. That intent is
@@ -633,7 +633,7 @@ export default function PhotographyServicePage() {
                   ].map(({ id, label, desc }) => (
                     <li
                       key={id}
-                      className="rounded-xl border border-white/[0.08] bg-[#111]/85 p-5 ring-1 ring-inset ring-white/[0.03]"
+                      className="rounded-xl border border-black/[0.08] bg-white/85 p-5 ring-1 ring-inset ring-black/[0.03]"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
@@ -643,7 +643,7 @@ export default function PhotographyServicePage() {
                           {id}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+                      <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                         {desc}
                       </p>
                     </li>
@@ -654,22 +654,22 @@ export default function PhotographyServicePage() {
 
             {/* FAQ */}
             <section>
-              <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                 Frequently asked questions
               </h2>
-              <p className="mt-3 text-sm text-zinc-500">
+              <p className="mt-3 text-sm text-zinc-600">
                 Answers to the questions clients ask before their first shoot.
               </p>
               <div className="mt-6 space-y-3">
                 {faqItems.map((item) => (
                   <details
                     key={item.question}
-                    className="group rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03]"
+                    className="group rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03]"
                   >
-                    <summary className="cursor-pointer list-none text-sm font-semibold tracking-tight text-white">
+                    <summary className="cursor-pointer list-none text-sm font-semibold tracking-tight text-zinc-900">
                       {item.question}
                     </summary>
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-600">
                       {item.answer}
                     </p>
                   </details>
@@ -679,10 +679,10 @@ export default function PhotographyServicePage() {
 
             {/* Related services */}
             <section>
-              <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                 Pair photography with
               </h2>
-              <p className="mt-3 text-sm text-zinc-500">
+              <p className="mt-3 text-sm text-zinc-600">
                 Photography works harder when it&#39;s connected to a full
                 visual system.
               </p>
@@ -710,15 +710,15 @@ export default function PhotographyServicePage() {
                   <Link
                     key={href}
                     href={href}
-                    className="group rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03] transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_0_30px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
+                    className="group rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03] transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_0_30px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
                   >
                     <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-creative)]">
                       {label}
                     </p>
-                    <h3 className="mt-2 text-lg font-semibold tracking-tight text-white">
+                    <h3 className="mt-2 text-lg font-semibold tracking-tight text-zinc-900">
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                       {desc}
                     </p>
                   </Link>

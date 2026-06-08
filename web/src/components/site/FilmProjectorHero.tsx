@@ -10,7 +10,7 @@ export function FilmProjectorHero() {
   return (
     <section
       id="motion-timelapse-hero"
-      className="relative w-full min-w-0 overflow-x-clip bg-black pt-14 pb-20 sm:pt-20 sm:pb-24"
+      className="relative w-full min-w-0 overflow-x-clip bg-white pt-14 pb-20 sm:pt-20 sm:pb-24"
       aria-label="Motion: timelapse"
     >
       <div
@@ -25,14 +25,14 @@ export function FilmProjectorHero() {
         <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-[var(--brand-creative)]">
           Motion
         </p>
-        <p className="mt-2 text-center text-sm text-zinc-500">
+        <p className="mt-2 text-center text-sm text-zinc-600">
           Export-ready across tablet and mobile screens.
         </p>
 
-        <div className="relative mt-8 overflow-hidden rounded-sm bg-black">
+        <div className="relative mt-8 overflow-hidden rounded-sm bg-white">
           <video
             src={WRAPAROUND_VIDEO}
-            className="block h-auto w-full bg-black"
+            className="block h-auto w-full bg-white"
             autoPlay
             loop
             muted

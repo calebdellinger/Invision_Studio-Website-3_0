@@ -34,7 +34,7 @@ export function PhotographyFilmstripMarquee() {
       className="w-full max-w-none overflow-hidden rounded-none border-0 bg-[#040404]"
       aria-label="Photography samples shown as a scrolling marquee"
     >
-      <div className="flex items-center border-b border-white/[0.06] px-3 py-2 sm:px-4">
+      <div className="flex items-center border-b border-black/[0.06] px-3 py-2 sm:px-4">
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--brand-creative)]">
           Stills
         </p>
@@ -63,7 +63,7 @@ export function PhotographyFilmstripMarquee() {
             {slides.map((slide, i) => (
               <li
                 key={slide.src}
-                className={`relative shrink-0 overflow-hidden rounded-sm border border-white/10 bg-black shadow-[0_12px_40px_-20px_rgba(0,0,0,0.9)] ring-1 ring-inset ring-white/[0.04] ${
+                className={`relative shrink-0 overflow-hidden rounded-sm border border-black/10 bg-white shadow-[0_12px_40px_-20px_rgba(0,0,0,0.9)] ring-1 ring-inset ring-black/[0.04] ${
                   MARQUEE_VARIANTS[i % MARQUEE_VARIANTS.length]
                 }`}
               >
@@ -94,7 +94,7 @@ export function PhotographyFilmstripMarquee() {
               {slides.map((slide, i) => (
                 <li
                   key={slide.src}
-                  className={`relative shrink-0 overflow-hidden rounded-sm border border-white/10 bg-black shadow-[0_16px_48px_-24px_rgba(0,0,0,0.95)] ring-1 ring-inset ring-white/[0.05] ${
+                  className={`relative shrink-0 overflow-hidden rounded-sm border border-black/10 bg-white shadow-[0_16px_48px_-24px_rgba(0,0,0,0.95)] ring-1 ring-inset ring-black/[0.05] ${
                     MARQUEE_VARIANTS[i % MARQUEE_VARIANTS.length]
                   }`}
                 >
@@ -120,7 +120,7 @@ export function PhotographyFilmstripMarquee() {
                 <li
                   key={`dup-${slide.src}`}
                   aria-hidden="true"
-                  className={`relative shrink-0 overflow-hidden rounded-sm border border-white/10 bg-black shadow-[0_16px_48px_-24px_rgba(0,0,0,0.95)] ring-1 ring-inset ring-white/[0.05] ${
+                  className={`relative shrink-0 overflow-hidden rounded-sm border border-black/10 bg-white shadow-[0_16px_48px_-24px_rgba(0,0,0,0.95)] ring-1 ring-inset ring-black/[0.05] ${
                     MARQUEE_VARIANTS[(slides.length + i) % MARQUEE_VARIANTS.length]
                   }`}
                 >

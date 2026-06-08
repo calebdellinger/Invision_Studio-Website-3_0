@@ -69,7 +69,7 @@ export function DaVinciResolveSyllabus() {
 
   return (
     <div
-      className={`${styles.root} flex min-h-[calc(100dvh-6.5rem)] flex-col overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0b] text-[#e5e5e5] shadow-2xl md:flex-row md:rounded-lg`}
+      className={`${styles.root} flex min-h-[calc(100dvh-6.5rem)] flex-col overflow-hidden rounded-xl border border-black/10 bg-[#0a0a0b] text-[#e5e5e5] shadow-2xl md:flex-row md:rounded-lg`}
       style={
         {
           fontFamily: "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
@@ -79,16 +79,16 @@ export function DaVinciResolveSyllabus() {
         } as CSSProperties
       }
     >
-      <aside className="flex w-full shrink-0 flex-col border-b border-white/5 bg-[#0d0d0f]/80 shadow-2xl backdrop-blur-xl md:w-72 md:border-r md:border-b-0">
-        <div className="border-b border-white/5 p-6 sm:p-8">
+      <aside className="flex w-full shrink-0 flex-col border-b border-black/5 bg-[#0d0d0f]/80 shadow-2xl backdrop-blur-xl md:w-72 md:border-r md:border-b-0">
+        <div className="border-b border-black/5 p-6 sm:p-8">
           <div className={`flex items-center gap-3 ${styles.floatAnim}`}>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-tr from-blue-600 to-purple-600 shadow-lg">
-              <span className="text-xs text-white" aria-hidden>
+              <span className="text-xs text-zinc-900" aria-hidden>
                 ▶
               </span>
             </div>
             <div>
-              <h1 className="text-xl font-black tracking-tighter text-white">RESOLVE MASTER</h1>
+              <h1 className="text-xl font-black tracking-tighter text-zinc-900">RESOLVE MASTER</h1>
               <div className="mt-1 h-1 w-full rounded-full bg-blue-500 opacity-50" />
             </div>
           </div>
@@ -106,8 +106,8 @@ export function DaVinciResolveSyllabus() {
               onClick={() => setActive(item.id)}
               className={`mx-3 my-0.5 flex w-[calc(100%-1.5rem)] items-center gap-3 rounded-lg px-5 py-3 text-left text-sm transition-all ${
                 active === item.id
-                  ? "bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-[0_4px_15px_rgba(0,123,255,0.35)]"
-                  : "text-zinc-300 hover:translate-x-1 hover:bg-white/[0.05]"
+                  ? "bg-gradient-to-br from-blue-600 to-blue-800 text-zinc-900 shadow-[0_4px_15px_rgba(0,123,255,0.35)]"
+                  : "text-zinc-600 hover:translate-x-1 hover:bg-white/[0.05]"
               }`}
             >
               <span className="w-5 shrink-0 text-center opacity-70" aria-hidden>
@@ -127,8 +127,8 @@ export function DaVinciResolveSyllabus() {
               onClick={() => setActive(item.id)}
               className={`mx-3 my-0.5 flex w-[calc(100%-1.5rem)] items-center gap-3 rounded-lg px-5 py-3 text-left text-sm transition-all ${
                 active === item.id
-                  ? "bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-[0_4px_15px_rgba(0,123,255,0.35)]"
-                  : "text-zinc-300 hover:translate-x-1 hover:bg-white/[0.05]"
+                  ? "bg-gradient-to-br from-blue-600 to-blue-800 text-zinc-900 shadow-[0_4px_15px_rgba(0,123,255,0.35)]"
+                  : "text-zinc-600 hover:translate-x-1 hover:bg-white/[0.05]"
               }`}
             >
               <span className="w-5 shrink-0 text-center opacity-70" aria-hidden>
@@ -137,10 +137,10 @@ export function DaVinciResolveSyllabus() {
               {item.label}
             </button>
           ))}
-          <div className="mt-auto border-t border-white/5 p-4">
+          <div className="mt-auto border-t border-black/5 p-4">
             <Link
               href="/internal"
-              className="block rounded-md border border-white/10 px-3 py-2 text-center text-xs text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
+              className="block rounded-md border border-black/10 px-3 py-2 text-center text-xs text-zinc-600 transition-colors hover:border-black/20 hover:text-black"
             >
               ← Team resources
             </Link>
@@ -178,7 +178,7 @@ export function DaVinciResolveSyllabus() {
               {page.shortcuts.map((category) => (
                 <div
                   key={category.cat}
-                  className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_15px_35px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] backdrop-blur-xl transition-[transform,box-shadow] duration-300 [transform:translateZ(0)] hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(0,0,0,0.55),0_0_15px_rgba(0,123,255,0.25)]"
+                  className="rounded-2xl border border-black/[0.08] bg-white/[0.03] p-8 shadow-[0_15px_35px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] backdrop-blur-xl transition-[transform,box-shadow] duration-300 [transform:translateZ(0)] hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(0,0,0,0.55),0_0_15px_rgba(0,123,255,0.25)]"
                 >
                   <h3 className="mb-6 text-xs font-black uppercase tracking-[0.3em] text-blue-400">
                     {category.cat}
@@ -206,7 +206,7 @@ export function DaVinciResolveSyllabus() {
                 const inner = (
                   <>
                     <div className="flex flex-1 flex-wrap items-center gap-4 sm:gap-6">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-blue-400 transition-all group-hover:bg-blue-600 group-hover:text-white">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-blue-400 transition-all group-hover:bg-blue-600 group-hover:text-black">
                         <span className="inline-block -rotate-45 transition-transform group-hover:rotate-0">
                           →
                         </span>
@@ -215,7 +215,7 @@ export function DaVinciResolveSyllabus() {
                         <span className="text-[10px] font-bold uppercase tracking-widest text-blue-500">
                           {res.type}
                         </span>
-                        <h3 className="mt-1 text-xl font-bold text-white sm:text-2xl">{res.title}</h3>
+                        <h3 className="mt-1 text-xl font-bold text-zinc-900 sm:text-2xl">{res.title}</h3>
                         <p className="mt-2 text-sm text-gray-500">{res.desc}</p>
                       </div>
                     </div>
@@ -226,7 +226,7 @@ export function DaVinciResolveSyllabus() {
                     <div
                       key={res.title}
                       title="In DaVinci Resolve: Help → Reference Manual"
-                      className="group flex cursor-default items-center justify-between rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 opacity-90 shadow-[0_15px_35px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8"
+                      className="group flex cursor-default items-center justify-between rounded-2xl border border-black/[0.08] bg-white/[0.03] p-6 opacity-90 shadow-[0_15px_35px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8"
                     >
                       {inner}
                     </div>
@@ -238,7 +238,7 @@ export function DaVinciResolveSyllabus() {
                     href={res.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 shadow-[0_15px_35px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(0,0,0,0.55),0_0_15px_rgba(0,123,255,0.2)] sm:p-8"
+                    className="group flex items-center justify-between rounded-2xl border border-black/[0.08] bg-white/[0.03] p-6 shadow-[0_15px_35px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(0,0,0,0.55),0_0_15px_rgba(0,123,255,0.2)] sm:p-8"
                   >
                     {inner}
                   </a>
@@ -256,14 +256,14 @@ export function DaVinciResolveSyllabus() {
                     </h3>
                     <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
                   </div>
-                  <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] shadow-[0_15px_35px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] backdrop-blur-xl">
+                  <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white/[0.03] shadow-[0_15px_35px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] backdrop-blur-xl">
                     {section.todos.map((todo, tIdx) => {
                       const todoId = `${active}-${sIdx}-${tIdx}`;
                       const checked = checks[todoId] ?? false;
                       return (
                         <div
                           key={todoId}
-                          className="flex items-center border-b border-white/[0.03] px-3 py-3.5 transition-colors last:border-b-0 hover:bg-white/[0.02] sm:px-4 sm:py-3.5"
+                          className="flex items-center border-b border-black/[0.03] px-3 py-3.5 transition-colors last:border-b-0 hover:bg-white/[0.02] sm:px-4 sm:py-3.5"
                         >
                           <input
                             id={todoId}
@@ -274,7 +274,7 @@ export function DaVinciResolveSyllabus() {
                           />
                           <label
                             htmlFor={todoId}
-                            className={`flex-1 cursor-pointer text-sm font-medium text-gray-300 transition-colors hover:text-white ${checked ? styles.completed : ""}`}
+                            className={`flex-1 cursor-pointer text-sm font-medium text-gray-300 transition-colors hover:text-black ${checked ? styles.completed : ""}`}
                           >
                             {todo}
                           </label>
@@ -296,7 +296,7 @@ export function DaVinciResolveSyllabus() {
                         href={r.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-blue-400"
+                        className="group flex items-center gap-2 text-sm text-zinc-900/60 transition-colors hover:text-blue-400"
                       >
                         <span className="text-[6px] transition-transform group-hover:scale-150" aria-hidden>
                           ●

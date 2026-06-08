@@ -20,7 +20,7 @@ export function GalleryStill({
 }: GalleryStillProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-sm ring-1 ring-inset ring-white/5 ${aspectClass} ${className}`}
+      className={`relative overflow-hidden rounded-sm ring-1 ring-inset ring-black/5 ${aspectClass} ${className}`}
     >
       <Image
         src={src}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-const heading = "font-semibold tracking-tight text-white [font-family:var(--font-montserrat)]";
+const heading = "font-semibold tracking-tight text-zinc-900 [font-family:var(--font-montserrat)]";
 
 type ServicePageShellProps = {
   eyebrow?: string;
@@ -39,7 +39,7 @@ export function ServicePageShell({
 }: ServicePageShellProps) {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-      <header className="border-b border-white/[0.06] pb-12">
+      <header className="border-b border-black/[0.06] pb-12">
         {headerMediaSlot ? (
           <div className="relative">
             {headerMediaSlot}
@@ -57,7 +57,7 @@ export function ServicePageShell({
             <h1 className={`mt-4 text-4xl leading-[1.1] sm:text-5xl ${heading}`}>
               {title}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-500">
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-600">
               {subtitle}
             </p>
             {introSlot ? <div className="mt-8">{introSlot}</div> : null}
@@ -67,14 +67,14 @@ export function ServicePageShell({
 
       <section className={powerSectionSpacingClassName}>
         <h2 className={`text-2xl sm:text-3xl ${heading}`}>{powerTitle}</h2>
-        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-zinc-400">
+        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-zinc-600">
           {powerBody}
         </div>
       </section>
 
       <section className="pt-14">
         <h2 className={`text-2xl sm:text-3xl ${heading}`}>{assetTitle}</h2>
-        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-zinc-400">
+        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-zinc-600">
           {assetBody}
         </div>
       </section>
@@ -82,14 +82,14 @@ export function ServicePageShell({
       {compoundTitle && compoundBody ? (
         <section className="pt-14">
           <h2 className={`text-2xl sm:text-3xl ${heading}`}>{compoundTitle}</h2>
-          <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-zinc-400">
+          <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-zinc-600">
             {compoundBody}
           </div>
         </section>
       ) : null}
 
       {footerSlot ? (
-        <div className="mt-14 border-t border-white/[0.06] pt-12">{footerSlot}</div>
+        <div className="mt-14 border-t border-black/[0.06] pt-12">{footerSlot}</div>
       ) : null}
 
       <div className="mt-14 flex flex-wrap gap-4">
@@ -101,7 +101,7 @@ export function ServicePageShell({
         </Link>
         <Link
           href="/services"
-          className="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
+          className="inline-flex items-center justify-center rounded-full border border-black/10 px-8 py-3.5 text-sm font-medium text-zinc-600 transition-colors hover:border-black/20 hover:text-black"
         >
           All services
         </Link>

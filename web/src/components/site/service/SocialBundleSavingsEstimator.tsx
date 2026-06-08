@@ -71,12 +71,12 @@ export function SocialBundleSavingsEstimator() {
   const width = (value: number) => `${Math.max((value / maxValue) * 100, 10)}%`;
 
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0f0f0f]/90 p-6 ring-1 ring-inset ring-white/[0.03]">
+    <div className="rounded-2xl border border-black/[0.08] bg-white/90 p-6 ring-1 ring-inset ring-black/[0.03]">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
           Savings simulator
         </p>
-        <div className="inline-flex rounded-full border border-white/10 bg-[#0a0a0a] p-1">
+        <div className="inline-flex rounded-full border border-black/10 bg-white p-1">
           {(["monthly", "yearly"] as const).map((view) => (
             <button
               key={view}
@@ -85,7 +85,7 @@ export function SocialBundleSavingsEstimator() {
               className={`rounded-full px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors ${
                 billingView === view
                   ? "bg-[var(--brand-creative)] text-[#0b0b0b]"
-                  : "text-zinc-400 hover:text-white"
+                  : "text-zinc-600 hover:text-black"
               }`}
             >
               {view}
@@ -94,10 +94,10 @@ export function SocialBundleSavingsEstimator() {
         </div>
       </div>
 
-      <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)]">
+      <h3 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)]">
         Bundle and save on content production
       </h3>
-      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600">
         Most of the effort is in the content itself. Bundling social management
         with a recurring shoot usually costs less than hiring separate teams for
         planning, production, and rollout.
@@ -111,8 +111,8 @@ export function SocialBundleSavingsEstimator() {
             onClick={() => setBundleType(type)}
             className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors ${
               bundleType === type
-                ? "border-[color-mix(in_srgb,var(--brand-creative)_50%,white_10%)] bg-[color-mix(in_srgb,var(--brand-creative)_16%,#0a0a0a)] text-white"
-                : "border-white/10 text-zinc-400 hover:border-white/20 hover:text-white"
+                ? "border-[color-mix(in_srgb,var(--brand-creative)_50%,white_10%)] bg-[color-mix(in_srgb,var(--brand-creative)_16%,#0a0a0a)] text-zinc-900"
+                : "border-black/10 text-zinc-600 hover:border-black/20 hover:text-black"
             }`}
           >
             <span className={bundleType === type ? "text-[var(--brand-creative)]" : ""}>
@@ -124,7 +124,7 @@ export function SocialBundleSavingsEstimator() {
       </div>
 
       <div className="mt-6">
-        <label className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+        <label className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
           Bundle discount: {bundleDiscount}%
         </label>
         <input
@@ -140,7 +140,7 @@ export function SocialBundleSavingsEstimator() {
 
       <div className="mt-7 space-y-4">
         <div>
-          <div className="mb-1 flex items-center justify-between text-xs text-zinc-500">
+          <div className="mb-1 flex items-center justify-between text-xs text-zinc-600">
             <span>Avg social media management ({values.viewLabel})</span>
             <span>{currency(values.managementOnly)}</span>
           </div>
@@ -153,7 +153,7 @@ export function SocialBundleSavingsEstimator() {
         </div>
 
         <div>
-          <div className="mb-1 flex items-center justify-between text-xs text-zinc-500">
+          <div className="mb-1 flex items-center justify-between text-xs text-zinc-600">
             <span>Separate teams: social + {bundleProfiles[bundleType].label.split(" + ")[1]} ({values.viewLabel})</span>
             <span>{currency(values.separateStack)}</span>
           </div>
@@ -166,7 +166,7 @@ export function SocialBundleSavingsEstimator() {
         </div>
 
         <div>
-          <div className="mb-1 flex items-center justify-between text-xs text-zinc-300">
+          <div className="mb-1 flex items-center justify-between text-xs text-zinc-600">
             <span>Bundled with Invision ({values.viewLabel})</span>
             <span className="text-[var(--brand-creative)]">{currency(values.bundled)}</span>
           </div>
@@ -180,7 +180,7 @@ export function SocialBundleSavingsEstimator() {
       </div>
 
       <div className="mt-6 rounded-xl border border-[color-mix(in_srgb,var(--brand-creative)_30%,white_6%)] bg-[color-mix(in_srgb,var(--brand-creative)_12%,#0a0a0a)] p-4">
-        <p className="text-xs uppercase tracking-[0.18em] text-zinc-300">
+        <p className="text-xs uppercase tracking-[0.18em] text-zinc-600">
           Estimated savings ({values.viewLabel})
         </p>
         <p className="mt-2 text-2xl font-semibold tracking-tight text-[var(--brand-creative)]">

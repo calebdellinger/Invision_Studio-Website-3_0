@@ -100,8 +100,9 @@ export function NeuralNetworkVisual({ stage, trade }: { stage: SimStage; trade: 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const rawCtx = canvas.getContext("2d");
+    if (!rawCtx) return;
+    const ctx: CanvasRenderingContext2D = rawCtx;
 
     let rafId: number;
     let W = canvas.offsetWidth;
@@ -482,7 +483,7 @@ export function NeuralNetworkVisual({ stage, trade }: { stage: SimStage; trade: 
               <span className="relative flex h-2 w-2">
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-300" />
               </span>
-              <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-zinc-500">
+              <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-zinc-600">
                 SYSTEM IDLE
               </span>
            </>

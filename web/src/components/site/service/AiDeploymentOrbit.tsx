@@ -153,7 +153,7 @@ const ExpandedCard = memo(function ExpandedCard({
         aria-hidden
       />
 
-      <div className="relative border-b border-zinc-100 bg-white/40 backdrop-blur-md px-4 py-6 sm:px-8 sm:py-8">
+      <div className="relative border-b border-zinc-100 bg-black/5 backdrop-blur-md px-4 py-6 sm:px-8 sm:py-8">
         <div className="h-[12rem] sm:h-[16rem] relative rounded-2xl overflow-hidden shadow-inner bg-zinc-50/50 border border-zinc-100/80">
           <ApproachIllustration id={approach.id} accent={approach.accent} />
           <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl pointer-events-none" />
@@ -175,27 +175,27 @@ const ExpandedCard = memo(function ExpandedCard({
               <h3 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-4xl">
                 {approach.title}
               </h3>
-              <p className="mt-2 text-xs font-bold text-zinc-400 uppercase tracking-[0.15em]">{approach.tagline}</p>
+              <p className="mt-2 text-xs font-bold text-zinc-600 uppercase tracking-[0.15em]">{approach.tagline}</p>
             </div>
           </motion.div>
           <button
             type="button"
             onClick={onClose}
-            className="shrink-0 rounded-full bg-white border border-zinc-200 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-600 shadow-sm transition-all hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 active:scale-95"
+            className="shrink-0 rounded-full bg-white border border-zinc-200 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-600 shadow-sm transition-all hover:border-zinc-300 hover:bg-zinc-50 hover:text-black active:scale-95"
           >
             Close
           </button>
         </div>
 
         <div className="mt-10">
-          <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-3">Architecture Overview</h4>
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600 mb-3">Architecture Overview</h4>
           <p className="text-[15px] leading-relaxed text-zinc-600 sm:text-[17px] max-w-3xl">
             {approach.description}
           </p>
         </div>
 
         <div className="mt-12">
-          <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-5">Core Capabilities</h4>
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600 mb-5">Core Capabilities</h4>
           <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {approach.features.map((feature) => (
               <li
@@ -208,7 +208,7 @@ const ExpandedCard = memo(function ExpandedCard({
                 </span>
                 <div className="relative">
                   <p className="text-[15px] font-bold text-zinc-900">{feature.title}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-500">{feature.description}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">{feature.description}</p>
                 </div>
               </li>
             ))}
@@ -273,7 +273,7 @@ const OrbitOrb = memo(function OrbitOrb({
           <span className="text-sm font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-base">
             {approach.title}
           </span>
-          <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">
+          <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-600">
             {approach.id === "hybrid" ? "Recommended" : "Click to open"}
           </span>
         </motion.button>

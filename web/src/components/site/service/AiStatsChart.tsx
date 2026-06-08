@@ -150,7 +150,7 @@ function TimeReclaimBar({
 
       {/* Legend */}
       <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[9px] uppercase tracking-wider">
-        <span className="flex items-center gap-1.5 text-zinc-500">
+        <span className="flex items-center gap-1.5 text-zinc-600">
           <span className="h-2 w-2 rounded-sm bg-zinc-600/50" />
           Manual · {formatDuration(manualTime)}
         </span>
@@ -191,7 +191,7 @@ function SavingsGauge({ percent }: { percent: number }) {
         <span className="text-2xl font-bold leading-none text-zinc-900 [font-family:var(--font-montserrat)]">
           {percent}%
         </span>
-        <span className="mt-0.5 text-[8px] font-bold uppercase tracking-widest text-zinc-500">faster</span>
+        <span className="mt-0.5 text-[8px] font-bold uppercase tracking-widest text-zinc-600">faster</span>
       </div>
     </div>
   );
@@ -211,7 +211,7 @@ function TimeBlockStack({
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-zinc-500">{label}</p>
+      <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-zinc-600">{label}</p>
       <div className="flex flex-wrap justify-center gap-1 max-w-[140px]">
         {Array.from({ length: blockCount }).map((_, i) => {
           const isPartial = i === blockCount - 1 && partialPct > 0 && partialPct < 1;
@@ -265,7 +265,7 @@ function TradeStatRow({ item, index }: { item: StatItem; index: number }) {
             {item.trade}
           </p>
           <h4 className="mt-0.5 text-sm font-semibold text-zinc-900">{item.task}</h4>
-          <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-500">{item.description}</p>
+          <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-600">{item.description}</p>
         </div>
 
         {/* Hero numbers — before → after */}
@@ -273,7 +273,7 @@ function TradeStatRow({ item, index }: { item: StatItem; index: number }) {
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="text-right">
               <p className="text-[9px] font-bold uppercase tracking-wider text-zinc-600">Before</p>
-              <p className="font-mono text-lg font-bold text-zinc-500 line-through decoration-zinc-600 sm:text-xl">
+              <p className="font-mono text-lg font-bold text-zinc-600 line-through decoration-zinc-600 sm:text-xl">
                 {formatDuration(item.manualTime)}
               </p>
             </div>
@@ -381,12 +381,12 @@ export function AiStatsChart() {
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--brand-creative)]">Estimated Cost Savings</p>
                 <p className="mt-1 text-sm text-zinc-700 font-semibold">$3,500 – $5,200 / month</p>
-                <p className="mt-0.5 text-[10px] text-zinc-500">From reduced material waste, fuel burn, and foreman hours.</p>
+                <p className="mt-0.5 text-[10px] text-zinc-600">From reduced material waste, fuel burn, and foreman hours.</p>
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--brand-creative)]">Growth Capacity Increase</p>
                 <p className="mt-1 text-sm text-zinc-700 font-semibold">+$150k+ in annual contracts</p>
-                <p className="mt-0.5 text-[10px] text-zinc-500">From 4x bidding capacity and faster lead response times.</p>
+                <p className="mt-0.5 text-[10px] text-zinc-600">From 4x bidding capacity and faster lead response times.</p>
               </div>
             </div>
           </div>

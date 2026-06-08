@@ -196,10 +196,10 @@ export function SocialPlatformStrengthGrid() {
                   "--tf-hover": selected ? transformSelectedLeanHover : transformLeanHover,
                 } as React.CSSProperties & Record<"--tf-idle" | "--tf-hover", string>
               }
-              className={`group relative overflow-hidden rounded-2xl border p-4 text-left ring-1 ring-inset ring-white/[0.04] [transform:var(--tf-idle)] transition-[transform,box-shadow,border-color,background-color] duration-300 ease-out will-change-transform [transform-style:preserve-3d] hover:[transform:var(--tf-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-creative)] ${
+              className={`group relative overflow-hidden rounded-2xl border p-4 text-left ring-1 ring-inset ring-black/[0.04] [transform:var(--tf-idle)] transition-[transform,box-shadow,border-color,background-color] duration-300 ease-out will-change-transform [transform-style:preserve-3d] hover:[transform:var(--tf-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-creative)] ${
                 selected
                   ? `border-[color-mix(in_srgb,var(--brand-creative)_55%,white_4%)] bg-[linear-gradient(165deg,rgba(30,30,30,0.98)_0%,#111_45%,#0c0c0c_100%)] ${shadowSelected} ${shadowSelectedHover}`
-                  : `border-white/12 bg-[linear-gradient(165deg,rgba(24,24,24,0.95)_0%,#0f0f0f_50%,#090909_100%)] ${shadowIdle} ${shadowHover} hover:border-white/28 hover:bg-[linear-gradient(165deg,#141414_0%,#121212_50%,#0d0d0d_100%)]`
+                  : `border-black/12 bg-[linear-gradient(165deg,rgba(24,24,24,0.95)_0%,#0f0f0f_50%,#090909_100%)] ${shadowIdle} ${shadowHover} hover:border-black/28 hover:bg-[linear-gradient(165deg,#141414_0%,#121212_50%,#0d0d0d_100%)]`
               } `}
               aria-pressed={selected}
             >
@@ -212,20 +212,20 @@ export function SocialPlatformStrengthGrid() {
                   className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_4px_10px_-4px_rgba(0,0,0,0.65)] transition-[transform,colors,border-color,box-shadow] duration-300 [transform:translateZ(6px)] group-hover:[transform:translateZ(18px)] ${
                     selected
                       ? "border-[color-mix(in_srgb,var(--brand-creative)_40%,white_12%)] bg-[linear-gradient(160deg,rgba(40,40,40,0.9)_0%,#0a0a0a_100%)] text-[var(--brand-creative)]"
-                      : "border-white/12 bg-[linear-gradient(160deg,#1a1a1a_0%,#0a0a0a_100%)] text-zinc-400 group-hover:border-white/22 group-hover:text-zinc-100"
+                      : "border-black/12 bg-[linear-gradient(160deg,#1a1a1a_0%,#0a0a0a_100%)] text-zinc-600 group-hover:border-black/22 group-hover:text-zinc-100"
                   }`}
                   aria-hidden
                 >
                   <SocialPlatformIcon id={platform.id} className="h-6 w-6" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-500">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-600">
                     Platform
                   </p>
-                  <h3 className="mt-2 text-lg font-semibold tracking-tight text-white">
+                  <h3 className="mt-2 text-lg font-semibold tracking-tight text-zinc-900">
                     {platform.name}
                   </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-zinc-500 transition-colors group-hover:text-zinc-400">
+                  <p className="mt-1 text-xs leading-relaxed text-zinc-600 transition-colors group-hover:text-zinc-600">
                     {platform.focus}
                   </p>
                 </div>
@@ -238,19 +238,19 @@ export function SocialPlatformStrengthGrid() {
       <aside
         ref={descriptionRef}
         id="platform-strength-detail"
-        className="scroll-mt-[calc(var(--header-height)+1rem)] rounded-2xl border border-white/10 bg-[#101010]/90 p-6 ring-1 ring-inset ring-white/[0.03]"
+        className="scroll-mt-[calc(var(--header-height)+1rem)] rounded-2xl border border-black/10 bg-[#101010]/90 p-6 ring-1 ring-inset ring-black/[0.03]"
       >
         <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
           Why {active.name} matters
         </p>
-        <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)]">
+        <h3 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)]">
           Strategic strengths
         </h3>
-        <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-          <span className="font-medium text-zinc-300">Algorithm signals:</span>{" "}
+        <p className="mt-4 text-sm leading-relaxed text-zinc-600">
+          <span className="font-medium text-zinc-600">Algorithm signals:</span>{" "}
           {active.algorithmSignal}
         </p>
-        <ul className="mt-5 space-y-3 text-sm leading-relaxed text-zinc-300">
+        <ul className="mt-5 space-y-3 text-sm leading-relaxed text-zinc-600">
           {active.strengths.map((strength) => (
             <li key={strength} className="flex gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-creative)]" />
@@ -261,7 +261,7 @@ export function SocialPlatformStrengthGrid() {
         {active.route ? (
           <Link
             href={active.route}
-            className="mt-6 inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-zinc-300 transition-colors hover:border-[color-mix(in_srgb,var(--brand-creative)_45%,white_12%)] hover:text-white"
+            className="mt-6 inline-flex items-center rounded-full border border-black/15 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-zinc-600 transition-colors hover:border-[color-mix(in_srgb,var(--brand-creative)_45%,white_12%)] hover:text-black"
           >
             Open {active.name} page
           </Link>

@@ -10,7 +10,7 @@ export function HeroMockupStage() {
               <iframe
                 title="Apex Detail hero mockup"
                 src="/mockups/apex_detail_mockup.html"
-                className="h-full w-full bg-black"
+                className="h-full w-full bg-white"
                 loading="eager"
                 aria-label="Apex Detail hero mockup"
               />
@@ -19,7 +19,7 @@ export function HeroMockupStage() {
               <iframe
                 title="Pumpkin Patch hero mockup"
                 src="/mockups/pumpkin_patch_v2.html"
-                className="h-full w-full bg-black"
+                className="h-full w-full bg-white"
                 loading="eager"
                 aria-label="Pumpkin Patch hero mockup"
               />
@@ -28,7 +28,7 @@ export function HeroMockupStage() {
               <iframe
                 title="Whiteout Co hero mockup"
                 src="/mockups/whiteout_co_mockup.html"
-                className="h-full w-full bg-black"
+                className="h-full w-full bg-white"
                 loading="eager"
                 aria-label="Whiteout Co hero mockup"
               />
@@ -37,7 +37,7 @@ export function HeroMockupStage() {
               <iframe
                 title="Current & Stone hero mockup"
                 src="/mockups/current_and_stone_mockup.html"
-                className="h-full w-full bg-black"
+                className="h-full w-full bg-white"
                 loading="eager"
                 aria-label="Current & Stone hero mockup"
               />
@@ -46,7 +46,7 @@ export function HeroMockupStage() {
               <iframe
                 title="Meridian Build hero mockup"
                 src="/mockups/meridian_build_hero (1).html"
-                className="h-full w-full bg-black"
+                className="h-full w-full bg-white"
                 loading="eager"
                 aria-label="Meridian Build hero mockup"
               />

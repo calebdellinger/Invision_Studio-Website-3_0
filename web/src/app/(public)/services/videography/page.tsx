@@ -37,11 +37,15 @@ export const metadata: Metadata = {
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
-function IconFilm() {
+interface IconProps {
+  className?: string;
+}
+
+function IconFilm({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -60,11 +64,11 @@ function IconFilm() {
   );
 }
 
-function IconStar() {
+function IconStar({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -76,11 +80,12 @@ function IconStar() {
   );
 }
 
-function IconVideo() {
+// Rename this function to avoid naming conflict with global/local type, and accept className
+function IconVideo({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -93,11 +98,11 @@ function IconVideo() {
   );
 }
 
-function IconWind() {
+function IconWind({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -109,11 +114,11 @@ function IconWind() {
   );
 }
 
-function IconSmartphone() {
+function IconSmartphone({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -126,11 +131,11 @@ function IconSmartphone() {
   );
 }
 
-function IconCalendar() {
+function IconCalendar({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -145,11 +150,11 @@ function IconCalendar() {
   );
 }
 
-function IconScissors() {
+function IconScissors({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-4 w-4"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -165,11 +170,11 @@ function IconScissors() {
   );
 }
 
-function IconLayers() {
+function IconLayers({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-4 w-4"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -183,20 +188,20 @@ function IconLayers() {
   );
 }
 
-function IconArchive() {
+function IconTarget({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-4 w-4"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <polyline points="21 8 21 21 3 21 3 8" />
-      <rect x="1" y="3" width="22" height="5" />
-      <line x1="10" y1="12" x2="14" y2="12" />
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
     </svg>
   );
 }
@@ -260,27 +265,39 @@ function VideoTypeGrid() {
       {types.map(({ Icon, label, tagline, description, formats }) => (
         <div
           key={label}
-          className="rounded-xl border border-white/[0.08] bg-[#0e0e0e] p-5 ring-1 ring-inset ring-white/[0.03]"
+          className="group relative rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 transition-all duration-300 hover:border-[var(--brand-creative)] hover:bg-white hover:shadow-xl"
         >
-          <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-[#111] text-[var(--brand-creative)]">
-              <Icon />
-            </span>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-white text-[var(--brand-creative)] transition-colors group-hover:border-[var(--brand-creative)]/20 group-hover:bg-[var(--brand-creative)]/5">
+              <Icon className="h-6 w-6" />
+            </div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 group-hover:text-[var(--brand-creative)] transition-colors">
               {label}
             </p>
           </div>
-          <p className="mt-3 text-[15px] font-semibold text-white">{tagline}</p>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-400">{description}</p>
-          <div className="mt-4 flex flex-wrap gap-1.5">
+          
+          <h3 className="mt-6 font-serif text-2xl tracking-tight text-zinc-950">
+            {tagline}
+          </h3>
+          
+          <p className="mt-3 text-sm leading-relaxed text-zinc-500 font-medium">
+            {description}
+          </p>
+          
+          <div className="mt-6 flex flex-wrap gap-2">
             {formats.map((f) => (
               <span
                 key={f}
-                className="rounded-full border border-white/[0.07] bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-zinc-500"
+                className="rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-600 transition-colors"
               >
                 {f}
               </span>
             ))}
+          </div>
+
+          {/* Technical detail markup */}
+          <div className="absolute right-4 bottom-4 h-4 w-4 opacity-0 transition-opacity group-hover:opacity-20">
+             <div className="absolute right-0 bottom-0 h-full w-full border-r border-b border-zinc-950" />
           </div>
         </div>
       ))}
@@ -335,43 +352,41 @@ function VideoDeliverablesMap() {
 
   const colorMap = {
     purple: {
-      badge: "border-purple-400/20 bg-purple-400/5 text-purple-400",
-      icon: "border-purple-400/20 bg-purple-400/10 text-purple-400",
-      dot: "bg-purple-400",
+      badge: "border-purple-200 bg-purple-50 text-purple-700",
+      icon: "border-purple-100 bg-purple-50 text-purple-600",
+      dot: "bg-purple-500",
     },
     pink: {
-      badge: "border-pink-400/20 bg-pink-400/5 text-pink-400",
-      icon: "border-pink-400/20 bg-pink-400/10 text-pink-400",
-      dot: "bg-pink-400",
+      badge: "border-pink-200 bg-pink-50 text-pink-700",
+      icon: "border-pink-100 bg-pink-50 text-pink-600",
+      dot: "bg-pink-500",
     },
     orange: {
-      badge: "border-orange-400/20 bg-orange-400/5 text-orange-400",
-      icon: "border-orange-400/20 bg-orange-400/10 text-orange-400",
-      dot: "bg-orange-400",
+      badge: "border-orange-200 bg-orange-50 text-orange-700",
+      icon: "border-orange-100 bg-orange-50 text-orange-600",
+      dot: "bg-orange-500",
     },
     blue: {
-      badge: "border-blue-400/20 bg-blue-400/5 text-blue-400",
-      icon: "border-blue-400/20 bg-blue-400/10 text-blue-400",
-      dot: "bg-blue-400",
+      badge: "border-blue-200 bg-blue-50 text-blue-700",
+      icon: "border-blue-100 bg-blue-50 text-blue-600",
+      dot: "bg-blue-500",
     },
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* Source */}
-      <div className="relative rounded-2xl border border-[color-mix(in_srgb,var(--brand-creative)_30%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_6%,#0a0a0a)] p-6 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--brand-creative)_40%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_14%,transparent)] text-[var(--brand-creative)]">
-          <IconVideo />
+      <div className="group relative rounded-2xl border border-zinc-200 bg-zinc-50/50 p-8 text-center transition-all hover:bg-white hover:shadow-lg">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-zinc-200 bg-white text-[var(--brand-creative)] shadow-sm transition-transform group-hover:scale-110">
+          <IconVideo className="h-8 w-8" />
         </div>
-        <p className="mt-3 text-base font-semibold text-white [font-family:var(--font-montserrat)]">
-          One Production Day
+        <h4 className="mt-6 font-serif text-2xl font-semibold text-zinc-950">One Production Day</h4>
+        <p className="mt-3 mx-auto max-w-xl text-sm leading-relaxed text-zinc-500 font-medium">
+          A single shoot generates enough raw material to
+          produce a full library of deliverables — horizontal,
+          vertical, long, and short — without ever returning to set.
         </p>
-        <p className="mt-1 text-sm text-zinc-400">
-          A single shoot with Invision Creative generates enough raw material to
-          produce a full library of deliverables — short, long, horizontal,
-          vertical, paid, organic — without ever returning to set.
-        </p>
-        <div className="absolute bottom-0 left-1/2 h-5 w-px -translate-x-1/2 translate-y-full bg-gradient-to-b from-[color-mix(in_srgb,var(--brand-creative)_50%,transparent)] to-transparent" aria-hidden />
+        <div className="absolute -bottom-6 left-1/2 h-6 w-px -translate-x-1/2 bg-gradient-to-b from-zinc-200 to-transparent" aria-hidden />
       </div>
 
       {/* Output grid */}
@@ -381,30 +396,29 @@ function VideoDeliverablesMap() {
           return (
             <div
               key={category}
-              className="rounded-xl border border-white/[0.07] bg-[#0d0d0d] p-5"
+              className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
             >
-              <div className="mb-4 flex items-center gap-2.5">
-                <span
-                  className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border ${c.icon}`}
-                >
-                  <Icon />
-                </span>
-                <span
-                  className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] ${c.badge}`}
-                >
-                  {category}
-                </span>
+              <div className="mb-6 flex items-center justify-between gap-2.5">
+                <div className="flex items-center gap-3">
+                  <span className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg border ${c.icon}`}>
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className={`rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] ${c.badge}`}>
+                    {category}
+                  </span>
+                </div>
+                <div className="h-px flex-1 bg-zinc-100" />
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {deliverables.map((d) => (
-                  <li key={d.name} className="flex items-start gap-2.5">
-                    <span className={`mt-[5px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${c.dot}`} aria-hidden />
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <p className="text-sm font-medium text-zinc-200">{d.name}</p>
-                        <span className="text-[10px] font-medium text-zinc-600">{d.duration}</span>
+                  <li key={d.name} className="group/item flex items-start gap-3">
+                    <span className={`mt-[6px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${c.dot} transition-transform group-hover/item:scale-150`} aria-hidden />
+                    <div className="flex-1">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <p className="text-sm font-bold text-zinc-900">{d.name}</p>
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-400">{d.duration}</span>
                       </div>
-                      <p className="text-xs leading-relaxed text-zinc-500">{d.note}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-zinc-500 font-medium">{d.note}</p>
                     </div>
                   </li>
                 ))}
@@ -413,33 +427,7 @@ function VideoDeliverablesMap() {
           );
         })}
       </div>
-
-      <p className="rounded-lg border border-white/[0.05] bg-white/[0.02] px-4 py-3 text-xs leading-relaxed text-zinc-500">
-        <span className="font-semibold text-zinc-400">The archive advantage:</span>{" "}
-        Every shoot adds to a growing footage library. Over time, we can produce
-        full brand films simply by drawing from what we&#39;ve already built
-        together — dramatically reducing future production costs.
-      </p>
     </div>
-  );
-}
-
-// Reuse IconTarget from earlier context
-function IconTarget() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="6" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>
   );
 }
 
@@ -475,21 +463,21 @@ function VideoStatsChart() {
   ];
 
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0d0d0d] p-6 ring-1 ring-inset ring-white/[0.03]">
+    <div className="rounded-2xl border border-black/[0.08] bg-white p-6 ring-1 ring-inset ring-black/[0.03]">
       <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
         Industry data
       </p>
-      <h3 className="mt-2 text-xl font-semibold text-white [font-family:var(--font-montserrat)]">
+      <h3 className="mt-2 text-xl font-semibold text-zinc-900 [font-family:var(--font-montserrat)]">
         Video outperforms every other content format
       </h3>
-      <p className="mt-1 text-xs text-zinc-500">
+      <p className="mt-1 text-xs text-zinc-600">
         Sources: HubSpot · Wyzowl · Unbounce · Brightcove
       </p>
       <div className="mt-6 space-y-5">
         {stats.map((stat, i) => (
           <div key={stat.label}>
             <div className="mb-2 flex items-start justify-between gap-4">
-              <p className="text-xs leading-snug text-zinc-400">{stat.label}</p>
+              <p className="text-xs leading-snug text-zinc-600">{stat.label}</p>
               <p className="flex-shrink-0 text-sm font-bold text-[var(--brand-creative)]">
                 {stat.value}%
               </p>
@@ -520,16 +508,17 @@ function BigVideoStatRow() {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-3 gap-4">
       {callouts.map(({ value, label }) => (
         <div
           key={label}
-          className="rounded-xl border border-white/[0.08] bg-[#0d0d0d] p-4 text-center ring-1 ring-inset ring-white/[0.03]"
+          className="relative rounded-2xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:shadow-lg"
         >
-          <p className="text-xl font-bold text-[var(--brand-creative)] sm:text-2xl [font-family:var(--font-montserrat)]">
+          <div className="absolute top-0 left-6 h-1 w-8 bg-[var(--brand-creative)]" />
+          <p className="font-serif text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl">
             {value}
           </p>
-          <p className="mt-1 text-[11px] leading-snug text-zinc-500">{label}</p>
+          <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.25em] leading-snug text-zinc-400">{label}</p>
         </div>
       ))}
     </div>
@@ -592,34 +581,22 @@ export default function VideographyServicePage() {
         eyebrow="Videography"
         title="Motion content built to move people"
         subtitle="In a saturated market, video is the format that earns real attention. It conveys scale, expertise, and personality in seconds — then lives in your content library for years, compounding its value with every reuse."
-        introSlot={
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] ring-1 ring-inset ring-white/[0.03]">
-            <div className="flex aspect-[16/9] items-center justify-center bg-[#0a0a0a]">
-              {/* Filmstrip visual placeholder */}
-              <div className="w-full overflow-hidden">
-                <div className="flex h-32 w-full items-center gap-1 px-4">
-                  {Array.from({ length: 9 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="h-full flex-1 rounded-sm border border-white/[0.06] bg-white/[0.02]"
-                      style={{ opacity: 0.3 + (i % 3) * 0.2 }}
-                    />
-                  ))}
-                </div>
-                <div className="mt-3 flex items-center justify-center gap-3 px-4">
-                  <div className="h-px flex-1 bg-white/[0.06]" />
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--brand-creative)_40%,transparent)] bg-[color-mix(in_srgb,var(--brand-creative)_10%,transparent)] text-[var(--brand-creative)]">
-                    <svg viewBox="0 0 24 24" className="h-4 w-4 translate-x-0.5 fill-current">
-                      <polygon points="5 3 19 12 5 21 5 3" />
-                    </svg>
-                  </div>
-                  <div className="h-px flex-1 bg-white/[0.06]" />
-                </div>
-              </div>
+        headerMediaSlot={
+          <div className="relative left-1/2 -mt-[calc(var(--header-height)+4rem)] w-dvw max-w-none -translate-x-1/2 overflow-hidden sm:-mt-[calc(var(--header-height)+5rem)] lg:-mt-[calc(var(--header-height)+6rem)]">
+            <div className="relative aspect-[16/9]">
+              <video
+                src="https://photos.smugmug.com/RebiuldWeb/i-ZnVBKGh/0/KQ9wsS75zkbfrQTHZvKhB27CZGDCLw7MWMGQD96CT/1920/DJI_20250602130614_0246_D-1920.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              />
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-white sm:h-36 lg:h-44"
+                aria-hidden
+              />
             </div>
-            <p className="border-t border-white/[0.06] px-4 py-3 text-xs tracking-wide text-zinc-500">
-              Motion communicates what no still image can — feeling, scale, and momentum.
-            </p>
           </div>
         }
         powerTitle="Six production formats we deliver"
@@ -627,7 +604,7 @@ export default function VideographyServicePage() {
         assetTitle="One production day. Dozens of deliverables."
         assetBody={
           <div className="space-y-5">
-            <p className="text-[15px] leading-relaxed text-zinc-400">
+            <p className="text-[15px] leading-relaxed text-zinc-600">
               The biggest myth in video production is that you need separate
               shoots for each platform. We plan every production to generate a
               full library of content from one session — horizontal, vertical,
@@ -639,16 +616,16 @@ export default function VideographyServicePage() {
         compoundTitle="The video advantage, in numbers"
         compoundBody={
           <div className="space-y-5">
-            <p className="text-[15px] leading-relaxed text-zinc-400">
+            <p className="text-[15px] leading-relaxed text-zinc-600">
               Video isn&#39;t just popular — it&#39;s the highest-performing
               content format across awareness, consideration, and conversion. The
               data is consistent across industries and platforms.
             </p>
             <BigVideoStatRow />
             <VideoStatsChart />
-            <div className="rounded-xl border border-white/[0.08] bg-[#0f0f0f] px-5 py-4">
-              <p className="text-xs leading-relaxed text-zinc-400">
-                <span className="font-semibold text-zinc-300">The share gap is real:</span>{" "}
+            <div className="rounded-xl border border-black/[0.08] bg-white px-5 py-4">
+              <p className="text-xs leading-relaxed text-zinc-600">
+                <span className="font-semibold text-zinc-600">The share gap is real:</span>{" "}
                 Video content generates{" "}
                 <span className="font-semibold text-[var(--brand-creative)]">1,200% more shares</span>{" "}
                 than text and images combined (Brightcove). That means every
@@ -661,13 +638,13 @@ export default function VideographyServicePage() {
         footerSlot={
           <div className="space-y-12">
             {/* The compound effect */}
-            <section className="rounded-2xl border border-white/[0.08] bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-creative)_10%,transparent),transparent_45%),#0f0f10] p-5 ring-1 ring-inset ring-white/[0.03] sm:p-7">
+            <section className="rounded-2xl border border-black/[0.08] bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-creative)_10%,transparent),transparent_45%),#0f0f10] p-5 ring-1 ring-inset ring-black/[0.03] sm:p-7">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
                     Long-term strategy
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                     The archive compound effect
                   </h2>
                 </div>
@@ -675,7 +652,7 @@ export default function VideographyServicePage() {
                   Equity, not expense
                 </span>
               </div>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-400">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">
                 Every shoot we do together adds to a shared footage library. Over
                 time, that archive becomes one of your most valuable production
                 assets — a resource we can draw from to create new brand films,
@@ -704,7 +681,7 @@ export default function VideographyServicePage() {
                   ].map(({ id, label, desc }) => (
                     <li
                       key={id}
-                      className="rounded-xl border border-white/[0.08] bg-[#111]/85 p-5 ring-1 ring-inset ring-white/[0.03]"
+                      className="rounded-xl border border-black/[0.08] bg-white/85 p-5 ring-1 ring-inset ring-black/[0.03]"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--brand-creative)]">
@@ -714,7 +691,7 @@ export default function VideographyServicePage() {
                           {id}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+                      <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                         {desc}
                       </p>
                     </li>
@@ -725,10 +702,10 @@ export default function VideographyServicePage() {
 
             {/* FAQ */}
             <section>
-              <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                 Frequently asked questions
               </h2>
-              <p className="mt-3 text-sm text-zinc-500">
+              <p className="mt-3 text-sm text-zinc-600">
                 Answers to the questions clients ask before their first
                 production.
               </p>
@@ -736,12 +713,12 @@ export default function VideographyServicePage() {
                 {faqItems.map((item) => (
                   <details
                     key={item.question}
-                    className="group rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03]"
+                    className="group rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03]"
                   >
-                    <summary className="cursor-pointer list-none text-sm font-semibold tracking-tight text-white">
+                    <summary className="cursor-pointer list-none text-sm font-semibold tracking-tight text-zinc-900">
                       {item.question}
                     </summary>
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-600">
                       {item.answer}
                     </p>
                   </details>
@@ -751,10 +728,10 @@ export default function VideographyServicePage() {
 
             {/* Related services */}
             <section>
-              <h2 className="text-2xl font-semibold tracking-tight text-white [font-family:var(--font-fraunces)] sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
                 Pair video with
               </h2>
-              <p className="mt-3 text-sm text-zinc-500">
+              <p className="mt-3 text-sm text-zinc-600">
                 Video performs best as part of a connected content system.
               </p>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -781,15 +758,15 @@ export default function VideographyServicePage() {
                   <Link
                     key={href}
                     href={href}
-                    className="group rounded-xl border border-white/[0.08] bg-[#111]/80 p-5 ring-1 ring-inset ring-white/[0.03] transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_0_30px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
+                    className="group rounded-xl border border-black/[0.08] bg-white/80 p-5 ring-1 ring-inset ring-black/[0.03] transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[0_0_30px_-10px_color-mix(in_srgb,var(--brand-creative)_30%,transparent)]"
                   >
                     <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-creative)]">
                       {label}
                     </p>
-                    <h3 className="mt-2 text-lg font-semibold tracking-tight text-white">
+                    <h3 className="mt-2 text-lg font-semibold tracking-tight text-zinc-900">
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                       {desc}
                     </p>
                   </Link>

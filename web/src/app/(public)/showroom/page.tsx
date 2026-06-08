@@ -1,68 +1,91 @@
 import type { Metadata } from "next";
+import { listSmugMugAlbumMedia, type SmugMugMedia } from "@/lib/smugmug";
+import { CategorizedGallery } from "@/components/site/showroom/CategorizedGallery";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Showroom",
+  title: "The Showroom | Visual Portfolio",
   description:
-    "Trade album showcases — dirt work & grading, concrete, demolition, and roofing.",
+    "A consolidated master archive of Invision Creative's latest work. High-end trade execution and commercial real estate showcases.",
 };
 
-const showcases: { href: string; title: string; tag: string }[] = [
-  {
-    href: "/showroom/dirt-work",
-    title: "Dirt Work / Grading",
-    tag: "Earthwork",
-  },
-  {
-    href: "/showroom/concrete",
-    title: "Concrete",
-    tag: "Flatwork",
-  },
-  {
-    href: "/showroom/demo",
-    title: "Demo",
-    tag: "Demolition",
-  },
-  {
-    href: "/showroom/roofing",
-    title: "Roofing",
-    tag: "Exteriors",
-  },
+const TRADE_ALBUMS = [
+  { label: "Dirt Work", key: "wXM9Qk" },
+  { label: "Concrete", key: "ZC5R5b" },
+  { label: "Demo", key: "nrqZSv" },
+  { label: "Roofing", key: "5zNXzG" },
 ];
 
-export default function ShowroomPage() {
-  return (
-    <div className="flex flex-1 flex-col px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-7xl">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-600">
-          Albums
-        </p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-4xl">
-          Showroom
-        </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500">
-          Browse trade showcases pulled from live albums — pick a vertical below.
-        </p>
+export default async function ShowroomPage() {
+  let tradesMedia: SmugMugMedia[] = [];
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
-          {showcases.map(({ href, title, tag }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#141414] p-6 shadow-[12px_18px_40px_-18px_rgba(0,0,0,0.75)] ring-1 ring-inset ring-white/[0.04] transition-[border-color,transform,box-shadow] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--brand-creative)_35%,transparent)] hover:shadow-[14px_22px_48px_-16px_rgba(0,0,0,0.78)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-creative)]"
-              >
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-creative)]">
-                  {tag}
-                </span>
-                <span className="mt-3 font-serif text-2xl text-white">{title}</span>
-                <span className="mt-4 text-xs font-medium text-zinc-500 transition-colors group-hover:text-zinc-400">
-                  Open showcase →
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+  try {
+    const albumResults = await Promise.all(
+      TRADE_ALBUMS.map((album) =>
+        listSmugMugAlbumMedia({
+          albumKey: album.key,
+          count: 50,
+          media: "all",
+        })
+      )
+    );
+    tradesMedia = albumResults.flatMap((res) => res.media);
+    // Shuffle slightly to mix trades together
+    tradesMedia.sort(() => Math.random() - 0.5);
+  } catch (error) {
+    console.error("Failed to load showroom media:", error);
+  }
+
+  return (
+    <div className="bg-white min-h-screen selection:bg-[var(--brand-creative)] selection:text-white pb-32">
+      {/* Editorial Header */}
+      <header className="relative pt-32 pb-24 px-6 sm:px-10 lg:px-16 overflow-hidden">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[var(--brand-creative)]">
+              Visual Archive
+            </span>
+            <div className="h-px w-12 bg-zinc-100" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">
+              Invision Creative Master
+            </span>
+          </div>
+
+          <h1 className="mt-12 font-serif text-[clamp(4rem,15vw,10rem)] leading-[0.8] tracking-tighter text-zinc-950 uppercase">
+            The<br />
+            <span className="italic text-[var(--brand-creative)]">Showroom</span>
+          </h1>
+
+          <p className="mt-12 max-w-lg text-lg leading-relaxed text-zinc-500 font-medium">
+            Tactical evidence of creative execution. A consolidated stream of our latest commercial captures, high-end trades, and industrial precision.
+          </p>
+        </div>
+      </header>
+
+      {/* Categorized Gallery Section */}
+      <main className="mx-auto max-w-[1800px] px-6 sm:px-10 lg:px-16">
+        <CategorizedGallery 
+          tradesMedia={tradesMedia} 
+        />
+      </main>
+
+      {/* Closing Call to Action */}
+      <footer className="mt-48 text-center px-6">
+        <div className="mx-auto max-w-3xl">
+           <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-400">
+             Ready for your project?
+           </p>
+           <h2 className="mt-8 font-serif text-[clamp(2.5rem,6vw,4rem)] leading-[0.9] tracking-tight text-zinc-950 uppercase">
+             Build your own lane.
+           </h2>
+           <Link
+             href="/contact"
+             className="mt-12 inline-flex items-center justify-center rounded-full bg-zinc-950 px-12 py-5 text-sm font-bold uppercase tracking-[0.3em] text-white transition-all hover:scale-105 active:scale-[0.98]"
+           >
+             Start a project
+           </Link>
+         </div>
+      </footer>
     </div>
   );
 }

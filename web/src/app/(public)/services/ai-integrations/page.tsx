@@ -154,7 +154,7 @@ export default function AiIntegrationsServicePage() {
                 { label: "Custom Platform", ok: true },
               ].map(({ label, ok }) => (
                 <div key={label} className="flex items-center justify-between gap-6">
-                  <span className="text-zinc-500">{label}</span>
+                  <span className="text-zinc-600">{label}</span>
                   <span className={ok ? "text-[var(--brand-creative)]" : "text-red-400"}>
                     {ok ? "●" : "○"}
                   </span>
@@ -167,7 +167,7 @@ export default function AiIntegrationsServicePage() {
         {/* ── HUD Card B — pipeline metrics (desktop xl only) ── */}
         <div className="hud-float-b pointer-events-none absolute right-[5%] top-[40%] hidden xl:block">
           <div className="rounded-lg border border-zinc-200 bg-white/80 p-3.5 backdrop-blur-md">
-            <p className="mb-2.5 font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-zinc-500">
+            <p className="mb-2.5 font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-zinc-600">
               Platform Performance
             </p>
             <div className="space-y-2">
@@ -175,11 +175,11 @@ export default function AiIntegrationsServicePage() {
                 <p className="font-mono text-xl font-bold leading-none text-[var(--brand-creative)]">
                   +8.4%
                 </p>
-                <p className="mt-0.5 text-[10px] text-zinc-500">average gross profit margin</p>
+                <p className="mt-0.5 text-[10px] text-zinc-600">average gross profit margin</p>
               </div>
               <div className="border-t border-zinc-200 pt-2">
                 <p className="font-mono text-xl font-bold leading-none text-zinc-900">12x</p>
-                <p className="mt-0.5 text-[10px] text-zinc-500">faster commercial bid times</p>
+                <p className="mt-0.5 text-[10px] text-zinc-600">faster commercial bid times</p>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@ export default function AiIntegrationsServicePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-zinc-500 sm:text-base">
+          <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-zinc-600 sm:text-base">
             We audit your internal business processes and cross-reference industry intelligence to construct
             a completely custom AI integration platform. Reduce operational overhead by up to 40%
             and win larger commercial contracts—with security built directly into your network.
@@ -236,13 +236,13 @@ export default function AiIntegrationsServicePage() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-zinc-900 shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
             >
               Start a project
             </Link>
             <a
               href="#pipeline"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200 px-8 py-3.5 text-sm font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:text-zinc-900"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-200 px-8 py-3.5 text-sm font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:text-black"
             >
               See it in action
               <svg
@@ -296,7 +296,7 @@ export default function AiIntegrationsServicePage() {
                 <p className="text-2xl font-bold text-[var(--brand-creative)] sm:text-3xl [font-family:var(--font-montserrat)]">
                   {value}
                 </p>
-                <p className="mt-1 text-[11px] leading-snug text-zinc-500">{label}</p>
+                <p className="mt-1 text-[11px] leading-snug text-zinc-600">{label}</p>
               </div>
             ))}
           </div>
@@ -469,7 +469,7 @@ export default function AiIntegrationsServicePage() {
             <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
               Frequently asked questions
             </h2>
-            <p className="mt-3 text-sm text-zinc-500">
+            <p className="mt-3 text-sm text-zinc-600">
               Answers to standard security, operational, and financial concerns before deploying a custom platform.
             </p>
             <div className="mt-6 space-y-3">
@@ -496,7 +496,7 @@ export default function AiIntegrationsServicePage() {
             <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 [font-family:var(--font-fraunces)] sm:text-3xl">
               Connect workflows with
             </h2>
-            <p className="mt-3 text-sm text-zinc-500">
+            <p className="mt-3 text-sm text-zinc-600">
               AI pipelines operate best when fed with premium original media.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -543,13 +543,13 @@ export default function AiIntegrationsServicePage() {
           <div className="mx-auto flex max-w-3xl flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-creative)] px-8 py-3.5 text-sm font-semibold text-zinc-900 shadow-[0_4px_24px_-4px_color-mix(in_srgb,var(--brand-creative)_45%,transparent)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_-6px_color-mix(in_srgb,var(--brand-creative)_50%,transparent)]"
             >
               Start a project
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center rounded-full border border-zinc-200 px-8 py-3.5 text-sm font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:text-zinc-900"
+              className="inline-flex items-center justify-center rounded-full border border-zinc-200 px-8 py-3.5 text-sm font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:text-black"
             >
               All services
             </Link>

@@ -128,18 +128,18 @@ export function ConcretePanorama360({ panoramaPath }: ConcretePanorama360Props) 
 
   return (
     <section
-      className="border-b border-white/[0.06] bg-[#0a0a0a] px-4 py-12 sm:px-6 sm:py-16"
+      className="border-b border-black/[0.06] bg-white px-4 py-12 sm:px-6 sm:py-16"
       aria-label="360 degree concrete job site panorama"
     >
       <div className="mx-auto w-full max-w-6xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--brand-creative)]">
           360° field view
         </p>
-        <h2 className="mt-2 font-serif text-2xl font-medium tracking-tight text-white [font-family:var(--font-montserrat)] sm:text-3xl">
+        <h2 className="mt-2 font-serif text-2xl font-medium tracking-tight text-zinc-900 [font-family:var(--font-montserrat)] sm:text-3xl">
           On the pour — before the slab
         </h2>
 
-        <div className="concrete-panorama-frame mt-8 overflow-hidden rounded-2xl border border-white/[0.1] bg-black ring-1 ring-inset ring-white/[0.04] shadow-[0_32px_80px_-40px_rgba(0,0,0,0.85)]">
+        <div className="concrete-panorama-frame mt-8 overflow-hidden rounded-2xl border border-black/[0.1] bg-white ring-1 ring-inset ring-black/[0.04] shadow-[0_32px_80px_-40px_rgba(0,0,0,0.85)]">
           <div
             ref={containerRef}
             className="h-[min(58vh,520px)] w-full min-h-[280px] [touch-action:none] sm:h-[min(62vh,600px)]"

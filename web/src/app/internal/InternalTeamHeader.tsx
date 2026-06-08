@@ -19,7 +19,7 @@ export function InternalTeamHeader() {
     <button
       type="button"
       onClick={() => void logout()}
-      className="rounded-md border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-zinc-200 transition-colors hover:border-white/25 hover:bg-white/10"
+      className="rounded-md border border-black/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-zinc-200 transition-colors hover:border-black/25 hover:bg-white/10"
     >
       Sign out
     </button>

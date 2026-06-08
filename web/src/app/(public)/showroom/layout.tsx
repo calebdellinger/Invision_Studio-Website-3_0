@@ -14,7 +14,7 @@ export default function ShowroomLayout({
 }>) {
   return (
     <div
-      className={`${montserrat.variable} min-h-full bg-[#0c0c0c] text-zinc-300`}
+      className={`${montserrat.variable} min-h-full bg-[#0c0c0c] text-zinc-600`}
     >
       {children}
     </div>

@@ -222,13 +222,13 @@ export function AiWorkflowSimulator() {
   };
 
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-[#0c0c0d]/90 p-5 ring-1 ring-inset ring-white/[0.03] sm:p-6">
+    <div className="rounded-2xl border border-black/[0.08] bg-white/90 p-5 ring-1 ring-inset ring-black/[0.03] sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--brand-creative)]">
             Interactive simulator
           </p>
-          <h3 className="mt-1.5 text-xl font-semibold text-white [font-family:var(--font-montserrat)]">
+          <h3 className="mt-1.5 text-xl font-semibold text-zinc-900 [font-family:var(--font-montserrat)]">
             AI Ingest & Routing Pipeline
           </h3>
         </div>
@@ -240,8 +240,8 @@ export function AiWorkflowSimulator() {
               disabled={stage !== "idle" && stage !== "completed" && stage !== "approving"}
               className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
                 preset === id
-                  ? "border-[color-mix(in_srgb,var(--brand-creative)_50%,white_10%)] bg-[color-mix(in_srgb,var(--brand-creative)_16%,#0a0a0a)] text-white"
-                  : "border-white/5 text-zinc-500 hover:border-white/10 hover:text-zinc-300 disabled:opacity-40"
+                  ? "border-[color-mix(in_srgb,var(--brand-creative)_50%,white_10%)] bg-[color-mix(in_srgb,var(--brand-creative)_16%,#0a0a0a)] text-zinc-900"
+                  : "border-black/5 text-zinc-600 hover:border-black/10 hover:text-zinc-600 disabled:opacity-40"
               }`}
             >
               {PRESETS[id].icon}
@@ -251,27 +251,27 @@ export function AiWorkflowSimulator() {
         </div>
       </div>
 
-      <p className="mt-3 text-xs leading-relaxed text-zinc-400">
+      <p className="mt-3 text-xs leading-relaxed text-zinc-600">
         Choose a production preset, click ingest, and watch how our AI pipelines automate extraction, asset tagging, copywriting, and CMS routing while keeping human verification in control.
       </p>
 
       {/* Simulator Terminal Screen */}
-      <div className="mt-5 overflow-hidden rounded-xl border border-white/[0.06] bg-[#050505]">
+      <div className="mt-5 overflow-hidden rounded-xl border border-black/[0.06] bg-[#050505]">
         {/* Terminal Header */}
-        <div className="flex items-center justify-between border-b border-white/[0.06] bg-[#0a0a0b] px-4 py-2 text-xs">
+        <div className="flex items-center justify-between border-b border-black/[0.06] bg-[#0a0a0b] px-4 py-2 text-xs">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-red-500/80" />
             <span className="h-2 w-2 rounded-full bg-yellow-500/80" />
             <span className="h-2 w-2 rounded-full bg-green-500/80" />
             <span className="ml-2 font-mono text-[10px] text-zinc-600">invision-pipeline-terminal</span>
           </div>
-          <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-500">
+          <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-600">
             <span>{activePreset.assetName} ({activePreset.size})</span>
           </div>
         </div>
 
         {/* Terminal Console Logs */}
-        <div className="h-44 overflow-y-auto p-4 font-mono text-xs leading-relaxed text-zinc-300">
+        <div className="h-44 overflow-y-auto p-4 font-mono text-xs leading-relaxed text-zinc-600">
           {stage === "idle" && (
             <div className="flex h-full flex-col items-center justify-center text-center text-zinc-600">
               <svg viewBox="0 0 24 24" className="h-8 w-8 mb-2 stroke-current" fill="none" strokeWidth="1">
@@ -281,14 +281,14 @@ export function AiWorkflowSimulator() {
             </div>
           )}
           {logs.map((log, index) => {
-            let colorClass = "text-zinc-400";
+            let colorClass = "text-zinc-600";
             if (log.startsWith("[SYS]")) colorClass = "text-blue-400";
             else if (log.startsWith("[VISION]")) colorClass = "text-purple-400";
             else if (log.startsWith("[LLM]")) colorClass = "text-emerald-400 font-medium";
             else if (log.startsWith("[HIL]")) colorClass = "text-amber-400 font-semibold";
             else if (log.startsWith("[DAM]") || log.startsWith("[API]")) colorClass = "text-cyan-400";
             else if (log.startsWith("[SUCCESS]")) colorClass = "text-[var(--brand-creative)] font-bold";
-            else if (log.startsWith("[OK]")) colorClass = "text-zinc-500";
+            else if (log.startsWith("[OK]")) colorClass = "text-zinc-600";
             
             return (
               <div key={index} className={`mb-1.5 ${colorClass}`}>
@@ -329,7 +329,7 @@ export function AiWorkflowSimulator() {
         {(stage === "ingesting" || stage === "analyzing" || stage === "generating") && (
           <button
             disabled
-            className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/[0.02] px-5 py-2.5 text-xs font-semibold text-zinc-500 cursor-not-allowed"
+            className="flex items-center gap-2 rounded-lg border border-black/5 bg-white/[0.02] px-5 py-2.5 text-xs font-semibold text-zinc-600 cursor-not-allowed"
           >
             <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-[var(--brand-creative)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -354,7 +354,7 @@ export function AiWorkflowSimulator() {
         {stage === "completed" && (
           <button
             onClick={handleReset}
-            className="flex items-center gap-2 rounded-lg border border-white/10 bg-[#0e0e0f] px-5 py-2.5 text-xs font-semibold text-zinc-300 transition-all hover:bg-[#151517]"
+            className="flex items-center gap-2 rounded-lg border border-black/10 bg-[#0e0e0f] px-5 py-2.5 text-xs font-semibold text-zinc-600 transition-all hover:bg-[#151517]"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth="2">
               <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
@@ -372,12 +372,12 @@ export function AiWorkflowSimulator() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="mt-6 rounded-xl border border-white/[0.06] bg-[#080809] p-4 ring-1 ring-inset ring-white/[0.02]"
+            className="mt-6 rounded-xl border border-black/[0.06] bg-[#080809] p-4 ring-1 ring-inset ring-black/[0.02]"
           >
-            <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-3">
+            <div className="flex items-center justify-between border-b border-black/[0.06] pb-3 mb-3">
               <div className="flex items-center gap-2">
                 <span className={`h-2 w-2 rounded-full ${stage === "completed" ? "bg-[var(--brand-creative)]" : "bg-amber-400 animate-pulse"}`} />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-600">
                   {stage === "completed" ? "Final Ingestion Outputs (Routed)" : "Verification Queue: Assets Pending Review"}
                 </span>
               </div>
@@ -391,18 +391,18 @@ export function AiWorkflowSimulator() {
             <div className="space-y-4 text-xs">
               {/* Output Title */}
               <div>
-                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Title Field</p>
-                <p className="mt-1 text-sm font-semibold text-white">{activePreset.outputMock.title}</p>
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-wider">Title Field</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-900">{activePreset.outputMock.title}</p>
               </div>
 
               {/* Output Tags */}
               <div>
-                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Auto-generated Tags</p>
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-wider">Auto-generated Tags</p>
                 <div className="mt-1.5 flex flex-wrap gap-1.5">
                   {activePreset.outputMock.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded border border-white/[0.08] bg-white/[0.02] px-2 py-0.5 text-[10px] font-medium text-zinc-400"
+                      className="rounded border border-black/[0.08] bg-white/[0.02] px-2 py-0.5 text-[10px] font-medium text-zinc-600"
                     >
                       {tag}
                     </span>
@@ -412,12 +412,12 @@ export function AiWorkflowSimulator() {
 
               {/* Output Copy */}
               <div>
-                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Generated Copy Variants</p>
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-wider">Generated Copy Variants</p>
                 <div className="mt-1.5 space-y-2">
                   {activePreset.outputMock.copy.map((item) => (
-                    <div key={item.platform} className="rounded border border-white/[0.04] bg-[#0c0c0e] p-2.5">
+                    <div key={item.platform} className="rounded border border-black/[0.04] bg-[#0c0c0e] p-2.5">
                       <p className="text-[9px] font-bold uppercase tracking-wider text-[var(--brand-creative)]">{item.platform}</p>
-                      <p className="mt-1 leading-relaxed text-zinc-300 font-sans">{item.text}</p>
+                      <p className="mt-1 leading-relaxed text-zinc-600 font-sans">{item.text}</p>
                     </div>
                   ))}
                 </div>
@@ -425,22 +425,22 @@ export function AiWorkflowSimulator() {
 
               {/* Output Destinations */}
               <div>
-                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-wider">
                   {stage === "completed" ? "Routed Destinations" : "Target Destinations"}
                 </p>
                 <div className="mt-1.5 space-y-1.5">
                   {activePreset.outputMock.destination.map((dest) => (
-                    <div key={dest} className="flex items-center gap-2 text-zinc-400">
+                    <div key={dest} className="flex items-center gap-2 text-zinc-600">
                       <span className={`flex h-4 w-4 items-center justify-center rounded border transition-colors ${
                         stage === "completed" 
                           ? "border-[var(--brand-creative)] bg-[var(--brand-creative)]/10 text-[var(--brand-creative)]" 
-                          : "border-white/10 bg-white/[0.02] text-transparent"
+                          : "border-black/10 bg-white/[0.02] text-transparent"
                       }`}>
                         <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current" fill="none" strokeWidth="3">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       </span>
-                      <span className={stage === "completed" ? "text-zinc-200" : "text-zinc-500"}>{dest}</span>
+                      <span className={stage === "completed" ? "text-zinc-200" : "text-zinc-600"}>{dest}</span>
                     </div>
                   ))}
                 </div>

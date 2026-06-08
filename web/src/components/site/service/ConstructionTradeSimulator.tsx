@@ -244,7 +244,7 @@ export function ConstructionTradeSimulator() {
               <TradeIcon id={t.id} />
               <span className="text-xs font-bold uppercase tracking-wider text-zinc-900">{t.label}</span>
             </span>
-            <p className="mt-1.5 text-[10px] leading-snug text-zinc-500">{t.tagline}</p>
+            <p className="mt-1.5 text-[10px] leading-snug text-zinc-600">{t.tagline}</p>
           </button>
         ))}
       </div>
@@ -265,7 +265,7 @@ export function ConstructionTradeSimulator() {
               />
             ))}
           </div>
-          <span className="font-mono text-[10px] text-zinc-500">{trade.inputValue}</span>
+          <span className="font-mono text-[10px] text-zinc-600">{trade.inputValue}</span>
         </div>
 
         <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
@@ -276,7 +276,7 @@ export function ConstructionTradeSimulator() {
           </div>
 
           <div className="p-4">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600">
               {trade.inputLabel}
             </p>
             <p className="mt-1 text-sm font-medium text-zinc-800">{trade.inputValue}</p>
@@ -331,7 +331,7 @@ export function ConstructionTradeSimulator() {
                   key={m.label}
                   className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-center"
                 >
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">{m.label}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-600">{m.label}</p>
                   <p className="mt-2 text-lg font-bold text-zinc-900">{m.after}</p>
                   <p className="text-[10px] text-zinc-600 line-through">{m.before}</p>
                   <p className="mt-1 text-xs font-bold text-[var(--brand-creative)]">{m.delta}</p>

@@ -121,7 +121,7 @@ export default function ArchitectureComponentsPage() {
               </div>
 
               <div className="mt-6 border-t border-zinc-100 pt-6">
-                <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-zinc-400 mb-3">
+                <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-zinc-600 mb-3">
                   Why it matters
                 </h3>
                 <p className="text-base leading-relaxed text-zinc-700">

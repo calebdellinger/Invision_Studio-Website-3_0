@@ -18,15 +18,15 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="mx-auto w-full max-w-[72rem] bg-[#0b0b0b] px-5 py-14 sm:px-7 sm:py-18 lg:px-10 lg:py-22">
-      <header className="max-w-2xl border-b border-white/[0.06] pb-9">
+    <div className="mx-auto w-full max-w-[72rem] bg-white px-5 py-14 sm:px-7 sm:py-18 lg:px-10 lg:py-22">
+      <header className="max-w-2xl border-b border-black/[0.06] pb-9">
         <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--brand-creative)]">
           Pricing
         </p>
-        <h1 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+        <h1 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
           Packages & live estimate
         </h1>
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-600">
           These figures are planning estimates subject to change based on final project scope, timeline, and deliverables. Combine services to automatically apply bundle savings of up to 10%.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
@@ -38,14 +38,14 @@ export default function PricingPage() {
           </Link>
           <Link
             href="/services"
-            className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-zinc-400 transition-colors hover:border-white/25 hover:text-white"
+            className="inline-flex items-center justify-center rounded-full border border-black/15 px-5 py-2.5 text-sm font-medium text-zinc-600 transition-colors hover:border-black/25 hover:text-black"
           >
             All services
           </Link>
         </div>
       </header>
 
-      <div className="bg-[#0b0b0b] pt-12 lg:pt-14">
+      <div className="bg-white pt-12 lg:pt-14">
         <BundlePricingBuilder />
       </div>
     </div>
